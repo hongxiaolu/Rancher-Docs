@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get autoremove \
     && apt-get clean
 #COPY nginx.conf /etc/nginx/
-ADD  docs  /data
+ADD  docs  /data/docs
 RUN cd /data/docs \
     && gem install bundler --pre \
     && bundle install \
