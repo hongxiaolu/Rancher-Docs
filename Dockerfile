@@ -1,5 +1,10 @@
 FROM ruby:2.4.2
-RUN apt-get update && apt-get upgrade -y && apt-get install nginx && mkdir /data
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install nginx -y \
+    && mkdir /data  \
+    && apt-get autoremove \
+    && apt-get clean
 #COPY nginx.conf /etc/nginx/
 ADD  docs  /data
 RUN cd /data/docs \
