@@ -1,11 +1,11 @@
 ---
-description: Docker documentation search results
-keywords: Search, Docker, documentation, manual, guide, reference, api
+description: Rancher documentation search results
+keywords: Search, Rancher, documentation, manual, guide, reference, api
 noratings: true
-notoc: true
-notags: true
-title: "Docs search <span id='searchTerm'></span>"
-tree: false
+#notoc: true
+#notags: true
+title: "搜索结果: <span id='searchTerm'></span>"
+#tree: false
 ---
 
 <style type='text/css'>
@@ -29,7 +29,7 @@ tree: false
 <div id="my-cse1">
 <script>
   (function() {
-    var cx = '005610573923180467403:iwlnuvjqpv4';
+    var cx = '008771706106815626476:w26ta8umgsy';
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;
@@ -38,8 +38,7 @@ tree: false
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
-
-<gcse:searchresults-only></gcse:searchresults-only>
+<gcse:search></gcse:search>
 </div>
 
 <script defer>

@@ -367,7 +367,6 @@ channel for more predictability.
     </div>
 </div>
 
-
 <!-- end component-container 2-->
 </div>
 ## Rancher 概述
@@ -405,8 +404,6 @@ Rancher在环境层面支持基于角色的访问控制（RBAC），允许用户
 
 下图显示了Rancher的主要组件和功能。
 
-<img src="/images/Rancher-2.0.png"  alt="Rancher2.0 Overview">
-
 ## RancherOS 概述
 ---
 RancherOS是一个轻量级Linux分发版，整个系统都能如Docker容器一样运行。操作系统完全由Docker容器组成。
@@ -417,14 +414,10 @@ RancherOS中的所有内容都是由Docker管理的容器，这包括系统服�
 在RancherOS中，Docker守护进程是内核启动时运行的第一个程序。我们将这个Docker实例称为“System Docker”，因为它负责启动系统服务，如udev、DHCP和控制台。
 每一个这种系统服务都是以容器形式运行的。System Docker代替了其他Linux分发版中的init系统，如sysvinit或systemd。
 
-
-
 ## 在独立的Docker守护进程中运行的User Docker
 
 RancherOS创建了一个名为User Docker的特殊的系统服务容器，它是由System Docker创建的。User Docker容器中运行着一个独立的Docker守护进程。
 因为所有的用户容器都在User Docker容器中运行，即使删除所有用户容器，都不会破坏运行着RancherOS服务的系统容器。
-
-
 
 ## 简单的更新与回滚
 
