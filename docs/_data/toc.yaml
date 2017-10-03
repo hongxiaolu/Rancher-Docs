@@ -14,7 +14,6 @@ horizontalnav:
 - title: Samples
   path: /samples/
   node: samples
-
 guides:
 - sectiontitle: Get Docker
   section:
