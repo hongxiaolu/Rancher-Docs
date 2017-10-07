@@ -9,11 +9,8 @@
 else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %}
 
 <!-- End of logic for 'edit this button' -->
-
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 	<base href="{{ basehref }}" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -124,14 +121,14 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 							}
 							</script>
 							{% if page.noratings != true %}
-						  <div style="color:#b9c2cc; text-align: center; margin-top: 150px">
+						  <div id="ratings-div" style="color:#b9c2cc; text-align: center; margin-top: 150px; visibility: hidden">
 								<div id="pd_rating_holder_8453675"></div>
 								<script type="text/javascript">
 									PDRTJS_settings_8453675 = {
 										"id": "8453675",
 										"unique_id": "{{ page.path }}",
 										"title": "{{ page.title }}",
-										"permalink": "https://github.com/docker/docker.github.io/blob/master/{{ page.path }}"
+										"permalink": "https://github.com/rancher/rancher.github.io/blob/master/{{ page.path }}"
 									};
 									(function(d, c, j) {
 										if (!document.getElementById(j)) {
@@ -159,8 +156,8 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 								<div class="feedback-links">
 									<ul>
 										{% if edit_url != "" %}
-										<li><a href="{{ edit_url }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑本页面 </a></li>{% endif %}
-<!--  									<li><a href="https://github.com/docker/docker.github.io/issues/new?assignee={% if page.assignee %}{{ page.assignee }}{% else %}{{ page.defaultassignee }}{% endif %}&body=File: [{{ page.path }}](https://docs.docker.com{{ page.url }}), CC @{{ assignee }}"
+									<!--<li style="visibility: hidden"><a href="{{ edit_url }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑本页面 </a></li>{% endif %}-->
+                                 	<!--<li><a href="https://github.com/docker/docker.github.io/issues/new?assignee={% if page.assignee %}{{ page.assignee }}{% else %}{{ page.defaultassignee }}{% endif %}&body=File: [{{ page.path }}](https://docs.docker.com{{ page.url }}), CC @{{ assignee }}"
 															class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>-->
 										<li><a href="http://www.cnrancher.com/support/"><i class="fa fa-question" aria-hidden="true"></i> 获取支持 </a></li>
 										<!-- toggle mode -->
@@ -197,7 +194,7 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	{% if page.path == "404.md" %}
 		<script type="text/javascript">
 			var path = window.location.pathname.replace("#","");
-			var ghIssueQueryString = "https://github.com/docker/docker.github.io/issues/new?" + "title=404%20at%20" + path + "&body=URL%3A%20" + path;
+			var ghIssueQueryString = "https://github.com/rancher/rancher/issues/new?" + "title=404%20at%20" + path + "&body=URL%3A%20" + path;
 			document.getElementsByClassName("nomunge")[1].onclick = function() {
 				 document.getElementsByClassName("nomunge")[1].href = ghIssueQueryString;
 				 return true;
@@ -218,6 +215,14 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	<script defer src="/js/menu.js"></script>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<!-- Always include the archive.js, but it doesn't do much unless we are an archive -->
+	<script language="javascript">
+	// Default to assuming this is an archive and hiding some stuff
+	// See js/archive.js and js/docs.js for logic relating to this
+	var isArchive = true;
+	var RancherVersion = 'v{{ site.rancher_stable_version }}';
+	</script>
+	<script src="/js/archive.js"></script>
 	<script src="/js/stickyfill.min.js"></script>
 	<script defer src="/js/docs.js"></script>
 	<script language="javascript">

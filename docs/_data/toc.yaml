@@ -5,10 +5,10 @@ horizontalnav:
 - title: 产品手册
   path: /manuals/
   node: manuals
-- title: Glossary
+- title: 名词解释
   path: /glossary/
   node: glossary
-- title: Reference
+- title: 参数
   path: /reference/
   node: reference
 - title: Samples
