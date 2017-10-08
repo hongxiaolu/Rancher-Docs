@@ -7,7 +7,7 @@ if (window.navigator.onLine) {
   var suppressButterBar = false;
   /* This JSON file contains a current list of all docs versions of Docker */
   $.getJSON("/js/archives.json", function(result){
-    var outerDivStart = '<div style="padding-top: 10px; padding-bottom: 10px; min-height: 34px; border: 1px solid #254356; background-color: #FFE1C0; color: #254356"><div class="container"><div style="text-align: center"><span id="archive-list">这是<b><a href="/docsarchive/" style="color: #254356; text-decoration: underline !important">旧版本的文档</a></b> for Rancher&nbsp;' + RancherVersion + '. 点击这里跳转到最新的版本 <a style="color: #254356; text-decoration: underline !important" href="/">latest docs</a> 或者选择不同的版本 :&nbsp;&nbsp;</span>' +
+    var outerDivStart = '<div style="padding-top: 10px; padding-bottom: 10px; min-height: 34px; border: 1px solid #254356; background-color: #FFE1C0; color: #254356"><div class="container"><div style="text-align: center"><span id="archive-list">当前是Rancher&nbsp;' + RancherVersion + '的文档。 点击<a style="color: #254356; text-decoration: underline !important" href="/">latest docs</a> 跳转到最新的版本或者选择不同的版本:&nbsp;&nbsp;</span>' +
                                '<span style="z-index: 1001" class="dropdown">';
     var listStart = '<ul class="dropdown-menu" role="menu" aria-labelledby="archive-menu">';
     var listEnd = '</ul>';
