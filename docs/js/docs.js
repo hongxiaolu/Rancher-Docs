@@ -294,6 +294,7 @@ window.onload = function() {
     var group = $(this).attr('data-group');
     $('.nav-tabs > li > a[data-group="'+ group +'"]').tab('show');
   })
+  
    // isArchive is set by logic in archive.js
    if ( isArchive == false ) {
     console.log("Showing content that should only be in the current version.");

@@ -9,8 +9,11 @@
 else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %}
 
 <!-- End of logic for 'edit this button' -->
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<base href="{{ basehref }}" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,13 +42,11 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	</script>
 	{% if site.GH_ENV == "gh_pages" %}
 	<meta name="robots" content="noindex">{% endif %}
-
 	<!-- favicon -->
 	<link rel="icon" type="image/x-icon" href="/img/favicon.ico" sizes="129x128">
 	<meta name="msapplication-TileImage" content="/img/favicon.ico">
 	<link rel="apple-touch-icon" type="image/x-icon" href="/img/favicon.ico" sizes="129x128">
 	<meta property="og:image" content="/img/favicon.ico"/>
-	
 	<!-- metadata -->
 	<meta property="og:type" content="website"/>
 	<meta property="og:updated_time" itemprop="dateUpdated" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}"/>
@@ -69,16 +70,15 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 
 	<!-- Go get "Open Sans" font from Google -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
 	<!-- temp css will be removed -->
 	<link rel="stylesheet" href="/css/temp.css"> {% seo %} {% if page.hide_from_sitemap %}
 	<meta name="robots" content="noindex" />{% endif %}
-
 </head>
 <body ng-app="Docker" ng-controller="DockerController" class="colums">
 	<header>
 		{% if page.landing == true %}{% include global-header.html %}{% endif %} {% if page.landing != true %}{% include header.html %}{% endif %}
 	</header>
+	
 	<div class="{% if page.landing == true %}wrapper{%else%}wrapper right-open{% endif %}">
 		<div class="container-fluid">
 			<div class="row">
