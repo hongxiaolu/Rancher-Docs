@@ -45,8 +45,8 @@ Rancher在环境层面支持基于角色的访问控制（RBAC），允许用户
 
 ## RancherOS 概述
 ---
-RancherOS是一个轻量级Linux分发版，整个系统都能如Docker容器一样运行。操作系统完全由Docker容器组成。
-RancherOS中的所有内容都是由Docker管理的容器，这包括系统服务，如udev和syslog。RancherOS仅包含运行Docker所需的最少量的软件。
+RancherOS是一个轻量级Linux分发版，操作系统完全由Docker容器组成。
+RancherOS中的所有内容都是由Docker管理的容器，包括系统服务，如udev和syslog。RancherOS仅包含运行Docker所需的最少量的软件。
 
 ## 一个由容器组成的操作系统
 
