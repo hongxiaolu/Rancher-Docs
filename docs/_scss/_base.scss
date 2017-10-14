@@ -44,7 +44,6 @@ a {
     height: auto;
 }
 
-
 /*
 *
 * global footer  ***********************************************************************
@@ -107,7 +106,7 @@ footer {
 }
 
 .footer-copyright p {
-    font-family: $font;
+    font-family: "Open Sans", sans-serif;
     font-size: 12px;
     line-height: 17px;
     color: #637986;
@@ -132,7 +131,7 @@ footer {
 }
 
 .footer_social_nav ul li:before {
-    color: $white;
+    color: #fff;
     position: absolute;
     top: 10px;
     left: 10px;
@@ -147,7 +146,7 @@ footer {
     height: 32px;
     background-color: #82949E;
     border-radius: 50px;
-    color: $white;
+    color: #fff;
     display: block;
     text-indent: 9999px;
     overflow: hidden;
