@@ -2,13 +2,13 @@ horizontalnav:
 - title: 首页
   path: /
   node: guides
-- title: 产品手册
+- title: Rancher手册
   path: /manuals/
   node: manuals
-- title: 名词解释
+- title: RancherOS手册
   path: /glossary/
   node: glossary
-- title: 参数
+- title: kubernetes
   path: /reference/
   node: reference
 - title: 版本记录
