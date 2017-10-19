@@ -11,7 +11,7 @@ horizontalnav:
 - title: 参数
   path: /reference/
   node: reference
-- title: Samples
+- title: 版本记录
   path: /samples/
   node: samples
 guides:
