@@ -2,10 +2,10 @@ horizontalnav:
 - title: 首页
   path: /
   node: guides
-- title: Rancher手册
+- title: Rancher
   path: /manuals/
   node: manuals
-- title: RancherOS手册
+- title: RancherOS
   path: /glossary/
   node: glossary
 - title: kubernetes
