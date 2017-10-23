@@ -1,4 +1,4 @@
-name: Rancher 中文文档
+name: Rancher 中文文档(社区版)
 markdown: kramdown
 kramdown:
   input: GFM
