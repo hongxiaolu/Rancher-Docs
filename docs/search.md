@@ -4,7 +4,7 @@ keywords: Search, Rancher, documentation, manual, guide, reference, api
 noratings: true
 #notoc: true
 #notags: true
-title: "搜索结果: <span id='searchTerm'></span>"
+title: "文档搜索: <span id='searchTerm'></span>"
 #tree: false
 ---
 
