@@ -33,7 +33,7 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 			display: block;
 		}
 	</style>
-
+<!--
 	{% if page.url contains "datacenter" %}<script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=k6svi4faiclrdpi5eax4n23dzy"></script>{% endif %}
 	<script type="text/javascript">
 	  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
@@ -41,7 +41,7 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	  analytics.page();
 	  }}();
 	</script> 
-
+-->
 	{% if site.GH_ENV == "gh_pages" %}
 	<meta name="robots" content="noindex">{% endif %}
 	<!-- favicon -->
@@ -71,7 +71,8 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	<link id="pagestyle" rel="stylesheet" href="/css/style.css">
 
 	<!-- Go get "Open Sans" font from Google -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
+	<link href="/css/css.css?family=Open+Sans" rel="stylesheet">
 	<!-- temp css will be removed -->
 	<link rel="stylesheet" href="/css/temp.css"> {% seo %} {% if page.hide_from_sitemap %}
 	<meta name="robots" content="noindex" />{% endif %}
@@ -123,7 +124,7 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 							}
 							</script>
 							{% if page.noratings != true %}
-						  <div id="ratings-div" style="color:#b9c2cc; text-align: center; margin-top: 150px; visibility: hidden">
+						  <div id="ratings-div" style="color:#b9c2cc; text-align: center; margin-top: 150px; visibility: visible">
 								<div id="pd_rating_holder_8453675"></div>
 								<script type="text/javascript">
 									PDRTJS_settings_8453675 = {
@@ -158,7 +159,7 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 								<div class="feedback-links">
 									<ul>
 										{% if edit_url != "" %}
-									<!--<li style="visibility: hidden"><a href="{{ edit_url }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑本页面 </a></li>{% endif %}-->
+									<!--<li style="visibility: visible"><a href="{{ edit_url }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑本页面 </a></li>{% endif %}-->
                                  	<!--<li><a href="https://github.com/docker/docker.github.io/issues/new?assignee={% if page.assignee %}{{ page.assignee }}{% else %}{{ page.defaultassignee }}{% endif %}&body=File: [{{ page.path }}](https://docs.docker.com{{ page.url }}), CC @{{ assignee }}"
 															class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>-->
 										<li><a href="http://www.cnrancher.com/support/"><i class="fa fa-question" aria-hidden="true"></i> 获取支持 </a></li>
