@@ -1,7 +1,5 @@
 - archive:
   name: v2.0(preview)
-  image: docs/rancher.github.io:latest
 - archive:
   name: v1.6.10
-  image: docs/docker.github.io:v1.6
   current: true
