@@ -14,7 +14,8 @@ horizontalnav:
 
   
 guides:
-- sectiontitle: Get Docker
+- title: 首页
+- sectiontitle: Docker 快速入门
   section:
   - path: /engine/installation/
     title: Install Docker
@@ -151,11 +152,11 @@ guides:
       - path: /release-notes/docker-ce/
         title: Docker CE
         nosync: true
-- sectiontitle: Rancher快速入门
+- sectiontitle: Rancher 快速入门
   section:
   - path: /rancher/quick-start-guide
     title: 快速安装
-- sectiontitle: RancherOS快速入门
+- sectiontitle: RancherOS 快速入门
   section:
   - path: /os/quick-start-guide
     title: 快速安装
@@ -169,20 +170,22 @@ guides:
 
 
 rancher:
-- title: Dockerfile reference
-  path: /engine/reference/builder/
+- title: rancher
+- title: rancher 基础服务
+  path: /rancher/reference/builder/
 
 os:
+- title: RancherOS
 - path: /os/
-  title: Tutorial labs
+  title: 系统服务
   section:
   - path: /samples/
     title: Samples home
   - path: /engine/examples/apt-cacher-ng/
     title: apt-cacher-ng
 
-
-release-notes:
+kubernetes:
+- title: kubernetes
 - sectiontitle: Docker Enterprise Edition
   section:
   - path: /enterprise/
