@@ -1,16 +1,12 @@
 FROM alpine
 
 COPY  docs  /home/docs
-RUN apk  add  --no-cache nginx libc-dev openssl  openssl-dev  gcc make  libffi-dev ruby  ruby-json ruby-dev ruby-rdoc  ruby-bundler \
-    && cd /home/docs   \
-    && bundle install  \
-    && jekyll build  --destination /home/site  \
-    && gem list | grep -v rdoc openssl io-console psych  |cut -d" " -f1 | xargs gem uninstall -aIx  \
-    && apk del  libc-dev openssl  openssl-dev  gcc make  libffi-dev ruby  ruby-json ruby-dev ruby-rdoc  ruby-bundler \
-    && rm -rf /home/docs  \
-    && chown -R nginx:nginx /home/site  
 COPY  alpine/nginx.conf /etc/nginx/
 COPY  alpine/default.conf  /etc/nginx/conf.d/
+
+RUN apk  add  --no-cache nginx libc-dev openssl  openssl-dev  gcc make  libffi-dev ruby  ruby-json ruby-dev ruby-rdoc  ruby-bundler \
+    && cd /home/docs   \
+    && bundle install 
 
 WORKDIR /home/site  
 VOLUME /home/site 
