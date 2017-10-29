@@ -8,7 +8,7 @@ horizontalnav:
 - title: RancherOS
   path: /rancheros/
   node: rancheros
-- title: kubernetes
+- title: Kubernetes
   path: /kubernetes/
   node: kubernetes
 - title: 版本记录
