@@ -65,10 +65,21 @@ rancher:
 - sectiontitle: Rancher 安装
   section:
   - path: /rancher/installing/installing-server/
-    title: 安装 Rancher server
+    title: 在线安装
+  - path: /rancher/installing/no-internet-access/
+    title: 离线安装
   - path: /rancher/installing/selinux/
     title: Selinux
-
+  - path: /rancher/installing/basic-ssl-config/
+    title: 基本SSL配置
+- sectiontitle: 常见问题
+  section:
+  - path: /rancher/faqs/server/
+    title: Server 问题
+  - path: /rancher/faqs/agents/
+    title: Agent 问题
+  - path: /rancher/faqs/troubleshooting/
+    title: 故障排查与修复方法
 os:
 - title: RancherOS
 - sectiontitle: 系统安装
