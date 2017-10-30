@@ -171,12 +171,13 @@ guides:
 
 rancher:
 - title: rancher
-- title: rancher 基础服务
+- sectiontitle:: rancher 基础服务
   path: /rancher/reference/builder/
 
 os:
 - title: RancherOS
-- path: /os/
+- sectiontitle: 系统安装
+- path: /os/install
   title: 系统服务
   section:
   - path: /samples/

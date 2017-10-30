@@ -48,30 +48,7 @@ defaults:
       toc_min: 2
       toc_max: 4
       tree: true
-  - scope:
-      path: "rancher"
-    values:
-      assignee: "johndmulhausen"
-  - scope:
-      path: "os"
-    values:
-      assignee: "joaofnfernandes"
-  - scope:
-      path: "kubernetes"
-    values:
-      assignee: "joaofnfernandes"
-  - scope:
-      path: "datacenter/ucp"
-    values:
-      assignee: "jimgalasyn"
-  - scope:
-      path: "docker-cloud"
-    values:
-      assignee: "londoncalling"
-  - scope:
-      path: "docker-for-mac"
-    values:
-      assignee: "gbarr01"
+
 
 
 # Assets

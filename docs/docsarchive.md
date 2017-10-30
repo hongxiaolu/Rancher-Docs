@@ -11,7 +11,7 @@ prior version of Docker was shipped.
 
 ## {{ archive.name }} (current)
 
-Docs for {{ archive.name }} _(current)_ are accessible at [**https://docs.docker.com/**](/), or
+Docs for {{ archive.name }} _(current)_ are accessible at [**https://docs.rancher.com/**](/), or
 run:
 
 ```
@@ -21,7 +21,7 @@ docker run -ti -p 4000:4000 {{ archive.image }}
 
 ## {{ archive.name }}
 
-Docs for {{ archive.name }} are accessible at [**https://docs.docker.com/{{ archive.name }}/**](/{{ archive.name }}/), or
+Docs for {{ archive.name }} are accessible at [**https://docs.rancher.com/{{ archive.name }}/**](/{{ archive.name }}/), or
 run:
 
 ```
