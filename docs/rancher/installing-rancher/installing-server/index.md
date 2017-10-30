@@ -1,56 +1,59 @@
 ---
 title: Installing Rancher Server
-
+layout: rancher-default-v1.6-zh
+version: v1.6
+lang: zh
+redirect_from:
+  - /rancher/installing-rancher/installing-server/
 ---
 
-## Installing Rancher Server
+## 安装 Rancher Server
 ---
-Rancher is deployed as a set of Docker containers. Running Rancher is as simple as launching two containers. One container as the management server and another container on a node as an agent.
+Rancher是使用一系列的Docker容器进行部署的。运行Rancher跟启动两个容器一样简单。一个容器作为管理服务器部署，另外一个作为集群节点的Agent部署
 
-* [Rancher Server - Single Container (non-HA)](#single-container)
-* [Rancher Server - Single Container (non-HA) - External database](#single-container-external-database)
-* [Rancher Server - Single Container (non-HA)- Bind mounted MySQL volume](#single-container-bind-mount)
-* [Rancher Server - Full Active/Active HA](#multi-nodes)
-* [Rancher Server - Using ELB in AWS](#elb)
-* [Rancher Server - AD/OpenLDAP using TLS](#ldap)
-* [Rancher Server - HTTP Proxy](#http-proxy)
-* [Rancher Server - MySQL over SSL](#mysql-ssl)
+* [Rancher Server - 单容器部署 (non-HA)](#single-container)
+* [Rancher Server - 单容器部署 (non-HA) - 使用外置数据库](#single-container-external-database)
+* [Rancher Server - 单容器部署 (non-HA)- 挂载MySQL数据库的数据目录](#single-container-bind-mount)
+* [Rancher Server - 多节点的HA部署](#multi-nodes)
+* [Rancher Server - 使用AWS的Elastic/Classic Load Balancer作为Rancher Server HA的负载均衡器](#elb)
+* [Rancher Server - 使用TLS认证的AD/OPENLDAP](#ldap)
+* [Rancher Server - 在HTTP代理后方启动 Rancher Server](#http-proxy)
+* [Rancher Server - 通过SSL连接MySQL](#mysql-ssl)
 
+> **注意：** 你可以运行Rancher Server的容器的命令 `docker run rancher/server --help` 来获得所有选项以及帮助信息。
 
-> **Note:** You can get all help options for the Rancher server container by running `docker run rancher/server --help`.
+### 安装需求
 
-### Requirements
+* 所有安装有[支持的Docker版本]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#docker版本适用对比)的现代Linux发行版。 [RancherOS](http://docs.rancher.com/os/), Ubuntu, RHEL/CentOS 7 都是经过严格的测试。
+  * 对于 RHEL/CentOS, 默认的 storage driver, 例如 devicemapper using loopback, 并不被[Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#/storage-driver-options)推荐。 请参考Docker的文档去修改使用其他的storage driver。
+  * 对于 RHEL/CentOS, 如果你想使用 SELinux, 你需要[安装额外的 SELinux 组件]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/selinux/).
+* 1GB内存
+* MySQL服务器需要 max_connections 的设置 > 150
+  * MYSQL配置需求
+    * 选项1: 用默认`COMPACT`选项运行Antelope
+    * 选项2: 运行MySQL 5.7，使用Barracuda。默认选项`ROW_FORMAT`需设置成`Dynamic`
+  * 推荐设定
+    * max_packet_size >= 32M
+    * innodb_log_file_size >= 256M (如果你已有现存数据库，请根据实际情况更改此设定)
+    * innodb_file_per_table=1
+    * innodb_buffer_pool_size >= 1GB (对于更高需求的配置，请在专属MySQL服务器机器上使用4-8G的值)
 
-* Any modern Linux distribution with a [supported version of Docker]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#supported-docker-versions). [RancherOS](http://docs.rancher.com/os/), Ubuntu, RHEL/CentOS 7 are more heavily tested.
-  * For RHEL/CentOS, the default storage driver, i.e. devicemapper using loopback, is not recommended by [Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#/storage-driver-options). Please refer to the Docker documentation on how to change it.
-  * For RHEL/CentOS, if you want to enable SELinux, you will need to [install an additional SELinux module]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/selinux/).
-* 1GB RAM
-* MySQL server should have a max_connections setting > 150
-  * MYSQL Configuration Requirements   
-    * Option 1: Run with Antelope with default of `COMPACT`
-    * Option 2: Run MySQL 5.7 with Barracuda where the default `ROW_FORMAT` is `Dynamic`
-  * Recommended settings:
-    * `max_packet_size` >= 32M
-    * `innodb_log_file_size` >= 256M (If you have an existing DB, please make sure to appropriate plan how to change this setting.)
-    * `innodb_file_per_table=1`
-    * `innodb_buffer_pool_size` >= 1GB (For larger installs, 4-8G pools on dedicated MySQL servers) 
+> **注意：** 目前Rancher中并不支持Docker for Mac
 
-> **Note:** Currently, Docker for Mac is not supported in Rancher.
+### Rancher Server 标签
 
-### Rancher Server Tags
+Rancher Server当前版本中有2个不同的标签。对于每一个主要的release标签，我们都会提供对应版本的文档。
 
-Rancher server has 2 different tags. For each major release tag, we will provide documentation for the specific version.
+* `rancher/server:latest` 此标签是我们的最新一次开发的构建版本。这些构建已经被我们的CI框架自动验证测试。但这些release并不代表可以在生产环境部署。
+* `rancher/server:stable` 此标签是我们最新一个稳定的release构建。这个标签代表我们推荐在生产环境中使用的版本。
 
-* `rancher/server:latest` tag will be our latest development builds. These builds will have been validated through our CI automation framework. These releases are not meant for deployment in production.
-* `rancher/server:stable` tag will be our latest stable release builds. This tag is the version that we recommend for production.  
-
-Please do not use any release with a `rc{n}` suffix. These `rc` builds are meant for the Rancher team to test out builds.
+请不要使用任何带有 `rc{n}` 前缀的release。这些构建都是Rancher团队的测试构建。
 
 <a id="single-container"></a>
 
-### Launching Rancher Server - Single Container (non-HA)
+### 启动 Rancher Server - 单容器部署 (non-HA)
 
-On the Linux machine with Docker installed, the command to start a single instance of Rancher is simple.
+在安装了Docker的Linux服务器上，使用一个简单的命令就可以启动一个单实例的Rancher。
 
 ```bash
 $ sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
@@ -58,21 +61,21 @@ $ sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
 
 ### Rancher UI
 
-The UI and API will be available on the exposed port `8080`. After the docker image is downloaded, it will take a minute or two before Rancher has successfully started and is available to view.
+UI以及API会使用 `8080` 端口对外服务。下载Docker镜像完成后，需要1到2分钟的时间Rancher才能完全启动并提供服务。
 
-Navigate to the following URL: `http://<SERVER_IP>:8080`. The `<SERVER_IP>` is the public IP address of the host that is running Rancher server.
+访问如下的URL: `http://<SERVER_IP>:8080`。`<SERVER_IP>` 是运行Rancher Server的主机的公共IP地址。
 
-Once the UI is up and running, you can start by [adding hosts]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/) or select a container orchestration from the Infrastructure catalog. By default, if a different container orchestration type is not selected, the environment will be using cattle. After the hosts are added into Rancher, you can start adding [services]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/adding-services/) or launch templates from the [Rancher catalog]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/catalog/).
+当UI已经启动并运行，你可以先[添加主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/) 或者在应用商店中选择一个容器编排引擎。在默认情况下，如果没有选择不同的容器编排引擎，当前环境会使用Cattle引擎。在主机被添加都Rancher中后，你可以开始添加[服务]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/adding-services/)或者从[应用商店]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/catalog/)通过应用模版启动一个应用。
 
 <a id="single-container-external-database"></a>
 
-### Launching Rancher Server - Single Container - External Database
+### 启动 Rancher Server - 单容器部署 - 使用外部数据库
 
-Instead of using the internal database that comes with Rancher server, you can start Rancher server pointing to an external database. The command would be the same, but appending in additional arguments to direct how to connect to your external database.
+除了使用内部的数据库，你可以启动一个Rancher Server并使用一个外部的数据库。启动命令与之前一样，但添加了一些额外的参数去说明如何连接你的外部数据库。
 
-> **Note:** Your database, name and user of the database will already need to be created, but no schemas will need to be created. Rancher will automatically create all the schemas related to Rancher.
+> **注意：** 在你的外部数据库中，只需要提前创建数据库名和数据库用户。Rancher会自动创建Rancher所需要的数据库表。
 
-Here is an example of a SQL command to create a database and users.
+以下是创建数据库和数据库用户的SQL命令例子
 
 ```sql
 > CREATE DATABASE IF NOT EXISTS cattle COLLATE = 'utf8_general_ci' CHARACTER SET = 'utf8';
@@ -80,14 +83,14 @@ Here is an example of a SQL command to create a database and users.
 > GRANT ALL ON cattle.* TO 'cattle'@'localhost' IDENTIFIED BY 'cattle';
 ```
 
-To start Rancher connecting to an external database, you pass in additional arguments as part of the command for the container.
+启动一个Rancher连接一个外部数据库，你需要在启动容器的命令中添加额外参数。
 
 ```bash
 $ sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server \
     --db-host myhost.example.com --db-port 3306 --db-user username --db-pass password --db-name cattle
 ```
 
-Most of the options to pass in also have default values and are not required. Only the location of the MySQL server is required.
+大部分的输入参数都有默认值并且是可选的，只有MySQL server的地址是必须输入的。
 
 ```bash
 --db-host               IP or hostname of MySQL server
@@ -99,51 +102,51 @@ Most of the options to pass in also have default values and are not required. On
 
 <br>
 
-> **Note:** In previous versions of Rancher server, we had connected to an external database using environment variables, those environment variables will continue to work, but Rancher recommends using the arguments instead.
+> **注意：** 在之前版本的Rancher Server中，我们需要使用环境变量去连接外部数据库。在新版本中，这些环境变量会继续生效，但Rancher建议使用命令参数代替。
 
 <a id="single-container-bind-mount"></a>
 
-### Launching Rancher Server - Single Container - Bind Mount MySQL Volume
+### 启动 Rancher Server - 单容器部署 - 挂载MySQL数据库的数据目录
 
-If you would like to persist the database inside your container to a volume on your host, launch Rancher server by bind mounting the MySQL volume.
+在Rancher Server容器中，如果你想使用一个主机上的卷来持久化数据库，如下命令可以在启动Rancher时挂载MySQL的数据卷。
 
 ```bash
 $ sudo docker run -d -v <host_vol>:/var/lib/mysql --restart=unless-stopped -p 8080:8080 rancher/server
 ```
-With this command, the database will persist on the host. If you have an existing Rancher container and would like to bind mount the MySQL volume, the instructions are located in our [upgrading documentation]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/upgrading/#single-container-bind-mount).
+使用这条命令，数据库就会持久化在主机上。如果你有一个现有的Rancher Server容器并且想挂在MySQL的数据卷，可以参考以下的[Rancher升级]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/upgrading/#single-container-bind-mount)介绍。
 
 <a id="multi-nodes"></a>
 
-### Launching Rancher Server - Full Active/Active HA
+### 启动 Rancher Server - 多节点的HA部署
 
-Running Rancher server in High Availability (HA) is as easy as running [Rancher server using an external database](#using-an-external-database), exposing an additional port, and adding in an additional argument to the command for the external load balancer.
+在高可用(HA)的模式下运行Rancher Server与[使用外部数据库运行Rancher Server](#启动-rancher-server---单容器部署---使用外部数据库)一样简单，需要暴露一个额外的端口，添加额外的参数到启动命令中，并且运行一个外部的负载均衡就可以了。
 
-#### Requirements for HA
+#### HA部署需求
 
-* HA Nodes:
-    * Any modern Linux distribution with a [supported version of Docker]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#supported-docker-versions). [RancherOS](http://docs.rancher.com/os/), Ubuntu, RHEL/CentOS 7 are more heavily tested.
-      * For RHEL/CentOS, the default storage driver, i.e. devicemapper using loopback, is not recommended by [Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#/storage-driver-options). Please refer to the Docker documentation on how to change it.
-      * For RHEL/CentOS, if you want to enable SELinux, you will need to [install an additional SELinux module]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/selinux/).
-    * Ports that needs to be opened between nodes: `9345`, `8080`
-    * 1GB RAM
-* MySQL database
-    * At least 1 GB RAM
-    * 50 connections per Rancher server node (e.g. A 3 node setup will need to support at least 150 connections)
-    * MYSQL Configuration Requirements   
-      * Option 1: Run with Antelope with default of `COMPACT`
-      * Option 2: Run MySQL 5.7 with Barracuda where the default `ROW_FORMAT` is `Dynamic`
-* External Load Balancer
-    * Port that needs to be opened between nodes and external load balancer: `8080`
+* HA 节点:
+    * 所有安装有[支持的Docker版本]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#docker版本适用对比)的现代Linux发行版 [RancherOS](http://docs.rancher.com/os/), Ubuntu, RHEL/CentOS 7 都是经过严格的测试。
+	  * 对于 RHEL/CentOS, 默认的 storage driver, 例如 devicemapper using loopback, 并不被[Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#/storage-driver-options)推荐。 请参考Docker的文档去修改使用其他的storage driver。
+	  * 对于 RHEL/CentOS, 如果你想使用 SELinux, 你需要 [安装额外的 SELinux 组件]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/selinux/).
+    * `9345`, `8080` 端口需要在各个节点之间能够互相访问
+    * 1GB内存
+* MySQL数据库
+    * 至少 1 GB内存
+    * 每个Rancher Server节点需要50个连接 (例如：3个节点的Rancher则需要至少150个连接)
+    * MYSQL配置要求
+      * 选项1: 用默认`COMPACT`选项运行Antelope
+      * 选项2: 运行MySQL 5.7，使用Barracuda。默认选项`ROW_FORMAT`需设置成`Dynamic`
+* 外部负载均衡服务器
+    * 负载均衡服务器需要能访问Rancher Server节点的 `8080` 端口
 
-> **Note:** Currently, Docker for Mac is not supported in Rancher.
+> **注意：** 目前Rancher中并不支持Docker for Mac
 
-#### Recommendations for Larger Deployments
+#### 大规模部署建议
 
-* Each Rancher server node should have a 4 GB or 8 GB heap size, which requires having at least 8 GB or 16 GB of RAM
-* MySQL database should have fast disks
-* For true HA, a replicated MySQL database with proper backups is recommended. Using Galera and forcing writes to a single node, due to transaction locks, would be an alternative.
+* 每一个Rancher Server节点需要有4 GB 或者8 GB的堆空间，意味着需要8 GB或者16 GB内存
+* MySQL数据库需要有高性能磁盘
+* 对于一个完整的HA，建议使用一个有副本的Mysql数据库。另一种选择则是使用Galera集群并强制写入一个MySQL节点。
 
-1. On each of your nodes that you want to add into the HA setup, run the following command:
+1. 在每个需要加入Rancher Server HA集群的节点上，运行以下命令：
 
    ```bash
    # Launch on each node in your HA cluster
@@ -152,50 +155,50 @@ Running Rancher server in High Availability (HA) is as easy as running [Rancher 
         --advertise-address <IP_of_the_Node>
    ```
 
-   For each node, the `<IP_of_the_Node>` will be unique to each node, as it will be the IP of each specific node that is being added into the HA setup.
+   在每个节点上，`<IP_of_the_Node>` 需要在每个节点上唯一，因为这个IP会被添加到HA的设置中。
 
-   If you change `-p 8080:8080` to expose the HTTP port to a different port on the host, you will need to add `--advertise-http-port <host_port>` to the command.
+   如果你修改了 `-p 8080:8080` 并在host上暴露了一个不一样的端口，你需要添加 `--advertise-http-port <host_port>` 参数到命令中。
 
-   > **Note:** You can get the help for the commands by running `docker run rancher/server --help`
+   > **注意：** 你可以使用 `docker run rancher/server --help` 获得命令的帮助信息
 
-2. Configure an external load balancer that will balance traffic on ports `80` and `443` across a pool of nodes that will be running Rancher server and target the nodes on port `8080`. Your load balancer must support websockets and forwarded-for headers, in order for Rancher to function properly. See [SSL settings page]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}//installing-rancher/installing-server/basic-ssl-config/) for example configuration settings.
+2. 配置一个外部的负载均衡器，这个负责均衡负责将例如`80`或`443`端口的流量，转发到运行Rancher Server的节点的`8080`端口中。负载均衡器必须支持websockets 以及 forwarded-for 的Http请求头以支持Rancher的功能。参考 [使用SSL]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}//installing-rancher/installing-server/basic-ssl-config/) 这个配置的例子。
 
-#### Options for advertise-address
+#### advertise-address选项
 
-| Option | Example | Description |
+| 选项 | 例子 | 描述 |
 |---|---|---|
-| IP address | `--advertise-address 192.168.100.100` | Uses the give IP address |
-| Interface | `--advertise-address eth0` | Retrieves the IP of the given interface |
-| awslocal | `--advertise-address awslocal` | Retrieves the IP from `http://169.254.169.254/latest/meta-data/local-ipv4` |
-| ipify | `--advertise-address ipify` | Retrieves the IP from `https://api.ipify.org` |
+| IP address | `--advertise-address 192.168.100.100` | 使用指定IP |
+| Interface | `--advertise-address eth0` | 从指定网络接口获取 |
+| awslocal | `--advertise-address awslocal` | 从这里获取`http://169.254.169.254/latest/meta-data/local-ipv4` |
+| ipify | `--advertise-address ipify` | 从这里获取`https://api.ipify.org` |
 
-#### Notes on the Rancher Server Nodes in HA
+#### HA模式下的Rancher Server节点
 
-If the IP of your Rancher server node changes, your node will no longer be part of the Rancher HA cluster. You must stop the old Rancher server container using the incorrect IP for `--advertise-address` and start a new Rancher server with the correct IP for `--advertise-address`.
+如果你的Rancher Server节点上的IP修改了，你的节点将不再存在于Rancher HA集群中。你必须停止在`--advertise-address`配置了不正确IP的Rancher Server容器并启动一个使用正确IP地址的Rancher Server的容器。
 
 <a id="elb"></a>
 
-### Running Rancher Server Behind an Elastic/Classic Load Balancer (ELB) in AWS
+### 使用AWS的Elastic/Classic Load Balancer作为Rancher Server HA的负载均衡器
 
-We recommend using an ELB in AWS in front of your Rancher servers. In order for ELB to work correctly with Rancher's websockets, you will need to enable proxy protocol mode and ensure HTTP support is disabled. By default, ELB is enabled in HTTP/HTTPS mode, which does not support websockets. Special attention must be paid to listener configuration.
+我们建议使用AWS的ELB作为你Rancher Server的负载均衡器。为了让ELB与Rancher的websockets正常工作，你需要开启proxy protocol模式并且保证HTTP support被停用。 默认的，ELB是在HTTP/HTTPS模式启用，在这个模式下不支持websockets。需要特别注意listener的配置。
 
-If you have issues with ELB setup, we recommend trying the [terraform version](#configuring-using-terraform) as this reduces the opportunity to miss a setting.
+如果你在配置ELB中遇到问题，我们建议你参考[terraform version](#使用terraform进行配置)。
 
-> **Note:** If you are using a self signed certificate, please read more about how to [configure your ELB in AWS under our SSL section]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/basic-ssl-config/#elb).
+> **注意：** 如果你正在使用自签名的证书, 请参考我们SSL部分里的[如何在AWS里配置ELB]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/basic-ssl-config/#elb).
 
-#### Listener Configuration - Plaintext
+#### Listener 配置 - Plaintext
 
-For simple, unencrypted load balancing purposes, the following listener configuration is required:
+简单的来说，使用非加密的负载均衡，需要以下的listener配置：
 
 | Configuration Type | Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port |
 |---|---|---|---|---|
-| Plaintext | TCP | 80 | TCP | 8080  (or the port used with `--advertise-http-port` when launching Rancher server) |
+| Plaintext | TCP | 80 | TCP | 8080  (或者使用启动Rancher Server时 `--advertise-http-port` 指定的端口) |
 
-#### Enabling Proxy Protocol
+#### 启用 Proxy Protocol
 
-In order for websockets to function properly, the ELB proxy protocol policy must be applied.
+为了使websockets正常工作，ELB的proxy protocol policy必须被启用。
 
-* Enable [proxy protocol](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/enable-proxy-protocol.html) mode
+* 启用 [proxy protocol](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/enable-proxy-protocol.html) 模式
 
 ```
 $ aws elb create-load-balancer-policy --load-balancer-name <LB_NAME> --policy-name <POLICY_NAME> --policy-type-name ProxyProtocolPolicyType --policy-attributes AttributeName=ProxyProtocol,AttributeValue=true
@@ -203,11 +206,11 @@ $ aws elb set-load-balancer-policies-for-backend-server --load-balancer-name <LB
 $ aws elb set-load-balancer-policies-for-backend-server --load-balancer-name <LB_NAME> --instance-port 8080 --policy-names <POLICY_NAME>
 ```
 
-* Health check can be configured to use HTTP:8080 using `/ping` as your path.
+* Health check可以配置使用HTTP:8080下的 `/ping` 路径进行健康检查
 
-#### Configuring using Terraform
+#### 使用Terraform进行配置
 
-The following can be used as an example for configuring with Terraform:
+以下是使用Terraform配置的例子：
 
 ```
 resource "aws_elb" "lb" {
@@ -233,30 +236,31 @@ resource "aws_proxy_protocol_policy" "websockets" {
 
 <a id="alb"></a>
 
-### Running Rancher Server Behind an Application Load Balancer (ALB) in AWS
+### 使用AWS的Application Load Balancer(ALB) 作为Rancher Server HA的负载均衡器
 
-We no longer recommend Application Load Balancer (ALB) in AWS over using the Elastic/Classic Load Balancer (ELB). If you still choose to use an ALB, you will need to direct the traffic to the HTTP port on the nodes, which is `8080` by default.
+我们不再推荐使用AWS的Application Load Balancer (ALB)替代Elastic/Classic Load Balancer (ELB)。如果你依然选择使用ALB，你需要直接指定流量到Rancher Server节点上的HTTP端口，默认是8080。
+
 
 <a id="ldap"></a>
 
-### Enabling Active Directory or OpenLDAP for TLS
+### 使用TLS认证的AD/OPENLDAP
 
-In order to enable Active Directory or OpenLDAP for Rancher server with TLS, the Rancher server container will need to be started with the LDAP certificate, provided by your LDAP setup. On the Linux machine that you want to launch Rancher server on, save the certificate.
+为了在Rancher Server上启用Active Directory或OpenLDAP并使用TLS，Rancher Server容器在启动的时候需要配置LDAP证书，证书是LDAP服务提供方提供。证书保存在需要运行Rancher Server的Linux机器上。
 
-Start Rancher by bind mounting the volume that has the certificate. The certificate **must** be called `ca.crt` inside the container.
+启动Rancher并挂载证书。证书在容器内部 **必须** 命名为`ca.crt`。
 
 ```bash
 $ sudo docker run -d --restart=unless-stopped -p 8080:8080 \
   -v /some/dir/cert.crt:/var/lib/rancher/etc/ssl/ca.crt rancher/server
 ```
 
-You can check that the `ca.crt` was passed to Rancher server container successfully by checking the logs of the rancher server container.
+你可以使用Rancher Server的日志检查传入的 `ca.crt` 证书是否生效
 
 ```bash
 $ docker logs <SERVER_CONTAINER_ID>
 ```
 
-In the beginning of the logs, there will be confirmation that the certificate was added correctly.
+在日志的开头，会显示证书已经被正确加载的信息。
 
 ```bash
 Adding ca.crt to Certs.
@@ -267,19 +271,19 @@ Certificate was added to keystore
 
 <a id="http-proxy"></a>
 
-### Launching Rancher Server behind an HTTP proxy
+### 在HTTP代理后方启动 Rancher Server
 
-In order to set up an HTTP proxy, the Docker daemon will need to be modified to point to the proxy. Before starting Rancher server, edit the `/etc/default/docker` file to point to your proxy and restart Docker.
+为了设置HTTP Proxy，Docker守护进程需要修改配置并指向这个代理。在启动Rancher Server前，需要编辑配置文件 `/etc/default/docker` 添加你的代理信息并重启Docker服务。
 
 ```bash
 $ sudo vi /etc/default/docker
 ```
 
-In the file, edit the `#export http_proxy="http://127.0.0.1:3128"` to have it point to your proxy. Save your changes and then restart docker. Restarting Docker is different on every OS.
+在文件中，编辑 `#export http_proxy="http://127.0.0.1:3128/"` 并修改它指向你的代理。保存修改并重启Docker。重启Docker的方式在每个OS上都不一样。
 
-> **Note:** If you are running Docker with systemd, please follow Docker's [instructions](https://docs.docker.com/articles/systemd/#http-proxy) on how to configure the HTTP proxy.
+> **注意：** 如果你使用systemd运行Docker, 请参考Docker官方的[文档](https://docs.docker.com/articles/systemd/#http-proxy) 去配置http proxy设置。
 
-In order for the [Rancher catalog]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/catalog/) to load, the proxy will need to be configured and Rancher server will need to be launched with environment variables to pass in the proxy information.
+为了使得[应用商店]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/catalog/)加载正常，HTTP代理设置必须在Rancher Server运行的环境变量中。
 
 ```bash
 $ sudo docker run -d \
@@ -290,34 +294,34 @@ $ sudo docker run -d \
     --restart=unless-stopped -p 8080:8080 rancher/server
 ```
 
-If the [Rancher catalog]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/catalog/) will not be used, run the Rancher server command as you normally would.
+如果你不使用[应用商店]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/catalog/)，则使用你平常的Rancher Server命令即可。
 
-When [adding hosts]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/) to Rancher, there is no additional requirements behind an HTTP proxy.
+当向Rancher[添加主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/)时，在HTTP代理中不需要额外的设置和要求。
 
 <a id="mysql-ssl"></a>
 
-### Launching Rancher Server with MySQL over SSL
-> **Note:** Currently, supported in Rancher 1.6.3+
+### 通过SSL连接MySQL的Rancher Server
+> **注意：** 目前在Rancher 1.6.3以上版本才支持
 
-### Important Note
+### 重要提示
 
-If you are using a LDAP/AD authentication backend with Rancher whose certificate is signed by a different CA then that of the MySQL server, then this guide will not work for you!
+如果你正在使用LDAP或者AD认证方式，并且这些认证方式的证书发放方CA并不是MySQL服务器SSL的证书发放方CA，这篇指南无法适用于你的情况。
 
-### Prerequisites
+### 前提条件
 
-- The certificate or CA cert of the MySQL server (PEM encoded)
+- MySQL服务器的证书或CA证书
 
-### Instructions
+### 步骤
 
-1. Copy the server's certificate or CA certificate to the Rancher server host. When starting the `rancher/server` container you will have to mount that certificate to `/var/lib/rancher/etc/ssl/ca.crt`.
-2. Construct a custom JDBC URL by replacing the placeholders in this string with your database parameters:
+1. 拷贝MySQL服务器的证书或CA证书到Rancher Server的主机上。当启动`rancher/server`容器的时候你必须将证书挂载到`/var/lib/rancher/etc/ssl/ca.crt`。
+2. 更改以下的模板的对应参数，构建一个JDBC URL:
 ```
 jdbc:mysql://<DB_HOST>:<DB_PORT>/<DB_NAME>?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&prepStmtCacheSize=517&cachePrepStmts=true&prepStmtCacheSqlLimit=4096&socketTimeout=60000&connectTimeout=60000&sslServerCert=/var/lib/rancher/etc/ssl/ca.crt&useSSL=true
 ```
-3. Export this JDBC URL to the container in both the `CATTLE_DB_CATTLE_MYSQL_URL` and `CATTLE_DB_LIQUIBASE_MYSQL_URL` environment variables 
-4. Export `CATTLE_DB_CATTLE_GO_PARAMS="tls=true"` to the container. If the subject field of the server's certificate does not match the server's hostname, you will need to use `CATTLE_DB_CATTLE_GO_PARAMS="tls=skip-verify"` instead.
+3. 使用环境变量`CATTLE_DB_CATTLE_MYSQL_URL`和`CATTLE_DB_LIQUIBASE_MYSQL_URL`来导入上面的JDBC URL到容器里面。
+4. 加入环境变量`CATTLE_DB_CATTLE_GO_PARAMS="tls=true"`到容器里面。但是如果服务器证书的标题名字不符合服务器的主机名，你需要使用的是`CATTLE_DB_CATTLE_GO_PARAMS="tls=skip-verify"`.
 
-#### Example
+#### 例子
 
 ```shell
 
@@ -343,4 +347,4 @@ EOF
 $ docker-compose up -d
 ```
 
-*Important*: You have to specify your database parameters both in the JDBC URL as well as in the `--db-xxx` command arguments!
+*重要*: 你必须在两个环境变量里都写入构建好的JDBC_URL，还必须加入`--db-xxx`参数!

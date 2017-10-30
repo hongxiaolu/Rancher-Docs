@@ -1,56 +1,58 @@
 ---
 title: Installing Rancher Server with SSL
+layout: rancher-default-v1.6-zh
+version: v1.6
+lang: zh
+---
+
+## 安装Rancher并使用SSL
 
 ---
 
-## Installing Rancher Server With SSL
----
+为了在Rancher Server启用 `https` 访问，你需要在Rancher Server前使用一个代理服务器代理https请求，并能设置http的头参数。我们会在以下的内容中提供一个使用NGINX、HAProxy或者Apache作为代理的例子。当然了，其他工具也是可以的。
 
-In order to run Rancher server from an `https` URL, you will need to terminate SSL with a proxy that is capable of setting headers. We've provided an example of how it could be set up with NGINX, HAProxy, or Apache, but other tools could be used.
+### 需求
 
-### Requirements
+除了一般的Rancher Server[需求]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#安装需求)外，你还需要：
 
-Besides the typical Rancher server [requirements]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#requirements), you will also need:
+* 有效的SSL证书：如果你的证书并不是标准的Ubuntu CA bundle，请参考以下内容[使用自签名证书]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/basic-ssl-config/#使用自签名证书-beta)。
+* 相关域名的DNS配置
 
-* Valid SSL certificate: If your certificate is not part of the standard Ubuntu CA bundle, please use the [self signed certificate instructions]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/basic-ssl-config/#using-self-signed-certs-beta).
-* DNS entries configured
+### Rancher Server 标签
 
-### Rancher Server Tags
+Rancher Server当前版本中有2个不同的标签。对于每一个主要的release标签，我们都会提供对应版本的文档。
 
-Rancher server has 2 different tags. For each major release tag, we will provide documentation for the specific version.
+* `rancher/server:latest` 此标签是我们的最新一次开发的构建版本。这些构建已经被我们的CI框架自动验证测试。但这些release并不代表可以在生产环境部署。
+* `rancher/server:stable` 此标签是我们最新一个稳定的release构建。这个标签代表我们推荐在生产环境中使用的版本。
 
-* `rancher/server:latest` tag will be our latest development builds. These builds will have been validated through our CI automation framework. These releases are not meant for deployment in production.
-* `rancher/server:stable` tag will be our latest stable release builds. This tag is the version that we recommend for production.  
+请不要使用任何带有 `rc{n}` 前缀的release。这些构建都是Rancher团队的测试构建。
 
-Please do not use any release with a `rc{n}` suffix. These `rc` builds are meant for the Rancher team to test out builds.
+### 启动 Rancher Server
 
-### Launching Rancher Server
+在我们的例子配置中，所有的流量都会通过一个Docker link从代理传入Rancher Server容器。有其他替代的方法，但在我们的例子中会尽量的简单易懂
 
-In our example configuration, all traffic will pass through the proxy and be sent over a Docker link to the Rancher server container. There are alternative approaches that could be followed, but this example is simple and translates well.
-
-Start Rancher server. We have added in `--name=rancher-server` to this command in order to link the proxy container to the Rancher server container.
+启动Rancher Server。我们需要添加 `--name=rancher-server` 参数到命令中，使得代理的容器可以与Rancher Server容器建立Docker link
 
 ```bash
 $ sudo docker run -d --restart=unless-stopped --name=rancher-server rancher/server
 ```
 <br>
 
-> **Note:** In our example, we have assumed the proxy will be running in another container. If you are planning to run a proxy from the host, you will need to expose port `8080` locally by adding `-p 127.0.0.1:8080:8080` to the `docker run` command.
+> **注意：** 在我们的例子中，我们假设代理会运行在其他容器中。如果你打算在其他的服务器上运行代理，则你需要在Rancher Server上暴露8080端口，本地的话，通过在 `docker run` 中添加 `-p 127.0.0.1:8080:8080` 参数。
 
-If you are converting an existing Rancher instance, the upgrade to the new Rancher instance will depend on how you launched your original Rancher instance.
+如果你需要复用现有的Rancher Server实例，升级的步骤会根据你如何运行原有的Rancher实例而不同。
 
-* For Rancher instances using the MySQL database inside the Rancher server container, follow the [upgrade instructions]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/upgrading/#upgrading-rancher-by-creating-a-data-container) of creating a data container and adding in the `--volumes-from=<data_container>` when launching your new Rancher server instance.
-* For Rancher instances with a [bind mounted database]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#single-container-bind-mount), follow the [upgrade instructions for bind mounted instances]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/upgrading/#single-container-bind-mount).
-* For Rancher instances launched using an external database, stop and remove the existing Rancher container. Launch the new container using the same [instructions for connecting to an external database]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#single-container-external-database).
+* 使用 [挂载MYSQL数据库的数据目录]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#single-container-bind-mount) 的实例，请参考 [升级Rancher Server - 绑定挂载的MYSQL卷]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/upgrading/#单独升级一个容器non-ha---绑定挂载的mysql卷)。
+* 对于使用外部数据库的Rancher实例，停止并移除现有的Rancher容器，新建一个容器即可 [启动 RANCHER SERVER - 使用外部数据库]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#single-container-external-database)。
 
-### Example Nginx Configuration
+### Nginx 配置模版
 
-Here is the minimum NGINX configuration that will need to be configured. You should customize your configuration to meet your needs. Ensure that you use nginx version >= 1.9.5.
+以下是最小的NGINX配置。你应该根据你的需要定制化你自己的配置。本配置需要nginx版本大于 1.9.5。
 
-#### Notes on the Settings
+#### 设置注意项
 
-* `rancher-server` is the name of your rancher server container. When starting your rancher server container, the command must include `--name=rancher-server`. When starting your nginx container, the command must include `--link=rancher-server` for this exact configuration to work.
-* `<server>` can be any arbitrary name, but the same name should be used for both the http and https servers.
+* `rancher-server` 是你的Rancher Server容器的名称。 当你启动Rancher Server容器时，命令中必须包括 `--name=rancher-server` 参数。当你启动nginx容器时，你的命令则必须包括 `--link=rancher-server` ，这样以下的配置才能生效。
+* `<server>` 可以是任何的名字，但是必须与http/https server配置的名称一致。
 
 
 ```
@@ -91,16 +93,16 @@ server {
 ```
 
 
-### Example Apache Configuration
+### Apache 配置例子
 
 
-Here is an Apache configuration.
+以下是使用Apache作为负载均衡的配置例子。
 
-#### Notes on the Settings
+#### 设置注意项
 
-* `<server_name>` is the name of your rancher server container. When starting your Apache container, the command must include `--link=<server_name>` for this exact configuration to work.
-* In the proxy settings, you'll need to substitute `rancher` for your configuration.
-* Make sure the module `proxy_wstunnel` is enabled (websocket support).
+* `<server_name>` 是Rancher Server容器的名称。当你启动Apache容器，命令中必须包含 `--link=<server_name>`，这样以下的配置才能生效。
+* 在代理的设置中，你需要在配置中替换 `rancher` 这个参数。
+* 确保 `proxy_wstunnel` 这个参数是启用的（websocket支持）。
 
 ```
 <VirtualHost *:80>
@@ -134,12 +136,13 @@ Here is an Apache configuration.
 </VirtualHost>
 ```
 
-### EXAMPLE HAProxy CONFIGURATION
-Here is the minimum HAProxy configuration that will need to be configured. You should customize your configuration to meet your needs.
+### HAProxy 配置例子
 
-#### Notes on the Settings
+以下是HAProxy的最小配置。你应该根据你的需要去修改。
 
-* `<rancher_server_X_IP>` is the IP address for your rancher servers.
+#### 设置注意项
+
+* `<rancher_server_X_IP>`是Rancher Servers的IP地址。
 
 
 ```
@@ -177,9 +180,9 @@ backend rancher_servers
   server websrv3 <rancher_server_3_IP>:8080 weight 1 maxconn 1024
 ```
 
-### Example F5 BIG-IP configuration
+### F5 BIG-IP配置示例
 
-The following iRule configuration can be applied to make Rancher Server accessible behind a F5 BIG-IP appliance.
+下面的iRule配置可以使在F5 BIG-IP后的Rancher Server被访问到
 
 ```
 when HTTP_REQUEST {
@@ -191,25 +194,25 @@ when HTTP_REQUEST {
 
 <a id="elb"></a>
 
-### Running Rancher Server Behind an Elastic Load Balancer (ELB) in AWS with SSL
+### 使用AWS的Elastic Load Balancer作为Rancher Server HA的负载均衡器并使用SSL
 
-We recommend using an ELB in AWS in front of your rancher servers. In order for ELB to work correctly with Rancher's websockets, you will need to enable proxy protocol mode and ensure HTTP support is disabled. By default, ELB is enabled in HTTP/HTTPS mode, which does not support websockets. Special attention must be paid to listener configuration.
+我们建议使用AWS的ELB作为你Rancher Server的负载均衡器。为了让ELB与Rancher的websockets正常工作，你需要开启proxy protocol模式并且保证HTTP support被停用。 默认的，ELB是在HTTP/HTTPS模式启用，在这个模式下不支持websockets。listener的配置需要被特别的关注。
 
-#### Listener Configuration - SSL
+#### Listener 配置 - SSL
 
-For SSL termination at the ELB, the listener configuration should look like this:
+在ELB的SSL控制台，listener配置与以下配置类似：
 
 | Configuration Type | Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port |
 |---|---|---|---|---|
-| SSL-Terminated | SSL (Secure TCP) | 443 | TCP | 8080 (or the port used with `--advertise-http-port` when launching Rancher server) |
+| SSL-Terminated | SSL (Secure TCP) | 443 | TCP | 8080 (或者使用启动Rancher时配置 `--advertise-http-port` 的端口) |
 
-* Add the appropriate security group and the SSL certificate
+* 需要添加相应的安全组设置以及SSL证书
 
-#### Enabling Proxy Protocol
+#### 启用 Proxy Protocol
 
-In order for websockets to function properly, the ELB proxy protocol policy must be applied.
+为了使websockets正常工作，ELB的proxy protocol policy必须被启用。
 
-* Enable [proxy protocol](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/enable-proxy-protocol.html) mode
+* 启用 [proxy protocol](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/enable-proxy-protocol.html) 模式
 
 ```
 $ aws elb create-load-balancer-policy --load-balancer-name <LB_NAME> --policy-name <POLICY_NAME> --policy-type-name ProxyProtocolPolicyType --policy-attributes AttributeName=ProxyProtocol,AttributeValue=true
@@ -217,60 +220,53 @@ $ aws elb set-load-balancer-policies-for-backend-server --load-balancer-name <LB
 $ aws elb set-load-balancer-policies-for-backend-server --load-balancer-name <LB_NAME> --instance-port 8080 --policy-names <POLICY_NAME>
 ```
 
-* Health check can be configured to use HTTP:8080 using `/ping` as your path.
+* Health check可以配置使用HTTP:8080下的 `/ping` 路径进行健康检查
 
 <a id="alb"></a>
 
-### Running Rancher Server Behind an Application Load Balancer (ALB) in AWS with SSL
+### 使用AWS的Application Load Balancer(ALB) 作为Rancher Server HA的负载均衡器
 
-We no longer recommend Application Load Balancer (ALB) in AWS over using the Elastic/Classic Load Balancer (ELB). If you still choose to use an ALB, you will need to direct the traffic to the HTTP port on the nodes, which is `8080` by default.
+我们不再推荐使用AWS的Application Load Balancer (ALB)替代Elastic/Classic Load Balancer (ELB)。如果你依然选择使用ALB，你需要直接指定流量到Rancher Server节点上的HTTP端口，默认是8080。
 
-> **Note:** If you use an ALB with Kubernetes, `kubectl exec` will not work and for that functionality, you will need to use an ELB.
+> **注意：** 如果你使用ALB配合Kubernetes，`kubectl exec` 并不能使用那个功能，你需要使用ELB。
 
-### Updating Host Registration
+### 使用自签名证书 (Beta)
 
-After Rancher is launched with these settings, the UI will be up and running at `https://<your domain>/`.
+#### 免责声明
 
-Before [adding hosts]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/), you'll need to properly configure [Host Registration]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/settings/#host-registration) for SSL.
+以下的配置只会在Rancher的核心服务并且是单节点部署模式下生效。当前并没有官方的Rancher模版[Rancher catalog](https://github.com/rancher/rancher-catalog)支持。
 
-### Using Self Signed Certs (Beta)
+Rancher Compose CLI 将需要CA证书，这个CA证书需要被添加到操作系统默认证书当中。请参考[Golang root_*](https://golang.org/src/crypto/x509/)。
 
-#### Disclaimers
+#### 前置条件
 
-This configuration will work for the 'core' services in Rancher running in a standalone mode (Non-HA setup). Currently, none of the certified Rancher templates from the [Rancher catalog](https://github.com/rancher/rancher-catalog) are supported.
-
-Rancher Compose CLI will require the CA certificate as part of the default store for the operating system. See [Golang root_*](https://golang.org/src/crypto/x509/).
-
-#### Server Pre-Requisites
-
-* CA certificate file in PEM format
-* Certificate signed by the CA for the Rancher Server
-* An instance of NGINX or Apache configured to terminate SSL and reverse proxy Rancher server
+* PEM格式的CA 证书
+* 为Rancher Server签名的CA证书
+* Nginx或者Apache实例，反向代理Rancher Server，并配置SSL
 
 #### Rancher Server
 
-1. Launch the Rancher server container with the modified Docker command. The certificate **must** be located and called `/var/lib/rancher/etc/ssl/ca.crt` inside the container.
-
+1. 通过以下的Docker命令启动Rancher Server容器。证书**必须**放在容器内部`/var/lib/rancher/etc/ssl/ca.crt`的位置。
 
    ```bash
    $ sudo docker run -d --restart=unless-stopped -p 8080:8080 -v /some/dir/cert.crt:/var/lib/rancher/etc/ssl/ca.crt rancher/server
    ```
     <br>
 
-    > **Note:** If you are running NGINX or Apache in a container, you can directly link the instance and not publish the Rancher UI 8080 port.
+    > **注意：** 如果你在容器内部运行NGINX或者Apache，你可以直接链接这个实例并且不需要暴露Rancher UI的8080端口。
 
-    The command will configure the server's ca-certificate bundle so that the Rancher services for machine provisioning, catalog and compose executor can communicate with the Rancher server.
+    这个命令将会配置服务器的ca-certificate，从而使Rancher的主机创建服务，应用商店服务和Compose执行服务可以与Rancher Server通信。
 
-2. If you are using a container with NGINX or Apache to terminate SSL, launch the container and include the `--link=<rancher_server_container_name> in the command.
+2. 如果你使用Nginx或者Apache代理SSL，在容器启动命令中添加`--link=<rancher_server_container_name>`参数。
 
-3. Access Rancher over the `https` address, i.e. `https://rancher.server.domain`.
+3. 使用 `https` 地址访问Rancher，例如 `https://rancher.server.domain`。
 
-4. Update the [Host Registration]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/settings/#host-registration) for SSL.
+4. 为SSL更新[主机注册地址]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/settings/#主机注册)配置
 
-> **Note:** Unless the machine running your web browser trusts the CA certificate used to sign the Rancher server certificate, the browser will give an untrusted site warning whenever you visit the web page.
+> **注意：** 除非你的浏览器信任了该用于给Rancher Server签名的CA证书，否则在你访问UI的时候，浏览器会显示一个未信任的网站警告。
 
-#### Adding Hosts
+#### 添加 Hosts
 
-1. On the host that you want to add into Rancher, save the CA certificate, which must be in pem format, into the directory `/var/lib/rancher/etc/ssl` with the file name `ca.crt`.
+1. 在你准备添加到Rancher集群的主机上，使用PEM格式保存CA证书，并放入 `/var/lib/rancher/etc/ssl` 文件夹下并改名为 `ca.crt`。
 
-2. Add the [custom host]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/custom/), which is just copying and pasting the command from the UI. The command will already include  `-v /var/lib/rancher:/var/lib/rancher`, so the file will automatically be copied onto your host.
+2. 添加 [自定义主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/custom/), 使用UI上提示的命令复制到主机上. 命令会自动挂载目录 `-v /var/lib/rancher:/var/lib/rancher`, 所以文件会自动的复制到你的主机上。
