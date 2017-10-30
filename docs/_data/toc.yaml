@@ -78,8 +78,8 @@ rancher:
     title: Selinux
   - path: /rancher/installing/basic-ssl-config/
     title: 基本SSL配置
-- title: 升级
-  path: /rancher/upgrading
+- title: 版本升级
+  path: /rancher/upgrading/
 - sectiontitle: 系统配置
   section:
   - path: /rancher/configuration/access-control/
@@ -91,7 +91,7 @@ rancher:
   - path: /rancher/configuration/settings/
     title: 系统设置
 
-- sectiontitle: 环境
+- sectiontitle: 环境管理
   section:
   - path: /rancher/environments/
     title: 添加环境
@@ -102,7 +102,7 @@ rancher:
   - path: /rancher/environments/ecr_updater/
     title: 证书更新器
 
-- sectiontitle: 服务
+- sectiontitle: 服务管理
   section:
   - path: /rancher/rancher-services/
     title: 基础设施服务
