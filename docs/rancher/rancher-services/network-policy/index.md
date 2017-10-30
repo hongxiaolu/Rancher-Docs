@@ -1,8 +1,6 @@
 ---
 title: Network Policy in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 网络策略

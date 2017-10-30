@@ -1,8 +1,5 @@
 ---
-title: FAQS about Rancher Agents/Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+title: FAQS about Rancher Agent
 ---
 ## Rancher Agent的常见问题
 ---

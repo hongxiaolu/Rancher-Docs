@@ -1,8 +1,6 @@
 ---
 title: ECR Credential Updater
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## AWS ECR（Elastic Container Repository）证书更新器

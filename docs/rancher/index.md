@@ -1,12 +1,7 @@
 ---
 title: Rancher文档
 description: Rancher是一个容器管理平台，通过Rancher可以实现Docker和Kubernetes的轻松部署。这个文档描述了如何安装和使用Rancher。
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /
-  - /rancher/
+
 ---
 
 ## Rancher概览

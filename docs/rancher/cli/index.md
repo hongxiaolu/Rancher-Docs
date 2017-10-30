@@ -1,10 +1,6 @@
 ---
 title: Rancher Command Line Interface (CLI)
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/latest/en/configuration/access-control/
+
 ---
 
 ## Rancher命令行界面

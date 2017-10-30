@@ -1,10 +1,6 @@
 ---
 title: Metadata Service in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/rancher-services/metadata-service/
+
 ---
 
 ## Metadata 服务

@@ -1,8 +1,6 @@
 ---
 title: Service Accounts in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 服务账号

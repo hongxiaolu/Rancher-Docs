@@ -1,8 +1,6 @@
 ---
 title: Load Balancers in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 负载均衡器

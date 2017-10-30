@@ -1,8 +1,6 @@
 ---
 title: Installing Rancher Server with SSL
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 安装Rancher并使用SSL

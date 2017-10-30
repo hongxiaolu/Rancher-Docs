@@ -1,8 +1,6 @@
 ---
 title: Contributing to Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 支持 Rancher

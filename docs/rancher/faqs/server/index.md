@@ -1,10 +1,6 @@
 ---
 title: FAQS about Rancher Server
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/faqs/server/
+
 ---
 
 ## Rancher Server的常见问题

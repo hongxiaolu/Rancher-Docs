@@ -1,10 +1,6 @@
 ---
 title: Quick Start Guide
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/quick-start-guide/
+
 ---
 
 ## 快速安装指南

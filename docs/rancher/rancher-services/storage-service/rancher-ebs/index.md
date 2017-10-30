@@ -1,8 +1,6 @@
 ---
 title: Using Rancher EBS
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## Rancher EBS

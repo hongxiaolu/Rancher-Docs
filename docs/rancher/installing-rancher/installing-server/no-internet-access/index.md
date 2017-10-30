@@ -1,10 +1,6 @@
 ---
 title: Installing Rancher Server with No Internet Access
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/installing-rancher/installing-server/no-internet-access/
+
 ---
 
 ## 内网启动Rancher

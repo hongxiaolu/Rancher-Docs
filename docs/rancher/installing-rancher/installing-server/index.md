@@ -1,10 +1,6 @@
 ---
 title: Installing Rancher Server
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/installing-rancher/installing-server/
+
 ---
 
 ## 安装 Rancher Server

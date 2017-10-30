@@ -1,12 +1,6 @@
 ---
 title: Troubleshooting FAQs about Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/v1.6/en/faqs/
-  - /rancher/faqs/
-  - /rancher/faqs/troubleshooting/
+
 ---
 
 ## 常见的故障排查与修复方法

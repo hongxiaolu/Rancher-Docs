@@ -1,10 +1,6 @@
 ---
 title: Variable Interpolation in Rancher CLI
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - rancher/cli/environment-interpolation
+
 ---
 
 ## 变量替换

@@ -1,8 +1,6 @@
 ---
 title: Using Native Docker CLI with Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 以原生 Docker 命令行的形式使用 Rancher

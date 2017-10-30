@@ -1,8 +1,6 @@
 ---
 title: Using Rancher with SELinux Enabled
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+
 ---
 
 ## 在SELinux模式下使用Rancher - RHEL/CentOS
