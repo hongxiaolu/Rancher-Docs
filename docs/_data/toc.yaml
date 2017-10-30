@@ -61,13 +61,13 @@ guides:
 
 
 rancher:
-- title: rancher
-- sectiontitle: rancher 安装
+- title: Rancher
+- sectiontitle: Rancher 安装
   section:
   - path: /rancher/installing/installing-server/
     title: 安装 Rancher server
   - path: /rancher/installing/selinux/
-  title: selinux
+    title: Selinux
 
 os:
 - title: RancherOS
