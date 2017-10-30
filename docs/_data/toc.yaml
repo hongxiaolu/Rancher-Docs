@@ -53,6 +53,12 @@ guides:
     title: 快速安装
 - sectiontitle: 版本记录
   section:
+  - path: /rancher/release-notes/1.6.7
+    title: 1.6.7
+  - path: /rancher/release-notes/1.6.8
+    title: 1.6.8
+  - path: /rancher/release-notes/1.6.9
+    title: 1.6.9
   - path: /rancher/release-notes/1.6.10
     title: 1.6.10
   - path: /rancher/release-notes/1.6.11
@@ -72,6 +78,86 @@ rancher:
     title: Selinux
   - path: /rancher/installing/basic-ssl-config/
     title: 基本SSL配置
+- title: 升级
+  path: /rancher/upgrading
+- sectiontitle: 系统配置
+  section:
+  - path: /rancher/configuration/access-control/
+    title: 访问控制
+  - path: /rancher/configuration/accounts/
+    title: 账号设置
+  - path: /rancher/configuration/machine-drivers/
+    title: 主机驱动
+  - path: /rancher/configuration/settings/
+    title: 系统设置
+
+- sectiontitle: 环境
+  section:
+  - path: /rancher/environments/
+    title: 添加环境
+  - path: /rancher/environments/certificates/
+    title: 添加证书
+  - path: /rancher/environments/registries/
+    title: 私有仓库
+  - path: /rancher/environments/ecr_updater/
+    title: 证书更新器
+
+- sectiontitle: 服务
+  section:
+  - path: /rancher/rancher-services/
+    title: 基础设施服务
+  - path: /rancher/rancher-services/audit-log/
+    title: 审计日志
+  - path: /rancher/rancher-services/dns-service/
+    title: DNS服务
+  - path: /rancher/rancher-services/load-balancer/
+    title: 负载均衡服务
+  - path: /rancher/rancher-services/metadata-service/
+    title: 元数据服务
+  - path: /rancher/rancher-services/network-policy/
+    title: 网络策略服务
+  - path: /rancher/rancher-services/networking/
+    title: 网络服务
+  - path: /rancher/rancher-services/scheduler/
+    title: 调度服务
+  - path: /rancher/rancher-services/service-accounts/
+    title: 服务账号
+  - sectiontitle: 存储服务
+    section:
+    - path: /rancher/rancher-services/storage-service/
+      title: 存储服务
+    - path: /rancher/rancher-services/storage-service/rancher-ebs
+      title: rancher-ebs
+    - path: /rancher/rancher-services/storage-service/rancher-nfs
+      title: rancher-nfs
+    
+
+- sectiontitle: CLI工具
+  section:
+  - path: /rancher/cli/
+    title: CLI使用
+  - path: /rancher/cli/commands/
+    title: 参数选项
+  - path: /rancher/cli/variable-interpolation/
+    title: 变量替换
+
+- title: native-docker
+  path: /rancher/native-docker/
+
+- title: MESOS
+  path: /rancher/mesos/
+
+- title: swarm
+  path: /rancher/swarm/
+
+- title: windows
+  path: /rancher/windows/
+
+
+
+
+
+
 - sectiontitle: 常见问题
   section:
   - path: /rancher/faqs/server/
@@ -80,6 +166,26 @@ rancher:
     title: Agent 问题
   - path: /rancher/faqs/troubleshooting/
     title: 故障排查与修复方法
+
+- title: 贡献
+  path: /rancher/contributing/
+
+- sectiontitle: 版本记录
+  section:
+  - path: /rancher/release-notes/1.6.5
+    title: 1.6.5
+  - path: /rancher/release-notes/1.6.6
+    title: 1.6.6
+  - path: /rancher/release-notes/1.6.7
+    title: 1.6.7
+    - path: /rancher/release-notes/1.6.8
+    title: 1.6.8
+  - path: /rancher/release-notes/1.6.9
+    title: 1.6.9
+  - path: /rancher/release-notes/1.6.10
+    title: 1.6.10
+  
+    
 os:
 - title: RancherOS
 - sectiontitle: 系统安装
