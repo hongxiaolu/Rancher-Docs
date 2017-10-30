@@ -3,39 +3,39 @@ title: Upgading Kubernetes
 
 ---
 
-## Upgrading Kubernetes
+## 升级Kubernetes
 ---
 
-If you are upgrading an existing Kubernetes setup to [require plane isolation]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/resiliency-planes/), please read more about the migration process.
+如果希望升级一个已有的Kubernetes部署为[平面隔离]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/resiliency-planes/)部署, 请参考迁移部分的说明。
 
-The migration process is performed in two stages.
+整个迁移流程由两个阶段组成。
 
-1. Ensuring that you have sufficient hosts with the appropriate labels.
-2. Upgrading the Kubernetes infrastructure stack.
+1. 确保你的环境中拥有足够数量具备合适标签的主机。
+2. 升级Kubernetes基础设施应用栈。
 
-### Hosts with Labels
+### 主机与标签
 
-Confirm that your environment has enough hosts with labels for the planes. You can either add new hosts or use existing hosts.
+确认环境中拥有足够数量具备各平面标签的主机。你可以添加新的主机或使用已有主机。
 
-1. **Compute Plane Hosts:** _For all existing hosts running kubelet and proxy containers_, add the label `compute=true`. These are the nodes already registered to Kubernetes when you run `kubectl get node`. This step is **critically important** because, without the label, Kubernetes pods will be orphaned on the host during this upgrade. If you have hosts running the kubelet and proxy containers, you can follow the steps of [removing them from the compute plane](#removing-hosts-with-pods-from-the-compute-plane).  You can also add more hosts and [label these hosts]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#host-labels) with `compute=true`.
-2. **Data Plane Hosts:** Have 3 or more hosts with 1 CPU, >=1.5GB RAM, >=20GB DISK. **If you have an existing Kubernetes setup with etcd services running, ensure that the `etcd=true` labels are on those hosts.** 
-3. **Orchestration Plane Hosts:** Add 2 or more hosts with >=1 CPU and >=2GB RAM. When adding the host, [label these hosts]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#host-labels) with `orchestration=true`. You can get away with 1 host, but you sacrifice high availability. In the event of this host failing, some K8s features such as the API, rescheduling pods in the event of failure, etc. will not occur until a new host is provisioned.
+1. **计算平面主机:** _对于全部已存在的运行有kubelet和proxy容器的主机_, 添加标签`compute=true`。 这些是当你运行`kubectl get node`命令时显示的已经注册到Kubernetes的节点。此步骤**非常重要** ，如果主机没有这个标签，运行在主机上的Kubernetes pods将变为孤儿pods。如果环境中有运行kubelet和proxy容器的主机，你可以按照[从计算平面移除主机](#removing-hosts-with-pods-from-the-compute-plane)中的步骤操作将其移除。你也可以增加更多的主机并按照[为主机设置标签]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#主机标签)中的步骤为主机设置`compute=true`标签。
+2. **数据平面主机:** 拥有至少3台具有1 CPU, >=1.5GB RAM, >=20GB DISK的主机。**如果你有一个已经运行的Kubernetes环境中包含etcd服务运行，请确保运行etcd服务的主机具有`etcd=true`标签。**
+3. **编排平面主机:** 添加至少2台具有大于等于1 CPU且大于等于2GB RAM的主机。添加主机时，按照[为主机设置标签]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/#主机标签)中的步骤为主机设置`orchestration=true`标签。 你也可以仅使用一台主机进行部署，但这样将牺牲高可用性。当仅有的一台主机发生故障时，一些K8s功能例如API、在pods发生故障时进行重新调度等，将不会正常工作，直到一台新的主机被加入。
 
-### Upgrade Kubernetes
+### 升级Kubernetes
 
-1. In **Kubernetes** -> **Infrastructure Stacks**, find the Kubernetes infrastructure stack. Click on **Upgrade Available** or **Up to Date**  button.
-2. Confirm the template version of Kubernetes is the one that you'd like to use.
-3. Select `required` for **Plane Isolation**.
-3. Select the configuration options for [cloud providers]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/providers/), [backups]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/backups/), [add-ons]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/addons/).
-4. Click on **Upgrade** to launch the updated Kubernetes infrastructure stack.
-5. After the Kubernetes stack has finished upgrading all services and is in `upgraded` state, click on **Upgraded: Finish Upgrade**.
+1. 在**Kubernetes** -> **基础设施应用**下, 找到Kubernetes基础设施应用栈。点击**有可用更新**或**已经是最新版本**按钮。
+2. 确认Kubernetes模板版本是你希望使用的版本。
+3. 将**Plane Isolation**设置为`required`。
+3. 选择[cloud providers]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/providers/), [backups]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/backups/), [add-ons]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/addons/)等的设置选项。
+4. 点击**升级**以启动新版本的Kubernetes基础设施应用。
+5. 在Kubernetes应用栈下的所有服务完成升级并显示为`已升级`状态后, 点击**已升级: 完成升级**按钮。
 
-#### Removing Hosts with pods from the Compute Plane
+#### 将运行pods的主机从计算平面删除
 
-**_WARNING:_** If you plan to remove any hosts from the compute plane, bare pods that aren't part of a replication controller or similar will _not_ be rescheduled. This is normal behavior.
+**_警告:_** 如果你计划从计算平面删除任何主机，不属于任何replication controller或类似对象的裸pod将 _不会_ 被重新调度。这是正常行为。
 
-Hosts in the compute plane are running the kubelet and proxy containers.
+计算平面的主机运行kubelet和proxy容器。
 
-1. If the host has the `compute=true` label, remove the label from the host. This will prevent the kubelet and proxy containers to be re-scheduled onto the host after these containers are deleted.
-2. Using `kubectl` through the remote CLI or shell, run `kubectl delete node <HOST>`. You can find the hostname (i.e. `<HOST>`) from the Rancher UI or from kubectl by running `kubectl get node`. Please wait for all pods to be deleted before moving to the next optional step.
-3. **Optional:** If you want the kubelet and proxy to be removed from the host, you can perform an upgrade on the kubelet service and the proxy service, without changing any settings. Ensure all pods are deleted on the hosts before running this upgrade.
+1. 如果主机具有`compute=true`标签, 从主机上移除此标签。此操作将阻止kubelet和proxy容器被删除后重新被调度到这些主机。
+2. 通过shell或者远程客户端使用`kubectl`工具, 运行`kubectl delete node <HOST>`。 你可以从Rancher用户界面或通过kubectl工具运行`kubectl get node`获取主机名 (也就是：`<HOST>`)。在进行下一步可选操作之前，请等待所有pods被删除。
+3. **可选:** 如果你希望从主机中删除kubelet和proxy容器，你可以对kubelet和proxy服务进行一次升级，升级过程中无需修改任何设置。 在进行升级操作之前，确保主机上的所有pods都已经被删除。

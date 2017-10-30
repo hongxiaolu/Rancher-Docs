@@ -45,11 +45,11 @@ guides:
         nosync: true
 - sectiontitle: Rancher 快速入门
   section:
-  - path: /rancher/quick-start-guide
+  - path: /rancher/quick-start-guide/
     title: 快速安装
 - sectiontitle: RancherOS 快速入门
   section:
-  - path: /os/quick-start-guide
+  - path: /os/quick-start-guide/
     title: 快速安装
 - sectiontitle: 版本记录
   section:
@@ -126,9 +126,9 @@ rancher:
     section:
     - path: /rancher/rancher-services/storage-service/
       title: 存储服务
-    - path: /rancher/rancher-services/storage-service/rancher-ebs
+    - path: /rancher/rancher-services/storage-service/rancher-ebs/
       title: rancher-ebs
-    - path: /rancher/rancher-services/storage-service/rancher-nfs
+    - path: /rancher/rancher-services/storage-service/rancher-nfs/
       title: rancher-nfs
     
 
@@ -153,11 +153,6 @@ rancher:
 - title: windows
   path: /rancher/windows/
 
-
-
-
-
-
 - sectiontitle: 常见问题
   section:
   - path: /rancher/faqs/server/
@@ -172,40 +167,60 @@ rancher:
 
 - sectiontitle: 版本记录
   section:
-  - path: /rancher/release-notes/1.6.5
+  - path: /rancher/release-notes/1.6.5/
     title: 1.6.5
-  - path: /rancher/release-notes/1.6.6
+  - path: /rancher/release-notes/1.6.6/
     title: 1.6.6
-  - path: /rancher/release-notes/1.6.7
+  - path: /rancher/release-notes/1.6.7/
     title: 1.6.7
-    - path: /rancher/release-notes/1.6.8
+  - path: /rancher/release-notes/1.6.8/
     title: 1.6.8
-  - path: /rancher/release-notes/1.6.9
+  - path: /rancher/release-notes/1.6.9/
     title: 1.6.9
-  - path: /rancher/release-notes/1.6.10
+  - path: /rancher/release-notes/1.6.10/
     title: 1.6.10
   
     
 os:
-- title: RancherOS
+- title: os
 - sectiontitle: 系统安装
-- path: /os/install
+- path: /os/install/
   title: 系统服务
   section:
-  - path: /samples/
-    title: Samples home
-  - path: /engine/examples/apt-cacher-ng/
+  - path: /os/
+    title: RancherOS
+  - path: /os/examples/apt-cacher-ng/
     title: apt-cacher-ng
 
 kubernetes:
-- title: kubernetes
-- sectiontitle: Docker Enterprise Edition
+- title: k8s
+- sectiontitle: kubernetes
   section:
-  - path: /enterprise/
-    title: About Docker EE
-  - path: /engine/installation/
-    title: Install Docker EE
-    nosync: true
-  - path: /enterprise/telemetry/
-    title: Manage usage data collection
+  - path: /kubernetes/
+    title: kubernetes
+  - path: /kubernetes/addons/
+    title: addons附件组件
+  - path: /kubernetes/backups/
+    title: 备份
+  - path: /kubernetes/deleting/
+    title: 删除
+  - path: /kubernetes/disaster-recovery/
+    title: 灾难恢复
+  - path: /kubernetes/ingress/
+    title: ingress
+  - path: /kubernetes/private-registry/
+    title: 私有仓库
+  - path: /kubernetes/providers/
+    title: kubernetes 
+  - path: /kubernetes/rbac/
+    title: kubernetes rbac
+  - path: /kubernetes/resiliency-planes/
+    title: 弹性平面
+  - path: /kubernetes/storage/
+    title: kubernetes 存储
+  - path: /kubernetes/upgrading/
+    title: kubernetes 升级
+
+    
+    
 

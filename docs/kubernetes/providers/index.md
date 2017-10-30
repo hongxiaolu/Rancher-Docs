@@ -6,26 +6,27 @@ title: Kubernetes Cloud Providers
 ## Kubernetes - Cloud Providers
 ---
 
-In Kubernetes, there is a concept of [cloud providers](https://kubernetes.io/docs/getting-started-guides/scratch/#cloud-provider), which is a module which provides an interface for managing load balancers, nodes (i.e. hosts) and networking routes.
+在Kubernetes中, 有一个[cloud providers](https://kubernetes.io/docs/getting-started-guides/scratch/#cloud-provider)的概念, cloud provider是Kubernetes的一个模块，提供接口用于管理负载均衡、节点(也就是主机)以及网络路由。
 
-Currently, Rancher supports two cloud providers when [configuring Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#configuring-kubernetes). You can select which cloud provider to use.
+目前, Rancher在 [设置Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#设置kubernetes) 时支持以下两种类型的cloud provider。 你可以选择使用哪种cloud provider。
 
 ### Rancher
 
-  * **Nodes:** Supports any [hosts]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/) that can be added in Rancher.
-  * **Load Balancers:** Launches Rancher's load balancer, which uses HAproxy and the `rancher/lb-service-haproxy` image, as a Load Balancer service. By default, the load balancer will round robin traffic to the pods.
+  * **节点:** 支持任何可以被加入Rancher的[主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/)。
+  * **负载均衡:** 启动Rancher的负载均衡, 使用HAproxy和`rancher/lb-service-haproxy`镜像作为负载均衡服务。 默认情况下, 负载均衡将请求以轮询方式发送给pods。
 
-By default, the orchestration for Kubernetes is set to `rancher`.
+默认情况下, Kubernetes的cloud proivder被设置为`rancher`。
 
 ### AWS
 
-  * **Nodes:** Supports only AWS hosts added as a [custom host]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/custom/).
-  * **Load Balancers:** Launches an AWS Elastic Load Balancer (ELB) as a Load Balancer service. You can still create Rancher load balancers by using an [ingress]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/ingress/).
-  * **Persistent Volumes**: Ability to use AWS Elastic Block Stores (EBS) for [persistent volumes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/storage/).
+  * **节点:** 仅支持以[自定义主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/custom/)方式添加AWS主机。
+  * **负载均衡:** 启动一个AWS Elastic Load Balancer (ELB)作为负载均衡服务。 同时，你仍然可以通过使用[ingress]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/ingress/)对象来创建Rancher负载均衡。
+  * **持久化卷(PV)**: 能够使用AWS Elastic Block Stores (EBS)用于[persistent volumes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/storage/).
 
-#### Adding Hosts
+#### 添加主机
 
-After Kubernetes has been configured to run with an `aws` cloud provider, any hosts added into the environment will need to be an AWS EC2 instance and have at least the following IAM policy:
+在设置Kubernetes以`aws` cloud provider运行后，任何加入环境的主机都必须是一个AWS EC2实例并且至少具有以下IAM策略：
+
 
 ```json
 {
@@ -35,9 +36,9 @@ After Kubernetes has been configured to run with an `aws` cloud provider, any ho
 }
 ```
 
-In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the host will need to have the an IAM role with appropriate access.
+为了在Kubernetes中使用Elastic Load Balancers (ELBs)和EBS, 主机需要拥有一个具备合适权限的IAM角色。
 
-##### Example Policy for IAM Role:
+##### IAM角色策略示例:
 
 ```json
 {
@@ -72,11 +73,11 @@ In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the host 
 }
 ```
 
-#### Elastic Load Balancer (ELB) as a Kubernetes service
+#### Elastic Load Balancer (ELB)作为一个Kubernetes服务
 
-After [configuring Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#configuring-kubernetes) to use `aws` as a cloud provider and ensuring the host has the appropriate IAM policy for ELB, you can start creating load balancers.  
+在[设置Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#设置kubernetes)中选择`aws`作为cloud provider并确保主机拥有配置ELB的相应IAM策略后，你可以开始创建负载均衡。
 
-##### Example `lb.yml`
+##### `lb.yml`文件示例
 
 ```yaml
 apiVersion: v1
@@ -95,7 +96,7 @@ spec:
     protocol: TCP
 ```
 
-Using `kubectl`, let's launch our load balancer service into Kubernetes. Remember, you can either [configure `kubectl` for your local machine]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#kubectl) or you can use the shell in the UI under **Kubernetes** -> **kubectl**.
+通过使用`kubectl`客户端, 让我们在Kubernetes中启动我们的负载均衡服务。 记住, 你可以通过[为本地主机配置`kubectl`]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#kubectl)在本机使用kubectl客户端或者通过UI界面中的**Kubernetes** -> **kubectl** 命令行界面使用kubectl客户端。
 
 ```bash
 $ kubectl create -f lb.yml
@@ -119,6 +120,6 @@ Events:
   14s		14s		1	{service-controller }			Normal		CreatedLoadBalancer	Created load balancer
 ```
 
-#### Using EBS Volumes
+#### 使用EBS卷
 
-After configuring Kubernetes to use `aws` as a cloud provider and ensuring the host has the appropriate IAM policy for EBS, you can start [using EBS volumes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/storage/#persistent-volumes---ebs).
+在设置Kubernetes使用`aws`作为cloud provider并确保主机拥有配置EBS的相应IAM策略后，你可以开始[使用EBS卷]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/storage/#persistent-volumes---ebs).
