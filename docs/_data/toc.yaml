@@ -50,18 +50,7 @@ guides:
   section:
   - path: /os/quick-start-guide/
     title: 快速安装
-- sectiontitle: 版本记录
-  section:
-  - path: /rancher/release-notes/1.6.7
-    title: 1.6.7
-  - path: /rancher/release-notes/1.6.8
-    title: 1.6.8
-  - path: /rancher/release-notes/1.6.9
-    title: 1.6.9
-  - path: /rancher/release-notes/1.6.10
-    title: 1.6.10
-  - path: /rancher/release-notes/1.6.11
-    title: 1.6.11
+
 
 rancher:
 - title: Rancher
@@ -174,13 +163,13 @@ rancher:
     title: 1.6.10
   
 os:
-- title: os
+- title: os 概述
   path: /os/
 - sectiontitle: 安装与升级
   section:
-  - path: /os/install
+  - path: /os/install/
     title: RancherOS安装
-  - path: /os/upgrade
+  - path: /os/upgrade/
     title: RancherOS升级
 
 - sectiontitle: 系统服务
@@ -193,11 +182,22 @@ os:
     title: 添加系统服务
   - path: /os/system-services/custom-system-services/
     title: 自定义系统服务
-
+- sectiontitle: 版本记录
+  section:
+  - path: /os/release-notes/1.6.7/
+    title: 1.6.7
+  - path: /os/release-notes/1.6.8/
+    title: 1.6.8
+  - path: /os/release-notes/1.6.9/
+    title: 1.6.9
+  - path: /os/release-notes/1.0/
+    title: 1.0
+  - path: /os/release-notes/1.1/
+    title: 1.1
 kubernetes:
 - title: kubernetes 快速安装
   path: /kubernetes/
-- title: addons附件组件
+- title: addons附加组件
   path: /kubernetes/addons/
 - title: 备份
   path: /kubernetes/backups/    
@@ -219,8 +219,18 @@ kubernetes:
   path: /kubernetes/storage/
 - title: kubernetes 升级
   path: /kubernetes/upgrading/
-    
-
+- sectiontitle: 版本记录
+  section:
+  - path: /kubernetes/release-notes/1.6.7/
+    title: 1.6.7
+  - path: /kubernetes/release-notes/1.6.8/
+    title: 1.6.8
+  - path: /kubernetes/release-notes/1.6.9/
+    title: 1.6.9
+  - path: /kubernetes/release-notes/1.6.10/
+    title: 1.6.10
+  - path: /kubernetes/release-notes/1.6.11/
+    title: 1.6.11
     
     
 
