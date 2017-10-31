@@ -1,10 +1,8 @@
 ---
-title: Mesos in Rancher
+title: Mesos 
 
 ---
 
-## Mesos
----
 
 在Rancher中部署Mesos，你首先需要添加一个新的[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/)，这个环境需要[环境模版]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/#什么是环境模版)中设定容器编排引擎是 **Mesos**。
 

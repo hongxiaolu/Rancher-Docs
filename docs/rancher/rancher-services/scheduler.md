@@ -1,10 +1,8 @@
 ---
-title: Scheduling Services in Cattle Environments
+title: 调度服务
 
 ---
 
-## 调度服务
----
 
 Rancher的核心调度逻辑是Rancher的一部分，它可以处理端口冲突和根据主机／容器上的标签进行调度的能力。除了核心调度逻辑，Rancher还使用应用商店里的**Rancher Scheduler**支持额外的调度策略。
 

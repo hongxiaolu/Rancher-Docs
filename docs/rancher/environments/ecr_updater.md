@@ -1,5 +1,5 @@
 ---
-title: ECR Credential Updater
+title: AWS ECR（Elastic Container Repository）证书更新器
 
 ---
 

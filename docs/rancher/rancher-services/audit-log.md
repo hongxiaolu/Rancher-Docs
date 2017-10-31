@@ -1,10 +1,8 @@
 ---
-title: Audit Logging in Rancher
+title: 日志审计
 
 ---
 
-## 审计日志
----
 
 只有[管理员]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/access-control/#管理员)用户有权限访问审计日志。审计日志在**系统管理**->**审计日志**。
 

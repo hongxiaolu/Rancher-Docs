@@ -1,10 +1,5 @@
 ---
-title: Installing Rancher Server with SSL
-
----
-
-## 安装Rancher并使用SSL
-
+title: 安装Rancher并使用SSL
 ---
 
 为了在Rancher Server启用 `https` 访问，你需要在Rancher Server前使用一个代理服务器代理https请求，并能设置http的头参数。我们会在以下的内容中提供一个使用NGINX、HAProxy或者Apache作为代理的例子。当然了，其他工具也是可以的。

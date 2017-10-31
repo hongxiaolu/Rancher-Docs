@@ -1,9 +1,6 @@
 ---
-title: FAQS about Rancher Server
+title: Rancher Server的常见问题
 
----
-
-## Rancher Server的常见问题
 ---
 
 ### 我正在运行的Rancher是什么版本的?

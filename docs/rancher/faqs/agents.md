@@ -1,7 +1,5 @@
 ---
-title: FAQS about Rancher Agent
----
-## Rancher Agent的常见问题
+title: Rancher Agent的常见问题
 ---
 
 ### 我如何在代理服务器后配置主机？

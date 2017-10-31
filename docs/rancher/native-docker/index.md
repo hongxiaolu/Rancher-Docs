@@ -1,9 +1,6 @@
 ---
-title: Using Native Docker CLI with Rancher
+title: 以原生 Docker 命令行的形式使用 Rancher
 
----
-
-## 以原生 Docker 命令行的形式使用 Rancher
 ---
 
 Rancher整合了原生Docker CLI，所以Rancher可以和其它DevOps和Docker工具同时使用。从高层次上，这意味着如果你在Rancher外启动、停止、或销毁一个容器，Rancher能检测到相应的变化和更新。

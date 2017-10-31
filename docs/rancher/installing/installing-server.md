@@ -1,10 +1,7 @@
 ---
-title: Installing Rancher Server
-
+title: 安装 Rancher Server
 ---
 
-## 安装 Rancher Server
----
 Rancher是使用一系列的Docker容器进行部署的。运行Rancher跟启动两个容器一样简单。一个容器作为管理服务器部署，另外一个作为集群节点的Agent部署
 
 * [Rancher Server - 单容器部署 (non-HA)](#single-container)

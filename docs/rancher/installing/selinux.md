@@ -1,9 +1,6 @@
 ---
-title: Using Rancher with SELinux Enabled
+title: 在SELinux模式下使用Rancher - RHEL/CentOS
 
----
-
-## 在SELinux模式下使用Rancher - RHEL/CentOS
 ---
 
 _从1.6+版本后支持_

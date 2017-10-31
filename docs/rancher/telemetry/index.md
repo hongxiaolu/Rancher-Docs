@@ -1,6 +1,5 @@
 ---
 title: Telemetry
-
 ---
 
 ## Telemetry

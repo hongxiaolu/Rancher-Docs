@@ -1,10 +1,8 @@
 ---
-title: Network Policy in Rancher
+title: 网络策略
 
 ---
 
-## 网络策略
----
 
 Rancher允许用户在[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/)中配置网络策略。网络策略允许你在一个环境中定义特定的网络规则。所有的容器默认可以互相通信，但是有时你可能需要对的容器间通信做一些限制。
 

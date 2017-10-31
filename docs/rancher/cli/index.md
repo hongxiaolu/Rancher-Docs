@@ -1,9 +1,6 @@
 ---
-title: Rancher Command Line Interface (CLI)
+title: Rancher命令行界面
 
----
-
-## Rancher命令行界面
 ---
 
 Rancher的命令行界面（CLI）是用来管理Rancher Server的工具。 使用此工具，你可以管理你的[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/)，[主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/)，应用，服务和容器。

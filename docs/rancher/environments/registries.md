@@ -1,9 +1,6 @@
 ---
-title: Registries in Rancher
+title: 镜像仓库
 
----
-
-## 镜像库
 ---
 
 你可以在Rancher配置镜像仓库的认证信息，使Rancher可以访问你的私有镜像仓库（DockerHub, Quay.io和其他私有镜像库）。

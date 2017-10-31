@@ -1,10 +1,7 @@
 ---
-title: Troubleshooting FAQs about Rancher
-
+title: 常见的故障排查与修复方法
 ---
 
-## 常见的故障排查与修复方法
----
 
 请先阅读有关Rancher Server和Rancher Agent的常见问题。
 

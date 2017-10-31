@@ -1,9 +1,5 @@
 ---
-title: Installing Rancher Server with No Internet Access
-
----
-
-## 内网启动Rancher
+title: 内网启动Rancher
 ---
 
 不可对外访问的网络环境（内网）也是可以启动 Rancher 服务的。在这种拓扑下，可以通过内网提供的IP或者域名来访问Rancher的操作界面（UI界面）。另外，也可以用HTTP代理或者私有镜像库来配置 Rancher。

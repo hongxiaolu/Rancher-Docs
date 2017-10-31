@@ -1,9 +1,6 @@
 ---
-title: Certificates in Rancher
+title: 证书
 
----
-
-## 证书
 ---
 
 ### 添加证书

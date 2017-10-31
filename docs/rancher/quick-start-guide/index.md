@@ -1,10 +1,7 @@
 ---
-title: Quick Start Guide
-
+title: 快速安装指南
 ---
 
-## 快速安装指南
----
 
 在本节中，我们将进行简单快速的Rancher安装，即在一台Linux机器上安装Rancher，并使其能够完成所有Rancher必要功能。
 

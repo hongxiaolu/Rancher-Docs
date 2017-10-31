@@ -1,9 +1,6 @@
 ---
-title: Contributing to Rancher
+title: 支持 Rancher
 
----
-
-## 支持 Rancher
 ---
 
 ### 开发

@@ -1,9 +1,5 @@
 ---
-title: Rancher CLI Commands and Options
-
----
-
-## 命令和选项
+title: 命令和选项
 ---
 
 Rancher CLI 可以用于操作Rancher中的环境、主机、应用、服务和容器。

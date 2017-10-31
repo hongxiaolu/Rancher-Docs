@@ -1,10 +1,8 @@
 ---
-title: Metadata Service in Rancher
+title: 元数据服务
 
 ---
 
-## Metadata 服务
----
 
 Rancher通过基础设施中的Metadata服务为服务和容器提供数据。这些数据用来管理运行中的docker实例。这些数据可以通过调用基于HTTP的API来访问。这些数据包括创建容器，服务时的静态数据，也包括运行时数据，例如：在同一个服务里的其他容器的相关信息。
 

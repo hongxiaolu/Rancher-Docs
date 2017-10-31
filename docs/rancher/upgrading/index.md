@@ -1,9 +1,5 @@
 ---
-title: Upgrading Rancher
-
----
-
-## 升级Rancher Server
+title: 升级Rancher Server
 ---
 
 > **注意：** 如果你正准备升级到v1.6.x，请阅读我们相关的版本注解[v1.6.0](https://github.com/rancher/rancher/releases/tag/v1.6.0)。这里面有相关升级需要的注意事项。根据你安装Rancher Server方式的不同，你的升级步骤可能不一样。

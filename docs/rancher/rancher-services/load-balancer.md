@@ -1,9 +1,6 @@
 ---
-title: Load Balancers in Rancher
+title: 负载均衡
 
----
-
-## 负载均衡器
 ---
 
 Rancher支持在Rancher内使用不同负载均衡器驱动。你可以通过向目标服务添加规则使负载均衡器将网络和应用程序流量分配到容器中。Rancher将自动将目标服务的容器自动注册为Rancher的负载平衡目标。

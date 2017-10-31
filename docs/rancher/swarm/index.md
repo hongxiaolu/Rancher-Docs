@@ -1,10 +1,8 @@
 ---
-title: Swarm in Rancher
+title: Swarm 
 
 ---
 
-## Swarm
----
 
 在Rancher中部署Swarm，你首先需要添加一个新的[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/)。这个环境需要使用编排引擎为**Swarm**的[环境模版]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/#什么是环境模版)进行创建。
 
