@@ -1,9 +1,6 @@
 ---
-title: Access Control in Rancher
+title: 访问控制
 
----
-
-## 访问控制
 ---
 
 ### 什么是访问控制？
