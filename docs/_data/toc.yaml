@@ -174,35 +174,29 @@ rancher:
   
 os:
 - title: os
-- sectiontitle: 系统安装
-- path: /os/install/
-  title: 系统服务
+- sectiontitle: 安装与升级
   section:
-  - path: /os/
-    title: RancherOS
-  - path: /os/examples/apt-cacher-ng/
-    title: apt-cacher-ng
+  - path: /os/install
+    title: RancherOS安装
+  - path: /os/upgrade
+    title: RancherOS升级
+
+- sectiontitle: 系统服务
+  section:
+  - path: /os/system-services/system-docker-volumes/
+    title: 系统卷
+  - path: /os/system-services/environment/
+    title: 系统环境
+  - path: /os/system-services/adding-system-services/
+    title: 添加系统服务
+  - path: /os/system-services/custom-system-services/
+    title: 自定义系统服务
 
 kubernetes:
-- title: k8s
-- sectiontitle: 版本记录
-  section:
-  - path: /rancher/release-notes/1.6.5/
-    title: 1.6.5
-  - path: /rancher/release-notes/1.6.6/
-    title: 1.6.6
-  - path: /rancher/release-notes/1.6.7/
-    title: 1.6.7
-  - path: /rancher/release-notes/1.6.8/
-    title: 1.6.8
-  - path: /rancher/release-notes/1.6.9/
-    title: 1.6.9
-  - path: /rancher/release-notes/1.6.10/
-    title: 1.6.10
+- title: kubernetes 快速安装
+  path: /kubernetes/
 - sectiontitle: kubernetes
   section:
-  - path: /kubernetes/
-    title: kubernetes
   - path: /kubernetes/addons/
     title: addons附件组件
   - path: /kubernetes/backups/
