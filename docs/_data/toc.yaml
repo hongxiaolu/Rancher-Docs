@@ -201,7 +201,7 @@ kubernetes:
   - path: /kubernetes/private-registry/
     title: 私有仓库
   - path: /kubernetes/providers/
-    title: kubernetes 
+    title: kubernetes providers
   - path: /kubernetes/rbac/
     title: kubernetes rbac
   - path: /kubernetes/resiliency-planes/
