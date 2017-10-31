@@ -1,9 +1,6 @@
 ---
-title: Persistent Storage Service in Rancher
+title: 存储服务
 
----
-
-## 存储服务
 ---
 
 Rancher提供了不同的存储服务，从而使用户可以将存储卷映射到容器中。

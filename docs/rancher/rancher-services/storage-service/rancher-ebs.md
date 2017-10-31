@@ -3,8 +3,6 @@ title: Using Rancher EBS
 
 ---
 
-## Rancher EBS
----
 
 Rancher提供对AWS EBS卷的支持，用户可以选择为容器选择AWS EBS存储。
 

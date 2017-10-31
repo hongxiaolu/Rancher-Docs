@@ -3,9 +3,6 @@ title: Using Rancher NFS
 
 ---
 
-## Rancher NFS
----
-
 Rancher支持将NFS卷作为容器的一个存储选项
 
 ### 使用NFS之前的准备工作
