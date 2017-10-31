@@ -8,10 +8,9 @@ horizontalnav:
 - title: RancherOS
   path: /os/
   node: os
-- title: kubernetes
+- title: Kubernetes
   path: /kubernetes/
   node: kubernetes
-
   
 guides:
 - title: 首页
@@ -63,8 +62,6 @@ guides:
     title: 1.6.10
   - path: /rancher/release-notes/1.6.11
     title: 1.6.11
-
-
 
 rancher:
 - title: Rancher
@@ -131,7 +128,6 @@ rancher:
     - path: /rancher/rancher-services/storage-service/rancher-nfs/
       title: rancher-nfs
     
-
 - sectiontitle: CLI工具
   section:
   - path: /rancher/cli/
@@ -140,16 +136,12 @@ rancher:
     title: 参数选项
   - path: /rancher/cli/variable-interpolation/
     title: 变量替换
-
 - title: native-docker
   path: /rancher/native-docker/
-
-- title: MESOS
+- title: Mesos
   path: /rancher/mesos/
-
 - title: swarm
   path: /rancher/swarm/
-
 - title: windows
   path: /rancher/windows/
 
@@ -164,7 +156,6 @@ rancher:
 
 - title: 贡献
   path: /rancher/contributing/
-
 - sectiontitle: 版本记录
   section:
   - path: /rancher/release-notes/1.6.5/
@@ -180,7 +171,6 @@ rancher:
   - path: /rancher/release-notes/1.6.10/
     title: 1.6.10
   
-    
 os:
 - title: os
 - sectiontitle: 系统安装
