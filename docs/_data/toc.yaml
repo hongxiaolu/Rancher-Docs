@@ -156,6 +156,7 @@ rancher:
 
 - title: 贡献
   path: /rancher/contributing/
+
 - sectiontitle: 版本记录
   section:
   - path: /rancher/release-notes/1.6.5/
@@ -184,6 +185,20 @@ os:
 
 kubernetes:
 - title: k8s
+- sectiontitle: 版本记录
+  section:
+  - path: /rancher/release-notes/1.6.5/
+    title: 1.6.5
+  - path: /rancher/release-notes/1.6.6/
+    title: 1.6.6
+  - path: /rancher/release-notes/1.6.7/
+    title: 1.6.7
+  - path: /rancher/release-notes/1.6.8/
+    title: 1.6.8
+  - path: /rancher/release-notes/1.6.9/
+    title: 1.6.9
+  - path: /rancher/release-notes/1.6.10/
+    title: 1.6.10
 - sectiontitle: kubernetes
   section:
   - path: /kubernetes/
@@ -210,7 +225,7 @@ kubernetes:
     title: kubernetes 存储
   - path: /kubernetes/upgrading/
     title: kubernetes 升级
-- sectiontitle: kubernetes
+
     
     
 
