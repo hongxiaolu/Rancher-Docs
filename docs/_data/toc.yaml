@@ -65,6 +65,7 @@ guides:
 
 rancher:
 - title: Rancher
+  path: /rancher/
 - sectiontitle: Rancher 安装
   section:
   - path: /rancher/installing/installing-server/
@@ -174,6 +175,7 @@ rancher:
   
 os:
 - title: os
+  path: /os/
 - sectiontitle: 安装与升级
   section:
   - path: /os/install
@@ -195,30 +197,29 @@ os:
 kubernetes:
 - title: kubernetes 快速安装
   path: /kubernetes/
-- sectiontitle: kubernetes
-  section:
-  - path: /kubernetes/addons/
-    title: addons附件组件
-  - path: /kubernetes/backups/
-    title: 备份
-  - path: /kubernetes/deleting/
-    title: 删除
-  - path: /kubernetes/disaster-recovery/
-    title: 灾难恢复
-  - path: /kubernetes/ingress/
-    title: ingress
-  - path: /kubernetes/private-registry/
-    title: 私有仓库
-  - path: /kubernetes/providers/
-    title: kubernetes providers
-  - path: /kubernetes/rbac/
-    title: kubernetes rbac
-  - path: /kubernetes/resiliency-planes/
-    title: 弹性平面
-  - path: /kubernetes/storage/
-    title: kubernetes 存储
-  - path: /kubernetes/upgrading/
-    title: kubernetes 升级
+- title: addons附件组件
+  path: /kubernetes/addons/
+- title: 备份
+  path: /kubernetes/backups/    
+- title: 删除
+  path: /kubernetes/deleting/
+- title: 灾难恢复
+  path: /kubernetes/disaster-recovery/
+- title: ingress
+  path: /kubernetes/ingress/  
+- title: 私有仓库
+  path: /kubernetes/private-registry/ 
+- title: kubernetes providers
+  path: /kubernetes/providers/
+- title: kubernetes rbac
+  path: /kubernetes/rbac/
+- title: 弹性平面
+  path: /kubernetes/resiliency-planes/
+- title: kubernetes 存储
+  path: /kubernetes/storage/
+- title: kubernetes 升级
+  path: /kubernetes/upgrading/
+    
 
     
     
