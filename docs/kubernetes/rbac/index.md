@@ -1,9 +1,5 @@
 ---
 title: Kubernetes RBAC Integration in Rancher
-
----
-
-## Rancher Kubernetes RBAC集成
 ---
 
 _从Rancher v1.6.3开始支持_

@@ -1,9 +1,5 @@
 ---
 title: Rancher中的Kubernetes插件
-
----
-
-## Kubernetes 插件
 ---
 
 Rancher 会自动安装好 Kubernetes 插件以提高用户使用Kubernetes的体验. 如果你想要关闭这一功能, 你需要 [配置 Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#设置kubernetes) 来禁用插件的自动安装.

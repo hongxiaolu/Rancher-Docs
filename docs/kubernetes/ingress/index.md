@@ -1,10 +1,7 @@
 ---
-title: Kubernetes Ingress Support in Rancher
-
+title: Kubernetes Ingress 
 ---
 
-## Ingress Support
----
 
 在开始使用 [Kubernetes Ingress](http://kubernetes.io/docs/user-guide/ingress/)资源之前，你需要准备一个Kubernetes[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/) 。并且建议在本地电脑上[设置kubectl]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#kubectl) ，以便更容易地将Kubernetes的资源发布到Rancher中。或者，你可以使用Rancher UI提供的shell来启动资源。
 

@@ -1,9 +1,5 @@
 ---
 title: 删除 Kubernetes
-
----
-
-## 删除 Kubernetes
 ---
 
 如果你选择从你的环境删除 **Kubernetes** 编排，并想继续使用你的环境和主机，你会需要清理你的主机。

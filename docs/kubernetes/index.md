@@ -1,10 +1,7 @@
 ---
 title: Kubernetes in Rancher
-
 ---
 
-## Kubernetes
----
 
 要在Rancher中部署Kubernetes，你首先需要创建一个新的[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/) ，创建环境时需要使用一个设置了**Kubernetes**容器编排引擎的[环境模板]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/#什么是环境模版)。
 

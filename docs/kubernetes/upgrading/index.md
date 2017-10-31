@@ -1,9 +1,5 @@
 ---
-title: Upgading Kubernetes
-
----
-
-## 升级Kubernetes
+title: 升级 Kubernetes
 ---
 
 如果希望升级一个已有的Kubernetes部署为[平面隔离]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/resiliency-planes/)部署, 请参考迁移部分的说明。

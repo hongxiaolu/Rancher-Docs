@@ -1,10 +1,7 @@
 ---
 title: Kubernetes - 灾难恢复
-
 ---
 
-## Kubernetes - 灾难恢复
----
 
 Rancher在三个不同的主机上运行多达三个 **etcd** 实例。如果运行 **etcd** 的多数主机出了故障，按以下步骤做灾难恢复：
 

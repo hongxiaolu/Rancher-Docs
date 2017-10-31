@@ -1,9 +1,5 @@
 ---
 title: Kubernetes Cloud Providers
-
----
-
-## Kubernetes - Cloud Providers
 ---
 
 在Kubernetes中, 有一个[cloud providers](https://kubernetes.io/docs/getting-started-guides/scratch/#cloud-provider)的概念, cloud provider是Kubernetes的一个模块，提供接口用于管理负载均衡、节点(也就是主机)以及网络路由。

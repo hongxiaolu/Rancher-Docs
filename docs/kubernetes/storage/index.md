@@ -1,9 +1,5 @@
 ---
 title: Kubernetes Persistent Storage Support in Rancher
-
----
-
-## Kubernetes中的持久化存储
 ---
 
 Rancher能够通过Kubernetes原生资源对象创建拥有持久化存储的服务。在Kubernetes中, [持久化存储](https://kubernetes.io/docs/user-guide/persistent-volumes/)通过API资源对象管理, 其中包括`PersistentVolume`和`PersistentVolumeClaim`。Kubernetes中的存储组件支持多种后端存储(例如：NFS、EBS等), 存储具有独立于pod的生命周期。根据你希望使用的持久化卷的类型，你可能需要[设置Kubernetes环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/providers/).

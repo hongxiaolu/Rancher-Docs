@@ -1,9 +1,5 @@
 ---
 title: 在Rancher中搭配Kubernetes使用私有仓库
-
----
-
-## 在Rancher中搭配Kubernetes使用私有仓库
 ---
 
 如果你在 [离线环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/no-internet-access/) 运行Rancher，或者Rancher不能够访问DockerHub (亦即 `docker.io`) 以及Google容器仓库 (亦即 `gcr.io`)，那么Pod的基础容器镜像和Kubernetes的插件将无法正常安装。你需要 [配置 Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#设置kubernetes) 来指定一个私有仓库以安装Kubernetes的插件以及Pod的基础容器镜像。
