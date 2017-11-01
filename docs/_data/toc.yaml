@@ -137,17 +137,16 @@ rancher:
     title: 卷
   - path: /rancher/catalog/webhook-service/
     title: webhook
-
   - sectiontitle: rancher-compose
     section:
     - path: /rancher/rancher-compose/
-    title: compose
+      title: compose
     - path: /rancher/rancher-compose/build/
-    title: 利用 AWS S3 构建
+      title: 利用 AWS S3 构建
     - path: /rancher/rancher-compose/commands/
-    title: 指令与参数
+      title: 指令与参数
     - path: /rancher/rancher-compose/environment-interpolation/
-    title: 环境插值
+      title: 环境插值
 
 - sectiontitle: 环境管理
   section:
@@ -187,7 +186,6 @@ rancher:
     title: 调度服务
   - path: /rancher/rancher-services/service-accounts/
     title: 服务账号
-
   - sectiontitle: 存储服务
     section:
     - path: /rancher/rancher-services/storage-service/
