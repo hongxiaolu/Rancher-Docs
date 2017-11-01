@@ -139,7 +139,8 @@ rancher:
       title: 利用 AWS S3 构建
     - path: /rancher/rancher-compose/commands/
       title: 命令与参数
-
+    - path: /rancher/rancher-compose/environment-interpolation/
+      title: 环境插值
 
 - sectiontitle: 环境管理
   section:
