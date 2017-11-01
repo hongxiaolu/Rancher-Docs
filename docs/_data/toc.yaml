@@ -53,63 +53,63 @@ guides:
 
 
 rancher:
-- title: Rancher 概述
+- title: 概述
   path: /rancher/
-- sectiontitle: Rancher 安装
+- sectiontitle: 安装
   section:
   - path: /rancher/installing/installing-server/
-    title: Rancher 在线安装
+    title: 在线安装
   - path: /rancher/installing/no-internet-access/
-    title: Rancher 离线安装
+    title: 离线安装
   - path: /rancher/installing/selinux/
     title: Selinux
   - path: /rancher/installing/basic-ssl-config/
     title: 基本SSL配置
-- title: Rancher 版本升级
+- title: 版本升级
   path: /rancher/upgrading/
 - sectiontitle: 系统配置
   section:
   - path: /rancher/configuration/access-control/
-    title: Rancher 访问控制
+    title: 访问控制
   - path: /rancher/configuration/accounts/
-    title: Rancher 账号设置
+    title: 账号设置
   - path: /rancher/configuration/machine-drivers/
-    title: Rancher 主机驱动
+    title: 主机驱动
   - path: /rancher/configuration/settings/
-    title: Rancher 系统设置
+    title: 系统设置
 
-- sectiontitle: Rancher 环境管理
+- sectiontitle: 环境管理
   section:
   - path: /rancher/environments/
-    title: Rancher 添加环境
+    title: 添加环境
   - path: /rancher/environments/certificates/
-    title: Rancher 添加证书
+    title: 添加证书
   - path: /rancher/environments/registries/
-    title: Rancher 私有仓库
+    title: 私有仓库
   - path: /rancher/environments/ecr_updater/
-    title: Rancher 证书更新器
+    title: 证书更新器
 
-- sectiontitle: Rancher 服务管理
+- sectiontitle: 服务管理
   section:
   - path: /rancher/rancher-services/
-    title: Rancher 基础设施服务
+    title: 基础设施服务
   - path: /rancher/rancher-services/audit-log/
-    title: Rancher 审计日志
+    title: 审计日志
   - path: /rancher/rancher-services/dns-service/
-    title: Rancher DNS服务
+    title: DNS服务
   - path: /rancher/rancher-services/load-balancer/
-    title: Rancher 负载均衡服务
+    title: 负载均衡服务
   - path: /rancher/rancher-services/metadata-service/
-    title: Rancher 元数据服务
+    title: 元数据服务
   - path: /rancher/rancher-services/network-policy/
-    title: Rancher 网络策略服务
+    title: 网络策略服务
   - path: /rancher/rancher-services/networking/
-    title: Rancher 网络服务
+    title: 网络服务
   - path: /rancher/rancher-services/scheduler/
-    title: Rancher 调度服务
+    title: 调度服务
   - path: /rancher/rancher-services/service-accounts/
-    title: Rancher 服务账号
-  - sectiontitle: Rancher 存储服务
+    title: 服务账号
+  - sectiontitle: 存储服务
     path: /rancher/rancher-services/storage-service/
     section:
     - path: /rancher/rancher-services/storage-service/
@@ -119,14 +119,14 @@ rancher:
     - path: /rancher/rancher-services/storage-service/rancher-nfs/
       title: rancher-nfs
     
-- sectiontitle: Rancher CLI 工具
+- sectiontitle: CLI 工具
   section:
   - path: /rancher/cli/
-    title: Rancher CLI 使用
+    title: CLI 使用
   - path: /rancher/cli/commands/
-    title: Rancher CLI 参数选项
+    title: CLI 参数选项
   - path: /rancher/cli/variable-interpolation/
-    title: Rancher CLI 变量替换
+    title: CLI 变量替换
 - title: native-docker
   path: /rancher/native-docker/
 - title: Mesos
@@ -148,7 +148,7 @@ rancher:
 - title: 贡献
   path: /rancher/contributing/
 
-- sectiontitle: Rancher 版本记录
+- sectiontitle: 版本记录
   section:
   - path: /rancher/release-notes/1.6.5/
     title: 1.6.5
