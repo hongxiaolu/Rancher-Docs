@@ -7,10 +7,6 @@ title: 首页
 notags: true
 noratings: true
 ---
-
-## Rancher 概述
----
-
 Rancher是一个开源的软件平台，可以让企业在生产中运行和管理Docker和Kubernetes。使用Rancher，
 企业不再需要使用不同的开源技术从头开始构建容器服务平台。Rancher提供管理生产中的容器所需的整个软件堆栈。
 
