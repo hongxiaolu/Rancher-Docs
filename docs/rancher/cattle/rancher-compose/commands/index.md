@@ -1,5 +1,6 @@
 ---
 title: 指令与参数
+
 ---
 
 Rancher Compose 工具的工作方式是跟 Docker Compose 的工作方式是相似的，并且支持版本V1的 `docker-compose.yml` 文件。为了启用 Rancher 的特性，你需要额外一份`rancher-compose.yml`文件，这份文件扩展并覆盖了`docker-compose.yml`文件。例如，服务缩放和健康检查这些特性就会在`rancher-compose.yml`中体现。

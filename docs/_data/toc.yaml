@@ -120,22 +120,23 @@ rancher:
   - path: /rancher/catalog/health-checks/
     title: 健康检查
   - path: /rancher/catalog/internal-dns-service/
-    title:
+    title: 内部DNS
   - path: /rancher/catalog/labels/
-    title:
+    title: 标签
   - path: /rancher/catalog/scheduling/
-    title:
+    title: 调度
   - path: /rancher/catalog/secrets/
-    title:
+    title: 密文功能
   - path: /rancher/catalog/stacks/
-    title:
+    title: 应用栈
   - path: /rancher/catalog/upgrading/
-    title:
+    title: 升级
   - path: /rancher/catalog/vms/
-    title:
+    title: 虚拟机
   - path: /rancher/catalog/volumes/
-    title:
+    title: 卷
   - path: /rancher/catalog/webhook-service/
+    title: webhook
 
   - sectiontitle: rancher-compose
     section:
