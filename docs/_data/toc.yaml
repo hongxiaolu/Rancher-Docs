@@ -81,6 +81,24 @@ rancher:
     title: 主机驱动
   - path: /rancher/configuration/settings/
     title: 系统设置
+- sectiontitle: 主机配置
+  section:
+  - path: /rancher/hosts/amazon/
+    title: amazon
+  - path: /rancher/hosts/amazon/
+    title: azure
+  - path: /rancher/hosts/amazon/
+    title: custom
+  - path: /rancher/hosts/amazon/
+    title: digitalocean
+  - path: /rancher/hosts/amazon/
+    title: exoscale
+  - path: /rancher/hosts/amazon/
+    title: other
+  - path: /rancher/hosts/amazon/
+    title: packet
+  - path: /rancher/hosts/amazon/
+    title: rackspace
 
 - sectiontitle: 环境管理
   section:
