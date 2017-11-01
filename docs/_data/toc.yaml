@@ -230,7 +230,7 @@ kubernetes:
   path: /kubernetes/upgrading/
 
 - sectiontitle: 版本记录
-  path: /
+  path: / 
   section:
   - path: /kubernetes/release-notes/1.6.7/
     title: 1.6.7
