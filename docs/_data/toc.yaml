@@ -133,6 +133,8 @@ rancher:
   
   - sectiontitle: rancher-compose
     section:
+    - path: /rancher/rancher-compose/
+      title: compose
 
 
 - sectiontitle: 环境管理
