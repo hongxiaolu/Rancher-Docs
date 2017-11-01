@@ -1,11 +1,5 @@
 ---
-title: Stacks in Cattle Environments
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 应用
+title: 应用栈
 ---
 
 应用包含了一组服务。你可以把多个服务放在一起组成一个应用。

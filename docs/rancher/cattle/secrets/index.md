@@ -1,11 +1,5 @@
 ---
-title: Secrets in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 密文 - 实验性的
+title: 密文功能（实验）
 ---
 
 Rancher支持创建密文并在容器中使用该密文（在容器中使用该密文需要部署应用商店里的Rancher Secrets服务）。Rancher通过对接加密后台来保障密文的安全。加密后台可以使用本地的AES密钥或者使用[Vault Transit](https://www.vaultproject.io/docs/secrets/transit/)

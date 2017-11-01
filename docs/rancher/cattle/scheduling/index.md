@@ -1,11 +1,5 @@
 ---
-title: Scheduling Services in Cattle Environments
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 服务调度
+title: 服务调度
 ---
 
 在Rancher中，你可以根据严格或宽松的关联与斥关联规则，在特定主机上安排服务。 这些规则可以比较主机上的标签或主机上容器上的标签，以确定容器应该安排在哪个主机上。

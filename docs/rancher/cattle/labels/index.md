@@ -1,8 +1,5 @@
 ---
 title: Labels
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
 ---
 
 ## 标签

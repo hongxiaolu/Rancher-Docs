@@ -1,11 +1,5 @@
 ---
-title: Upgrading using Rancher Compose
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 升级服务
+title: 升级服务
 ---
 
 在部署[服务]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/adding-services/)之后, 你可能想要通过修改服务来升级应用。例如，镜像已经被更新了，你想要部署服务的新版本。由于Docker容器是不可变的，为了修改服务，你需要销毁旧的容器并部署新的容器。Rancher提供了两种升级服务的方法。推荐的方式是[服务内升级](#服务内升级)，这种方式会停掉旧的容器并且在这个服务内启动新的容器。 Rancher[UI](#upgrading-services-in-the-ui)仅支持服务内升级。你也可以通过[Rancher Compose命令行](#通过rancher-compose命令行进行服务升级)进行服务内升级。 另一种升级方式为[替换式升级](#替换式升级)。这种升级方式会删除旧的服务并创建一个新的服务，只有通过[Rancher Compose命令行](#通过rancher-compose命令行进行服务升级)才能进行替换式升级。

@@ -138,14 +138,14 @@ rancher:
   - path: /rancher/catalog/webhook-service/
 
   - sectiontitle: rancher-compose
-  section:
-  - path: /rancher/rancher-compose/
+    section:
+    - path: /rancher/rancher-compose/
     title: compose
-  - path: /rancher/rancher-compose/build/
+    - path: /rancher/rancher-compose/build/
     title: 利用 AWS S3 构建
-  - path: /rancher/rancher-compose/commands/
+    - path: /rancher/rancher-compose/commands/
     title: 指令与参数
-  - path: /rancher/rancher-compose/environment-interpolation/
+    - path: /rancher/rancher-compose/environment-interpolation/
     title: 环境插值
 
 - sectiontitle: 环境管理

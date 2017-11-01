@@ -1,11 +1,5 @@
 ---
-title: Webhooks in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-##  Webhooks
+title: Webhooks 
 ---
 
 在 Rancher 中，你可以创建接收器钩子。 这些钩子提供了一个可以在Rancher 中触发事件的 URL。比如，接收器钩子可以和监控系统整合来增加或减少服务的容器数量。 在 **API** -> **Webhooks** 页面， 你可以查看或创建一个接收钩子。

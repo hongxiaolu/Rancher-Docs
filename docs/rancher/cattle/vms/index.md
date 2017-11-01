@@ -1,11 +1,5 @@
 ---
-title: Virtual Machines
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 开始使用虚拟机
+title: 虚拟机
 ---
 
 By default, launching virtual machines (VMs) in Rancher is disabled. To enable launching VMs, any [admin]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/access-control/#管理员) can enable virtual machines in Rancher in the **Admin** -> **Settings** -> **Virtual Machines** section. Select **Enabled** and click **Save**.
