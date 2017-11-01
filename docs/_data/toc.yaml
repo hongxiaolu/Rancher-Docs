@@ -34,7 +34,6 @@ guides:
       title: Fedora
     - path: /engine/installation/linux/docker-ce/binaries/
       title: Binaries
-
   - sectiontitle: Release notes
     section:
       - path: /enterprise/release-notes/
@@ -43,12 +42,10 @@ guides:
       - path: /release-notes/docker-ce/
         title: Docker CE
         nosync: true
-
 - sectiontitle: Rancher 快速入门
   section:
   - path: /rancher/quick-start-guide/
     title: 快速安装
-
 - sectiontitle: RancherOS 快速入门
   section:
   - path: /os/quick-start-guide/
@@ -57,7 +54,6 @@ guides:
 rancher:
 - title: 概述
   path: /rancher/
-
 - sectiontitle: 安装
   section:
   - path: /rancher/installing/installing-server/
@@ -70,7 +66,6 @@ rancher:
     title: 基本SSL配置
 - title: 版本升级
   path: /rancher/upgrading/
-
 - sectiontitle: 系统配置
   section:
   - path: /rancher/configuration/access-control/
@@ -81,7 +76,6 @@ rancher:
     title: 主机驱动
   - path: /rancher/configuration/settings/
     title: 系统设置
-
 - sectiontitle: 主机配置
   section:
   - path: /rancher/hosts/
@@ -102,7 +96,6 @@ rancher:
     title: packet
   - path: /rancher/hosts/amazon/
     title: rackspace
-
 - sectiontitle: cattle
   section:
   - path: /rancher/catalog/adding-services/
@@ -147,7 +140,6 @@ rancher:
       title: 指令与参数
     - path: /rancher/rancher-compose/environment-interpolation/
       title: 环境插值
-
 - sectiontitle: 环境管理
   section:
   - path: /rancher/environments/
@@ -158,14 +150,12 @@ rancher:
     title: 私有仓库
   - path: /rancher/environments/ecr_updater/
     title: 证书更新器
-
 - sectiontitle: 应用商店
   section:
   - path: /rancher/catalog/
     title: 应用商店
   - path: /rancher/catalog/private-catalog/
     title: 私有应用商店
-
 - sectiontitle: 服务管理
   section:
   - path: /rancher/rancher-services/
@@ -193,8 +183,7 @@ rancher:
     - path: /rancher/rancher-services/storage-service/rancher-ebs/
       title: rancher-ebs
     - path: /rancher/rancher-services/storage-service/rancher-nfs/
-      title: rancher-nfs
-    
+      title: rancher-nfs 
 - sectiontitle: CLI 工具
   section:
   - path: /rancher/cli/
@@ -203,7 +192,6 @@ rancher:
     title: CLI 参数选项
   - path: /rancher/cli/variable-interpolation/
     title: CLI 变量替换
-
 - title: native-docker
   path: /rancher/native-docker/
 - title: Mesos
@@ -212,7 +200,6 @@ rancher:
   path: /rancher/swarm/
 - title: windows
   path: /rancher/windows/
-
 - sectiontitle: 常见问题
   section:
   - path: /rancher/faqs/server/
@@ -221,10 +208,8 @@ rancher:
     title: Agent 问题
   - path: /rancher/faqs/troubleshooting/
     title: 故障排查与修复方法
-
 - title: 贡献
   path: /rancher/contributing/
-
 - sectiontitle: 版本记录
   section:
   - path: /rancher/release-notes/1.6.5/
@@ -243,14 +228,12 @@ rancher:
 os:
 - title: 概述
   path: /os/
-
 - sectiontitle: 安装与升级
   section:
   - path: /os/install/
     title: 系统安装
   - path: /os/upgrade/
     title: 系统升级
-
 - sectiontitle: 系统服务
   section:
   - path: /os/system-services/system-docker-volumes/
@@ -261,7 +244,6 @@ os:
     title: 添加系统服务
   - path: /os/system-services/custom-system-services/
     title: 自定义系统服务
-
 - sectiontitle: 版本记录
   section:
   - path: /os/release-notes/1.6.7/
@@ -300,7 +282,6 @@ kubernetes:
   path: /kubernetes/storage/
 - title: 版本升级
   path: /kubernetes/upgrading/
-
 - sectiontitle: 版本记录
   section:
   - path: /kubernetes/release-notes/1.6.7/
