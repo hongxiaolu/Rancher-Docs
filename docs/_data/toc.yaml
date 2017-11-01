@@ -98,37 +98,37 @@ rancher:
     title: rackspace
 - sectiontitle: cattle
   section:
-  - path: /rancher/catalog/adding-services/
+  - path: /rancher/cattle/adding-services/
     title: 服务
   - path: /rancher/cattle/adding-external-services/
     title: 添加外部服务
-  - path: /rancher/catalog/adding-load-balancers/
+  - path: /rancher/cattle/adding-load-balancers/
     title: 添加负载均衡
-  - path: /rancher/catalog/adding-service-alias/
+  - path: /rancher/cattle/adding-service-alias/
     title: 添加服务别名
-  - path: /rancher/catalog/containers/
+  - path: /rancher/cattle/containers/
     title: 容器
-  - path: /rancher/catalog/external-dns-service/
+  - path: /rancher/cattle/external-dns-service/
     title: 外部DNS服务
-  - path: /rancher/catalog/health-checks/
+  - path: /rancher/cattle/health-checks/
     title: 健康检查
-  - path: /rancher/catalog/internal-dns-service/
+  - path: /rancher/cattle/internal-dns-service/
     title: 内部DNS
-  - path: /rancher/catalog/labels/
+  - path: /rancher/cattle/labels/
     title: 标签
-  - path: /rancher/catalog/scheduling/
+  - path: /rancher/cattle/scheduling/
     title: 调度
-  - path: /rancher/catalog/secrets/
+  - path: /rancher/cattle/secrets/
     title: 密文功能
-  - path: /rancher/catalog/stacks/
+  - path: /rancher/cattle/stacks/
     title: 应用栈
-  - path: /rancher/catalog/upgrading/
+  - path: /rancher/cattle/upgrading/
     title: 升级
-  - path: /rancher/catalog/vms/
+  - path: /rancher/cattle/vms/
     title: 虚拟机
-  - path: /rancher/catalog/volumes/
+  - path: /rancher/cattle/volumes/
     title: 卷
-  - path: /rancher/catalog/webhook-service/
+  - path: /rancher/cattle/webhook-service/
     title: webhook
   
   - sectiontitle: rancher-compose
