@@ -47,7 +47,7 @@ setTimeout(function(){
     if (decodeURI(queryString().q) != "undefined" && decodeURI(queryString().q) && decodeURI(queryString().q).length > 0) {
       $("#st-search-input").val(decodeURI(queryString().q));
       $("#st-search-input").focus();
-      $("#searchTerm").html("results for: " + decodeURI(queryString().q))
+      $("#searchTerm").html("" + decodeURI(queryString().q))
     }
   });
 }, 1);
