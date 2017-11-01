@@ -1,11 +1,5 @@
 ---
-title: Hosts in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 入门指南
+title: 入门指南
 ---
 
 在Rancher中，主机是调度资源的基本单位（直观的理解就是所发生的操作最终都会落到某台主机上），它可以是虚拟的或者物理的Linux服务器。Rancher管理的主机需要满足以下的条件：

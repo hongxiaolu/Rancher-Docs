@@ -1,13 +1,6 @@
 ---
-title: Adding DigitalOcean Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+title: 添加DigitalOcean主机
 ---
-
-## 添加DigitalOcean主机
----
-
 Rancher 通过使用 `docker machine` 来管理 [DigitalOcean](https://www.digitalocean.com/) 提供的主机。
 
 ### 获取DigitalOcean访问凭证

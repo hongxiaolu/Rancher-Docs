@@ -1,11 +1,6 @@
 ---
-title: Adding Other Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
+title: 添加其他云提供商的主机
 
-## 添加其他云提供商的主机
 ---
 
 Rancher 支持使用 `docker machine` 来管理其他云提供商的主机服务。通过提供一个通用的界面，输入必要的参数键值对，然后作为 `docker-machine`运行的参数。

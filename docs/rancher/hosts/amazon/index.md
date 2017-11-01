@@ -1,11 +1,5 @@
 ---
-title: Adding Amazon EC2 Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 添加Amazon EC2主机
+title: 添加Amazon EC2主机
 ---
 
 Rancher支持使用`docker machine`部署[Amazon EC2](http://aws.amazon.com/ec2/)。

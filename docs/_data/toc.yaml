@@ -83,6 +83,8 @@ rancher:
     title: 系统设置
 - sectiontitle: 主机配置
   section:
+  - path: /rancher/hosts/
+    title: 入门指南
   - path: /rancher/hosts/amazon/
     title: amazon
   - path: /rancher/hosts/amazon/

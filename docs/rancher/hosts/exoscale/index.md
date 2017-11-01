@@ -1,11 +1,5 @@
 ---
-title: Adding Exoscale Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 添加Exoscale主机
+title: 添加Exoscale主机
 ---
 
 Rancher 支持使用 `docker machine` 来管理 [Exoscale](https://www.exoscale.ch/) 提供的主机。

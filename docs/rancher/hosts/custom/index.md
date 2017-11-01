@@ -1,11 +1,5 @@
 ---
-title: Adding Custom Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 添加Custom主机
+title: 添加Custom主机
 ---
 
 如果你已经部署了Linux主机，并且希望将它们添加到Rancher中。在点击**Custom**图标之后会，Rancher会自动生成一个`docker`命令脚本，将其拷贝到每一台主机上并运行这条命令来启动`rancher/agent`容器。

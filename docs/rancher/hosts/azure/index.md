@@ -1,8 +1,5 @@
 ---
 title: Adding Azure Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
 ---
 
 Rancher支持使用`docker machine`部署[Microsoft Azure](https://azure.microsoft.com)。

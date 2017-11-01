@@ -1,11 +1,5 @@
 ---
-title: Adding Packet Hosts
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 添加Packet主机
+title: 添加Packet主机
 ---
 
 Rancher 通过使用 `docker machine` 来管理 [Packet](https://www.packet.net/) 提供的主机。
