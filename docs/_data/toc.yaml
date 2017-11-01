@@ -82,19 +82,19 @@ rancher:
     title: 入门指南
   - path: /rancher/hosts/amazon/
     title: amazon
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/azure/
     title: azure
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/custom/
     title: custom
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/digitalocean/
     title: digitalocean
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/exoscale/
     title: exoscale
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/other/
     title: other
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/packet/
     title: packet
-  - path: /rancher/hosts/amazon/
+  - path: /rancher/hosts/rackspace/
     title: rackspace
 - sectiontitle: cattle
   section:
