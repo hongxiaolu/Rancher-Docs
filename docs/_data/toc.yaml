@@ -34,6 +34,7 @@ guides:
       title: Fedora
     - path: /engine/installation/linux/docker-ce/binaries/
       title: Binaries
+
   - sectiontitle: Release notes
     section:
       - path: /enterprise/release-notes/
@@ -42,19 +43,21 @@ guides:
       - path: /release-notes/docker-ce/
         title: Docker CE
         nosync: true
+
 - sectiontitle: Rancher 快速入门
   section:
   - path: /rancher/quick-start-guide/
     title: 快速安装
+
 - sectiontitle: RancherOS 快速入门
   section:
   - path: /os/quick-start-guide/
     title: 快速安装
 
-
 rancher:
 - title: 概述
   path: /rancher/
+
 - sectiontitle: 安装
   section:
   - path: /rancher/installing/installing-server/
@@ -67,6 +70,7 @@ rancher:
     title: 基本SSL配置
 - title: 版本升级
   path: /rancher/upgrading/
+
 - sectiontitle: 系统配置
   section:
   - path: /rancher/configuration/access-control/
@@ -109,8 +113,8 @@ rancher:
     title: 调度服务
   - path: /rancher/rancher-services/service-accounts/
     title: 服务账号
+
   - sectiontitle: 存储服务
-    path: /rancher/rancher-services/storage-service/
     section:
     - path: /rancher/rancher-services/storage-service/
       title: 存储服务
@@ -127,6 +131,7 @@ rancher:
     title: CLI 参数选项
   - path: /rancher/cli/variable-interpolation/
     title: CLI 变量替换
+
 - title: native-docker
   path: /rancher/native-docker/
 - title: Mesos
@@ -166,12 +171,14 @@ rancher:
 os:
 - title: 概述
   path: /os/
+
 - sectiontitle: 安装与升级
   section:
   - path: /os/install/
     title: 系统安装
   - path: /os/upgrade/
     title: 系统升级
+
 - sectiontitle: 系统服务
   section:
   - path: /os/system-services/system-docker-volumes/
@@ -182,6 +189,7 @@ os:
     title: 添加系统服务
   - path: /os/system-services/custom-system-services/
     title: 自定义系统服务
+
 - sectiontitle: 版本记录
   section:
   - path: /os/release-notes/1.6.7/
@@ -194,6 +202,7 @@ os:
     title: 1.0
   - path: /os/release-notes/1.1/
     title: 1.1
+
 kubernetes:
 - title: 快速安装
   path: /kubernetes/
@@ -219,6 +228,7 @@ kubernetes:
   path: /kubernetes/storage/
 - title: 版本升级
   path: /kubernetes/upgrading/
+
 - sectiontitle: 版本记录
   section:
   - path: /kubernetes/release-notes/1.6.7/
