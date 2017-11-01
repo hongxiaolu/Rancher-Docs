@@ -1,11 +1,5 @@
 ---
-title: Adding External Service
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 添加外部服务
+title: 添加外部服务
 ---
 
 你可能会有一些部署在Rancher之外的服务想要整合进Rancher。你可以通过添加一个外部服务的功能将它添加到Rancher集群中。

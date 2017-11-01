@@ -1,11 +1,5 @@
 ---
-title: Containers
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 容器
+title: 容器
 ---
 
 ### 添加容器

@@ -1,11 +1,5 @@
 ---
-title: Building with AWS S3 in Rancher Compose
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 利用 AWS S3 构建
+title: 利用 AWS S3 构建
 ---
 
 构建 docker 镜像可以有两种方法。第一种方法是通过给 build 命令一个 git 或者 http URL参数来利用远程资源构建，另一种方法则是让 build 利用本地目录，那么会上传构建上下文到 S3 并在需要时在各个节点执行

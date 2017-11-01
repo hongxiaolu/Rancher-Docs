@@ -1,13 +1,5 @@
 ---
-title: Rancher Catalog
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/catalog/
----
-
-## 应用商店
+title: 应用商店
 ---
 
 Rancher提供了一个应用商店，通过商店中的应用程序模版的可以简化部署复杂应用的过程。进入**应用商店**页面，你可以看到所有的[应用]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/settings/#应用商店)的应用模版。在**官方认证**应用商店下包含了[Rancher认证的应用](https://github.com/rancher/rancher-catalog)中的应用模版，在**社区共享**应用商店下包含了[社区贡献的应用](https://github.com/rancher/community-catalog)的应用模版。Rancher只维护官方认证的 _认证_ 模版。

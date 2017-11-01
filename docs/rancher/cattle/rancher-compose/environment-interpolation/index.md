@@ -1,11 +1,5 @@
 ---
-title: Environment Interpolation in Rancher Compose
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 环境插值
+title: 环境插值
 ---
 
 在使用 Rancher Compose 时，`docker-compose.yml` 和 `rancher-compose.yml` 文件中可以使用运行 Rancher Compose 的机器中的环境变量。

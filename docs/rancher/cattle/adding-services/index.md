@@ -1,11 +1,5 @@
 ---
-title: Services
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 服务
+title: 服务
 ---
 
 

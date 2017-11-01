@@ -1,11 +1,5 @@
 ---
-title: Service Alias
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 服务别名
+title: 服务别名
 ---
 
 通过添加一个服务别名，可以提供一种别名的方式而不是直接指向服务。

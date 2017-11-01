@@ -1,13 +1,5 @@
 ---
 title: Rancher Compose
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
-redirect_from:
-  - /rancher/rancher-compose/
----
-
-## Rancher Compose
 ---
 
 Rancher Compose是一个多主机版本的Docker Compose。它运行于Rancher UI里属于一个[环境]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/environments/)多个[主机]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/hosts/)的[应用]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/stacks/)里。Rancher Compose启动的容器会被部署在满足[调度规则]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/scheduling/)的同一环境中的任意主机里。如果没有设置调度规则，那么这些服务容器会被调度至最少容器运行的主机上运行。这些被Rancher Compose启动的容器的运行效果是和在UI上启动的效果是一致的.

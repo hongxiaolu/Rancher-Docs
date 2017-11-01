@@ -81,6 +81,7 @@ rancher:
     title: 主机驱动
   - path: /rancher/configuration/settings/
     title: 系统设置
+
 - sectiontitle: 主机配置
   section:
   - path: /rancher/hosts/
@@ -102,6 +103,51 @@ rancher:
   - path: /rancher/hosts/amazon/
     title: rackspace
 
+- sectiontitle: cattle
+  section:
+  - path: /rancher/catalog/adding-services/
+    title: 服务
+  - path: /rancher/cattle/adding-external-services/
+    title: 添加外部服务
+  - path: /rancher/catalog/adding-load-balancers/
+    title: 添加负载均衡
+  - path: /rancher/catalog/adding-service-alias/
+    title: 添加服务别名
+  - path: /rancher/catalog/containers/
+    title: 容器
+  - path: /rancher/catalog/external-dns-service/
+    title: 外部DNS服务
+  - path: /rancher/catalog/health-checks/
+    title: 健康检查
+  - path: /rancher/catalog/internal-dns-service/
+    title:
+  - path: /rancher/catalog/labels/
+    title:
+  - path: /rancher/catalog/scheduling/
+    title:
+  - path: /rancher/catalog/secrets/
+    title:
+  - path: /rancher/catalog/stacks/
+    title:
+  - path: /rancher/catalog/upgrading/
+    title:
+  - path: /rancher/catalog/vms/
+    title:
+  - path: /rancher/catalog/volumes/
+    title:
+  - path: /rancher/catalog/webhook-service/
+
+  - sectiontitle: rancher-compose
+  section:
+  - path: /rancher/rancher-compose/
+    title: compose
+  - path: /rancher/rancher-compose/build/
+    title: 利用 AWS S3 构建
+  - path: /rancher/rancher-compose/commands/
+    title: 指令与参数
+  - path: /rancher/rancher-compose/environment-interpolation/
+    title: 环境插值
+
 - sectiontitle: 环境管理
   section:
   - path: /rancher/environments/
@@ -112,6 +158,13 @@ rancher:
     title: 私有仓库
   - path: /rancher/environments/ecr_updater/
     title: 证书更新器
+
+- sectiontitle: 应用商店
+  section:
+  - path: /rancher/catalog/
+    title: 应用商店
+  - path: /rancher/catalog/private-catalog/
+    title: 私有应用商店
 
 - sectiontitle: 服务管理
   section:

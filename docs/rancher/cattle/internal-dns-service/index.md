@@ -1,8 +1,5 @@
 ---
-title: Internal DNS Service in Cattle Environments
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
+title: 内部DNS
 ---
 
 ## Rancher Cattle环境中的内部DNS服务

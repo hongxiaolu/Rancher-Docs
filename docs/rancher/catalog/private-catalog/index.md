@@ -1,11 +1,5 @@
 ---
-title: Creating Private Catalogs
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 创建私有应用商店
+title: 创建私有应用商店
 ---
 
 私有应用商店要遵循应用商店服务指定的格式才可以正常的在Rancher中显示出来。

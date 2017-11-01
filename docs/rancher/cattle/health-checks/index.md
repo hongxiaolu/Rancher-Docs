@@ -1,11 +1,5 @@
 ---
-title: Health Checks in Rancher
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 健康检查
+title: 健康检查
 ---
 
 Cattle环境中，Rancher通过运行一个叫`healthcheck`的基础设施服务部署了一套健康检查系统，其原理为在每台主机上部署了`healthcheck`的容器来实现分布式的健康检查。这些容器在内部利用HAProxy来检查应用的健康状态。一旦容器或服务上启用了健康检查，每个容器将最多被三个运行在不同主机上的`healthcheck` 容器监控起来。只要有一个HAProxy实例认为其状态正常，该容器将被视为正常。如果所有HAProxy实例都认为其状态不正常，该容器将被视为状态异常。

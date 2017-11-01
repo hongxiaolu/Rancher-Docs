@@ -1,11 +1,5 @@
 ---
-title: Load Balancers
-layout: rancher-default-v1.6-zh
-version: v1.6
-lang: zh
----
-
-## 负载均衡
+title: 负载均衡
 ---
 
 Rancher支持多种负载均衡驱动，通过在它之上建立代理规则，可以将网络及应用流量分发至指定的容器中。负载均衡的目标服务中的容器都会被Rancher自动注册为负载均衡的目标。在Rancher中，将负载均衡加入到应用中是一件非常容易的事情。
