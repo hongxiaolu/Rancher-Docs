@@ -122,7 +122,7 @@ ipsec:
 $ cat /etc/rancher-dns/answers.json
 ```
 
-#### 四、CentOS
+### 四、CentOS
 
 ##### 1、为什么我的容器无法连接到网络?
 
