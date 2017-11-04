@@ -110,6 +110,12 @@ ipsec:
 
 > **注意：** 随着Rancher通过升级基础服务来更新子网，以前通过API更新子网的方法将不再适用。
 
+#### 5、错误提示如下：INFO: Attempting to connect to: http://192.168.1.150:8080/v1    ERROR: http://192.168.1.150:8080/v1 is not accessible (Failed to connect to 192.168.1.150 port 8080: No route to host)
+
+这个问题主要有三种情况：1、RANCHER SERVER服务器防火墙没有开通8080端口；2、云平台安全组没有放行8080 端口；3、Agent 服务器没有开启IP转发规则
+
+
+
 ### 三、DNS
 
 <a id="dns-config"></a>
@@ -127,11 +133,31 @@ $ cat /etc/rancher-dns/answers.json
 ##### 1、为什么我的容器无法连接到网络?
 
 如果你在主机上运行一个容器（如：`docker run -it ubuntu`）该容器不能与互联网或其他主机通信，那可能是遇到了网络问题。
+Centos默认设置`/proc/sys/net/ipv4/ip_forward`为`0`，这从底层阻断了Docker所有网络。
 
-Centos默认设置`/proc/sys/net/ipv4/ip_forward`为`0`，这从底层阻断了Docker所有网络。Docker将此值设置为`1`，但如果在CentOS上运行`service restart network`，则其将被重新设置为`0`。
+解决办法：
 
+vi /usr/lib/sysctl.d/00-system.conf
 
-<a id="lb-config"></a>
+添加如下代码：
+
+net.ipv4.ip_forward=1
+
+net.bridge.bridge-nf-call-ip6tables = 1
+
+net.bridge.bridge-nf-call-iptables = 1
+
+net.bridge.bridge-nf-call-arptables = 1
+
+重启network服务
+
+systemctl restart network
+
+查看是否修改成功
+
+sysctl net.ipv4.ip_forward
+
+如果返回为“net.ipv4.ip_forward = 1”则表示成功了
 
 ### 五、负载均衡
 
