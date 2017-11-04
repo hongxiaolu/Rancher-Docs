@@ -83,22 +83,22 @@ rancher:
   - path: /rancher/hosts/
     title: 入门指南
   - path: /rancher/hosts/amazon/
-    title: amazon
+    title: Amazon
   - path: /rancher/hosts/azure/
-    title: azure
+    title: Azure
   - path: /rancher/hosts/custom/
-    title: custom
+    title: Custom
   - path: /rancher/hosts/digitalocean/
-    title: digitalocean
+    title: Digitalocean
   - path: /rancher/hosts/exoscale/
-    title: exoscale
+    title: Exoscale
   - path: /rancher/hosts/other/
-    title: other
+    title: Other
   - path: /rancher/hosts/packet/
-    title: packet
+    title: Packet
   - path: /rancher/hosts/rackspace/
-    title: rackspace
-- sectiontitle: cattle
+    title: Rackspace
+- sectiontitle: Cattle
   section:
   - path: /rancher/cattle/adding-services/
     title: 服务
@@ -131,19 +131,17 @@ rancher:
   - path: /rancher/cattle/volumes/
     title: 卷
   - path: /rancher/cattle/webhook-service/
-    title: webhook
-  
-  - sectiontitle: rancher-compose
+    title: Webhook
+  - sectiontitle: Rancher-compose
     section:
-    - path: /rancher/rancher-compose/
-      title: compose
-    - path: /rancher/rancher-compose/build/
+    - path: /rancher/cattle/rancher-compose/
+      title: Compose
+    - path: /rancher/cattle/rancher-compose/build/
       title: 利用 AWS S3 构建
-    - path: /rancher/rancher-compose/commands/
+    - path: /rancher/cattle/rancher-compose/commands/
       title: 命令与参数
-    - path: /rancher/rancher-compose/environment-interpolation/
+    - path: /rancher/cattle/rancher-compose/environment-interpolation/
       title: 环境插值
-
 - sectiontitle: 环境管理
   section:
   - path: /rancher/environments/
@@ -185,9 +183,9 @@ rancher:
     - path: /rancher/rancher-services/storage-service/
       title: 存储服务
     - path: /rancher/rancher-services/storage-service/rancher-ebs/
-      title: rancher-ebs
+      title: Rancher-ebs
     - path: /rancher/rancher-services/storage-service/rancher-nfs/
-      title: rancher-nfs 
+      title: Rancher-nfs 
 - sectiontitle: CLI 工具
   section:
   - path: /rancher/cli/
@@ -196,13 +194,13 @@ rancher:
     title: CLI 参数选项
   - path: /rancher/cli/variable-interpolation/
     title: CLI 变量替换
-- title: native-docker
+- title: Native-docker
   path: /rancher/native-docker/
 - title: Mesos
   path: /rancher/mesos/
-- title: swarm
+- title: Swarm
   path: /rancher/swarm/
-- title: windows
+- title: Windows
   path: /rancher/windows/
 - sectiontitle: 常见问题
   section:
@@ -272,13 +270,13 @@ kubernetes:
   path: /kubernetes/deleting/
 - title: 灾难恢复
   path: /kubernetes/disaster-recovery/
-- title: ingress
+- title: Ingress
   path: /kubernetes/ingress/  
 - title: 私有仓库
   path: /kubernetes/private-registry/ 
-- title: providers
+- title: Providers
   path: /kubernetes/providers/
-- title: rbac
+- title: RBAC
   path: /kubernetes/rbac/
 - title: 弹性平面
   path: /kubernetes/resiliency-planes/
