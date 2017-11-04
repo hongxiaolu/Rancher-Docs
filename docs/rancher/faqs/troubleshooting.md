@@ -61,8 +61,6 @@ $ sudo docker run -d -e CATTLE_AGENT_IP=<HOST_IP> --privileged \
 DEFAULT_FORWARD_POLICY="ACCEPT"
 ```
 
-<a id="subnet"></a>
-
 #### 4、Rancher的默认子网（`10.42.0.0/16`）在我的网络环境中已经被使用或禁止使用，我应该怎么去更改这个子网？
 
 
@@ -112,15 +110,11 @@ ipsec:
 
 #### 5、错误提示如下：INFO: Attempting to connect to: http://192.168.1.150:8080/v1    ERROR: http://192.168.1.150:8080/v1 is not accessible (Failed to connect to 192.168.1.150 port 8080: No route to host)
 
-这个问题主要有三种情况：1、RANCHER SERVER服务器防火墙没有开通8080端口；2、云平台安全组没有放行8080 端口；3、Agent 服务器没有开启IP转发规则
-
-
+这个问题主要有三种情况：1、RANCHER SERVER服务器防火墙没有开通8080端口；2、云平台安全组没有放行8080 端口；3、Agent 服务器没有开启IP转发规则[为什么我的容器无法连接到网络?]({{site.baseurl}}/rancher/faqs/troubleshooting/1为什么我的容器无法连接到网络)
 
 ### 三、DNS
 
-<a id="dns-config"></a>
-
-### 1、如何查看我的DNS是否配置正确?
+#### 1、如何查看我的DNS是否配置正确?
 
 如果你想查看Rancher　DNS配置，点击**应用** > **基础服务**。点击`network-services`应用，选择`metadata`，在`metadata`中，找到名为`network-services-metadata-dns-X`的容器，通过UI点击**执行命令行**后，可以进入该容器的命令行，然后执行如下命令。
 
@@ -130,7 +124,7 @@ $ cat /etc/rancher-dns/answers.json
 
 ### 四、CentOS
 
-##### 1、为什么我的容器无法连接到网络?
+#### 1、为什么我的容器无法连接到网络?
 
 如果你在主机上运行一个容器（如：`docker run -it ubuntu`）该容器不能与互联网或其他主机通信，那可能是遇到了网络问题。
 Centos默认设置`/proc/sys/net/ipv4/ip_forward`为`0`，这从底层阻断了Docker所有网络。
@@ -190,8 +184,6 @@ $ cat /var/log/haproxy
 在高可用集群中，如果你正在使用代理服务器后，如果rancher-compose-executor和go-machine-service不断重启，请确保你的代理使用正确的协议。
 
 ### 七、认证
-
-<a id="manually-turn-off-github"></a>
 
 #### 1、求助！我打开了访问控制但不能访问Rancher了，我该如何重置Rancher禁用访问控制？
 
