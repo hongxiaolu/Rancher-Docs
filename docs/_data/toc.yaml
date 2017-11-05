@@ -52,6 +52,8 @@ guides:
   section:
   - path: /os/quick-start-guide/
     title: 快速安装
+- title: 留言
+  path: /liuyan/
 
 rancher:
 - title: 概述
@@ -226,6 +228,8 @@ rancher:
     title: 1.6.9
   - path: /rancher/release-notes/1.6.10/
     title: 1.6.10
+- title: 留言
+  path: /liuyan/
   
 os:
 - title: 概述
@@ -258,6 +262,8 @@ os:
     title: 1.0
   - path: /os/release-notes/1.1/
     title: 1.1
+- title: 留言
+  path: /liuyan/
 
 kubernetes:
 - title: 快速安装
@@ -296,6 +302,8 @@ kubernetes:
     title: 1.7.4
   - path: /kubernetes/release-notes/1.6.11/
     title: 1.6.6
+- title: 留言
+  path: /liuyan/
     
     
 
