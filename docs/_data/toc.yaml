@@ -13,9 +13,15 @@ horizontalnav:
   node: kubernetes
 - title: Blog
   path: /blog/
+  node: blog
   
+
+blog: 
+- title: 
+
+
+
 guides:
-- title: 首页
 - sectiontitle: Docker 快速入门
   section:
   - path: /engine/installation/
@@ -56,8 +62,6 @@ guides:
   path: /liuyan/
 
 rancher:
-- title: 概述
-  path: /rancher/
 - sectiontitle: 安装
   section:
   - path: /rancher/installing/installing-server/
@@ -232,8 +236,6 @@ rancher:
   path: /liuyan/
   
 os:
-- title: 概述
-  path: /os/
 - sectiontitle: 安装与升级
   section:
   - path: /os/install/
@@ -266,8 +268,6 @@ os:
   path: /liuyan/
 
 kubernetes:
-- title: 快速安装
-  path: /kubernetes/
 - title: ADDONS 组件
   path: /kubernetes/addons/
 - title: 数据备份
