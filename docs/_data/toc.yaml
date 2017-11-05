@@ -11,8 +11,8 @@ horizontalnav:
 - title: Kubernetes
   path: /kubernetes/
   node: kubernetes
-- title: 留言
-  path: /liuyan/
+- title: Blog
+  path: /blog/
   
 guides:
 - title: 首页
