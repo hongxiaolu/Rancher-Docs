@@ -14,13 +14,10 @@ horizontalnav:
 - title: Blog
   path: /blog/
   node: blog
-  
 
 blog: 
 - title: 青云上部署RANCHER
   path: /blog/qinyun-install-rancher/
-
-
 
 guides:
 - sectiontitle: Docker 快速入门
