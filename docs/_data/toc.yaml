@@ -17,7 +17,8 @@ horizontalnav:
   
 
 blog: 
-- title: 
+- title: 青云上部署RANCHER
+  path: /blog/qinyun-install-rancher/
 
 
 
