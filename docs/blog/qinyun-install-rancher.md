@@ -1,5 +1,5 @@
 ---
-title：青云上部署RANCHER
+title: 青云上部署RANCHER
 ---
 
 
