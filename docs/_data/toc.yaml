@@ -16,10 +16,12 @@ horizontalnav:
   node: blog
 
 blog: 
+- title:
 - title: 青云上部署RANCHER
   path: /blog/qinyun-install-rancher/
 
 guides:
+- title:
 - sectiontitle: Docker 快速入门
   section:
   - path: /engine/installation/
@@ -60,6 +62,7 @@ guides:
   path: /liuyan/
 
 rancher:
+- title:
 - sectiontitle: 安装
   section:
   - path: /rancher/installing/installing-server/
@@ -234,6 +237,7 @@ rancher:
   path: /liuyan/
   
 os:
+- title:
 - sectiontitle: 安装与升级
   section:
   - path: /os/install/
@@ -266,6 +270,7 @@ os:
   path: /liuyan/
 
 kubernetes:
+- title:
 - title: ADDONS 组件
   path: /kubernetes/addons/
 - title: 数据备份
