@@ -1,6 +1,5 @@
----
+--- 
 title: Rancher Server的常见问题
-
 ---
 
 ### 我正在运行的Rancher是什么版本的?
@@ -10,8 +9,6 @@ Rancher的版本位于UI的页脚的左侧。 如果你点击该版本，你将�
 ### 我怎么样在代理服务器后运行Rancher Server?
 
 请参照[在HTTP代理后方启动Rancher Server]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/installing-rancher/installing-server/#在http代理后方启动-rancher-server).
-
-<a id="server-logs"></a>
 
 ### 我在哪能找到 Rancher Server 容器的详细日志？
 
@@ -117,7 +114,7 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 ....liquibase.exception.LockException: Could not acquire change log lock. Currently locked by <container_ID>
 ```
 
-#### 释放数据库锁
+### 释放数据库锁
 
 > **注意：** 请不要释放数据库锁，除非有相关日志锁的**异常**。如果是由于数据迁移导致升级时间过长，在这种情况下释放数据库锁，可能会使你遇到其他迁移问题。
 
@@ -148,3 +145,4 @@ mysql> select * from DATABASECHANGELOGLOCK;
 +----+--------+-------------+----------+
 1 row in set (0.00 sec)
 ```
+
