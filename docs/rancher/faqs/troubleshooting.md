@@ -412,14 +412,14 @@ ipsec:
 ```bash
 $ cat /etc/rancher-dns/answers.json
 ```
-### 2、在Ubuntu上运行容器时彼此间不能正常通信。
+### 八、在Ubuntu上运行容器时彼此间不能正常通信。
 
 如果你的系统开启了`UFW`，请关闭`UFW`或更改`/etc/default/ufw`中的策略为：
 
 ```
 DEFAULT_FORWARD_POLICY="ACCEPT"
 ```
-## 八、CentOS
+## 九、CentOS
 
 ### 1、为什么容器无法连接到网络?
 
@@ -450,7 +450,7 @@ sysctl net.ipv4.ip_forward
 
 如果返回为“net.ipv4.ip_forward = 1”则表示成功了
 
-## 九、负载均衡
+## 十、负载均衡
 
 ### 1、为什么我的负载均衡一直是`Initializing`状态?
 
@@ -474,7 +474,7 @@ HAProxy的日志可以在负载均衡器容器内找到。 负载均衡器容器
 $ cat /var/log/haproxy
 ```
 
-## 十、健康检查
+## 十一、健康检查
 
 ### 1、为什么健康检查服务一直显示黄色初始化状态？
 healthcheck不仅为其他服务提供健康检查，对系统组件(比如调度服务)也提供健康检查服务，healthcheck也对自己进行健康检查。多个healthcheck组件时，它们会相互交叉检查，只有健康检查通过后，容器状态才会变成绿色。而healthcheck一直显示黄色初始化状态，说明一直没有通过健康检查。健康检查都是通过网络访问的，所以一定是网络通信异常导致。
