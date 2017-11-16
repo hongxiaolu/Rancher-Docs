@@ -66,7 +66,6 @@ $ cat cattle-debug.log
 $ docker cp <container_id>:/var/lib/cattle/logs /local/path
 ```
 
-
 ### 9、如果Rancher Server的IP改变了会怎么样？
 
 如果更改了Rancher Server的IP地址，你需要用新的IP重新注册主机。
@@ -312,6 +311,33 @@ cat >> /etc/docker/daemon.json <<EOF
 }
 EOF
 systemctl daemon-reload && systemctl restart docker
+```
+
+### 3、docker info 出现 WARNING
+```
+WARNING: No swap limit support
+WARNING: No kernel memory limit support
+```
+
+编辑`/etc/default/grub` 文件，并设置：
+`GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"`
+
+接着
+
+SUSE
+
+```
+grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+Cetos
+
+```
+Update grub
+```
+Ubuntu
+
+```
+update-grub
 ```
 ## 五、服务/容器
 
