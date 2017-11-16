@@ -10,7 +10,7 @@ title: 常见的故障排查与修复方法
 ```
 PS：docker命令中，如果使用了 --network host参数，那后面再使用-p 8080:8080 就不会生效。
 ```
-`docker run -d -p 8080:8080 rancher/server:stable`
+```docker run -d -p 8080:8080 rancher/server:stable```
 
 此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过`-v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle`把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
 
@@ -20,6 +20,7 @@ PS：docker命令中，如果使用了 --network host参数，那后面再使用
 
 ```
 $ docker exec <CONTAINER_ID_OF_SERVER> mysqldump cattle > dump.sql
+
 ```
 
 ### 3、我正在运行的Rancher是什么版本的?
@@ -32,7 +33,7 @@ Rancher的版本位于UI的页脚的左侧。 如果你点击版本号，将可�
 
 如果你有添加了健康检查功能的服务自动调度到状态`Disconnected`主机上，CATTLE会将这些服务重新调度到其他主机上。  
 
-`PS：如果使用了标签调度，如果你有多台主机就有相同的调度标签，那么服务会调度到其他具有调度标签的节点上；如果选择了指定运行到某台主机上，那主机删除后你的应用将无法在其他主机上自动运行。`
+```PS：如果使用了标签调度，如果你有多台主机就有相同的调度标签，那么服务会调度到其他具有调度标签的节点上；如果选择了指定运行到某台主机上，那主机删除后你的应用将无法在其他主机上自动运行。```
 
 ### 5、我如何在代理服务器后配置主机？
 
@@ -106,7 +107,7 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 
 如果你刚刚升级，在Rancher　Server日志中，MySQL数据库可能存在尚未释放的日志锁定。
 
-```bash
+```
 ....liquibase.exception.LockException: Could not acquire change log lock. Currently locked by <container_ID>
 ```
 #### 释放数据库锁
@@ -121,7 +122,7 @@ $ sudo docker exec -it <container_id> mysql
 
 一旦进入到 Mysql 数据库, 你就要访问`cattle`数据库。
 
-```bash
+```
 mysql> use cattle;
 
 #检查表中是否有锁
@@ -222,7 +223,7 @@ $ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value 
 
 如果你使用了克隆其他Agent主机的虚拟机并尝试注册它，它将不能工作。在rancher-agent容器的日志中会产生`ERROR: Please re-register this agent.`字样的日志。Rancher主机的唯一ID保存在`/var/lib/rancher/state`，因为新添加和虚拟机和被克隆的主机有相同的唯一ID，所以导致无法注册成功。
 
-解决方法是在克隆的VM上运行以下命令： `rm -rf /var/lib/rancher/state; docker rm -fv rancher-agent; docker rm -fv rancher-agent-state`, 完成后可重新注册。
+解决方法是在克隆的VM上运行以下命令： ```rm -rf /var/lib/rancher/state; docker rm -fv rancher-agent; docker rm -fv rancher-agent-state```, 完成后可重新注册。
 
 ### 2、我在哪里可以找到Rancher agent容器的详细日志?
 
@@ -402,6 +403,12 @@ ipsec:
 ```
 
 > **注意：** 随着Rancher通过升级基础服务来更新子网，以前通过API更新子网的方法将不再适用。
+
+### 4、VXLAN 网络模式下，跨主机容器无法通信
+Vxlan 通过4789端口实现通信，检查防火墙有没有开放此端口；
+
+执行 iptables -t filter -L -n  参看IPtable表,  查看chain FORWARD 是不是被丢弃，如果是，执行sudo iptables -P FORWARD ACCEPT
+
 
 ## 七、DNS
 
