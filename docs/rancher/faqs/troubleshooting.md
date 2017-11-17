@@ -22,7 +22,7 @@ docker run -d -p 8080:8080 rancher/server:stable
 你可以通过简单的Docker命令从Rancher Server容器导出数据库。
 
 ```
-$ docker exec <CONTAINER_ID_OF_SERVER> mysqldump cattle > dump.sql
+ docker exec <CONTAINER_ID_OF_SERVER> mysqldump cattle > dump.sql
 
 ```
 
@@ -51,12 +51,12 @@ Rancher的版本位于UI的页脚的左侧。 如果你点击版本号，将可�
 运行`docker logs`可以查看在Rancher Server容器的基本日志。要获取更详细的日志，你可以进入到Rancher Server容器内部并查看日志文件。
 
 ```
-# 进入 Rancher　Server　容器内部
-$ docker exec -it <container_id> bash
+进入 Rancher　Server　容器内部
+docker exec -it <container_id> bash
 
-# 跳转到 Cattle 日志所在的目录下
-$ cd /var/lib/cattle/logs/
-$ cat cattle-debug.log
+跳转到 Cattle 日志所在的目录下
+cd /var/lib/cattle/logs/
+cat cattle-debug.log
 ```
 
 在这个目录里面会出现`cattle-debug.log`和`cattle-error.log`。 如果你长时间使用此Rancher Server，你会发现我们每天都会创建一个新的日志文件。
@@ -66,7 +66,7 @@ $ cat cattle-debug.log
 以下是将Rancher Server日志从容器复制到主机的命令。
 
 ```
-$ docker cp <container_id>:/var/lib/cattle/logs /local/path
+ docker cp <container_id>:/var/lib/cattle/logs /local/path
 ```
 
 ### 9、如果Rancher Server的IP改变了会怎么样？
@@ -86,7 +86,7 @@ $ docker cp <container_id>:/var/lib/cattle/logs /local/path
 你需要再次运行Rancher Server命令并且添加一个额外的选项`-e JAVA_OPTS="-Xmx4096m"`
 
 ```
-$ docker run -d -p 8080:8080 --restart=unless-stopped -e JAVA_OPTS="-Xmx4096m" rancher/server
+ docker run -d -p 8080:8080 --restart=unless-stopped -e JAVA_OPTS="-Xmx4096m" rancher/server
 ```
 
 根据MySQL数据库的设置方式的不同，你可能需要进行升级才能添加该选项。
@@ -119,7 +119,7 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 如果你已根据升级文档创建了Rancher Server的数据容器，你需要`exec`到`rancher-data`容器中升级`DATABASECHANGELOGLOCK`表并移除锁，如果你没有创建数据容器，你用`exec`到包含有你数据库的容器中。
 
 ```bash
-$ sudo docker exec -it <container_id> mysql
+ sudo docker exec -it <container_id> mysql
 ```
 
 一旦进入到 Mysql 数据库, 你就要访问`cattle`数据库。
@@ -127,13 +127,13 @@ $ sudo docker exec -it <container_id> mysql
 ```
 mysql> use cattle;
 
-#检查表中是否有锁
+检查表中是否有锁
 mysql> select * from DATABASECHANGELOGLOCK;
 
-# 更新移除容器的锁
+更新移除容器的锁
 mysql> update DATABASECHANGELOGLOCK set LOCKED="", LOCKGRANTED=null, LOCKEDBY=null where ID=1;
 
-# 检查锁已被删除
+检查锁已被删除
 mysql> select * from DATABASECHANGELOGLOCK;
 +----+--------+-------------+----------+
 | ID | LOCKED | LOCKGRANTED | LOCKEDBY |
@@ -147,7 +147,7 @@ mysql> select * from DATABASECHANGELOGLOCK;
 如果你的身份认证出现问题（例如你的GitHub身份认证已损坏），则可能无法访问Rancher。 要重新获得对Rancher的访问权限，你需要在数据库中关闭访问控制。 为此，你需要访问运行Rancher Server的主机。
 
 ```bash
-$ docker exec -it <rancher_server_container_ID> mysql
+docker exec -it <rancher_server_container_ID> mysql
 ```
 > **注意：** 这个 `<rancher_server_container_ID>`是具有Rancher数据库的容器。 如果你升级并创建了一个Rancher数据容器，则需要使用Rancher数据容器的ID而不是Rancher Server容器。
 
@@ -190,9 +190,9 @@ Go-machine-service是一种通过websocket连接到Rancher API服务器的微服
 如果你运行的是单节点的Rancher Server，它将使用你为主机注册地址来连接到Rancher API服务。 检查从Rancher Sever容器内部是否可以访问主机注册地址。
 
 ```bash
-$ docker exec -it <rancher-server_container_id> bash
-# 在 Rancher-Server 容器内
-$ curl -i <Host Registration URL you set in UI>/v1
+docker exec -it <rancher-server_container_id> bash
+在 Rancher-Server 容器内
+curl -i <Host Registration URL you set in UI>/v1
 ```
 
 你应该得到一个json响应。 如果认证开启，响应代码应为401。如果认证未打开，则响应代码应为200。
@@ -200,9 +200,9 @@ $ curl -i <Host Registration URL you set in UI>/v1
 验证Rancher API Server 能够使用这些变量，通过登录go-machine-service容器并使用你提供给容器的参数进行`curl`命令来验证连接:
 
 ```
-$ docker exec -it <go-machine-service_container_id> bash
-# 在go-machine-service 容器内
-$ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value of CATTLE_URL>
+docker exec -it <go-machine-service_container_id> bash
+在go-machine-service 容器内
+curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value of CATTLE_URL>
 ```
 
 你应该得到一个json响应和200个响应代码。
@@ -210,7 +210,6 @@ $ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value 
 如果curl命令失败，那么在`go-machine-service`和Rancher API server之间存在连接问题。
 
 如果curl命令没有失败，则问题可能是因为go-machine-service尝试建立websocket连接而不是普通的http连接。 如果在go-machine-service和Rancher API服务器之间有代理或负载平衡，请验证代理是否支持websocket连接。
-
 
 
 ## 二、Rancher agent
@@ -242,9 +241,9 @@ $ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value 
 当主机IP地址不正确时，容器将无法访问管理网络。要使主机和所有容器进入管理网络，只需编辑添加自定义主机的命令行，将新的IP指定为环境变量“CATTLE_AGENT_IP”。 在主机上运行编辑后的命令。 不要停止或删除主机上的现有的Rancher Agent容器！
 
 ```bash
-$ sudo docker run -d -e CATTLE_AGENT_IP=<NEW_HOST_IP> --privileged \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
+ sudo docker run -d -e CATTLE_AGENT_IP=<NEW_HOST_IP> --privileged \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
 ```
 
 ### 4、错误提示如下：INFO: Attempting to connect to: http://192.168.xx.xx:8080/v1    ERROR: http://192.168.xx.xx:8080/v1 is not accessible (Failed to connect to 192.168.xx.xx port 8080: No route to host)
@@ -382,9 +381,9 @@ Agent主机有可能会暴露在公网上，Agent上接受到的访问容器命�
 有时，Docker网桥的IP地址会被错误的作为了主机IP，而并没有正确的选择真实的主机IP。这个错误的IP通常是`172.17.42.1`或以`172.17.x.x`开头的IP。如果是这种情况，在使用`docker run`命令添加主机时，请用真实主机的IP地址来配置`CATTLE_AGENT_IP`环境变量。
 
 ```bash
-$ sudo docker run -d -e CATTLE_AGENT_IP=<HOST_IP> --privileged \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
+ sudo docker run -d -e CATTLE_AGENT_IP=<HOST_IP> --privileged \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
 ```
 
 ### 3、Rancher的默认子网（`10.42.0.0/16`）在我的网络环境中已经被使用或禁止使用，我应该怎么去更改这个子网？
@@ -446,7 +445,7 @@ Vxlan 通过4789端口实现通信，检查防火墙有没有开放此端口；
 如果你想查看Rancher　DNS配置，点击**应用** > **基础服务**。点击`network-services`应用，选择`metadata`，在`metadata`中，找到名为`network-services-metadata-dns-X`的容器，通过UI点击**执行命令行**后，可以进入该容器的命令行，然后执行如下命令。
 
 ```bash
-$ cat /etc/rancher-dns/answers.json
+cat /etc/rancher-dns/answers.json
 ```
 ### 八、在Ubuntu上运行容器时彼此间不能正常通信。
 
@@ -497,7 +496,7 @@ sysctl net.ipv4.ip_forward
 如果要查看负载均衡器的配置，你需要用进入负载均衡器容器内部查找配置文件，你可以在页面选择负载均衡容器的**执行命令行**
 
 ```bash
-$ cat /etc/haproxy/haproxy.cfg
+cat /etc/haproxy/haproxy.cfg
 ```
 
 该文件将提供负载均衡器的所有配置详细信息。
@@ -507,7 +506,7 @@ $ cat /etc/haproxy/haproxy.cfg
 HAProxy的日志可以在负载均衡器容器内找到。 负载均衡器容器的`docker logs`只提供与负载均衡器相关的服务的详细信息，但不提供实际的HAProxy日志记录。
 
 ```
-$ cat /var/log/haproxy
+cat /var/log/haproxy
 ```
 
 ## 十一、健康检查
