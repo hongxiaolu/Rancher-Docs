@@ -9,13 +9,22 @@ title: 常见的故障排查与修复方法
 
 ```
 PS：docker命令中，如果使用了 --network host参数，那后面再使用-p 8080:8080 就不会生效。
+
 ```
 
 ```
 docker run -d -p 8080:8080 rancher/server:stable
+
 ```
 
-此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过```-v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle```把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
+此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过
+
+```
+-v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle
+
+```
+
+把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
 
 ### 2、如何导出Rancher Server容器的内部数据库？
 
@@ -32,11 +41,15 @@ Rancher的版本位于UI的页脚的左侧。 如果你点击版本号，将可�
 
 ### 4、如果我没有在Rancher UI中删除主机而是直接删除会发生什么?
 
-如果你的主机直接被删除，Rancher Server会一直显示该主机。主机会处于`Reconnecting`状态，然后转到`Disconnected`状态。你也可以通过添加主机再次把此节点添加到RANCHER 集群，如果不在使用此节点，可以在UI中删除。
+如果你的主机直接被删除，Rancher Server会一直显示该主机。主机会处于`Reconnecting`状态，然后转到`Disconnected`状态。
+你也可以通过添加主机再次把此节点添加到RANCHER 集群，如果不在使用此节点，可以在UI中删除。
 
 如果你有添加了健康检查功能的服务自动调度到状态`Disconnected`主机上，CATTLE会将这些服务重新调度到其他主机上。  
 
-```PS：如果使用了标签调度，如果你有多台主机就有相同的调度标签，那么服务会调度到其他具有调度标签的节点上；如果选择了指定运行到某台主机上，那主机删除后你的应用将无法在其他主机上自动运行。```
+```
+PS：如果使用了标签调度，如果你有多台主机就有相同的调度标签，那么服务会调度到其他具有调度标签的节点上；如果选择了指定运行到某台主机上，那主机删除后你的应用将无法在其他主机上自动运行。
+
+```
 
 ### 5、我如何在代理服务器后配置主机？
 
@@ -57,6 +70,7 @@ docker exec -it <container_id> bash
 跳转到 Cattle 日志所在的目录下
 cd /var/lib/cattle/logs/
 cat cattle-debug.log
+
 ```
 
 在这个目录里面会出现`cattle-debug.log`和`cattle-error.log`。 如果你长时间使用此Rancher Server，你会发现我们每天都会创建一个新的日志文件。
@@ -67,6 +81,7 @@ cat cattle-debug.log
 
 ```
  docker cp <container_id>:/var/lib/cattle/logs /local/path
+ 
 ```
 
 ### 9、如果Rancher Server的IP改变了会怎么样？
@@ -87,6 +102,7 @@ cat cattle-debug.log
 
 ```
  docker run -d -p 8080:8080 --restart=unless-stopped -e JAVA_OPTS="-Xmx4096m" rancher/server
+ 
 ```
 
 根据MySQL数据库的设置方式的不同，你可能需要进行升级才能添加该选项。
@@ -111,6 +127,7 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 
 ```
 ....liquibase.exception.LockException: Could not acquire change log lock. Currently locked by <container_ID>
+
 ```
 #### 释放数据库锁
 
@@ -120,6 +137,7 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 
 ```bash
  sudo docker exec -it <container_id> mysql
+ 
 ```
 
 一旦进入到 Mysql 数据库, 你就要访问`cattle`数据库。
@@ -141,6 +159,7 @@ mysql> select * from DATABASECHANGELOGLOCK;
 |  1 |        | NULL        | NULL     |
 +----+--------+-------------+----------+
 1 row in set (0.00 sec)
+
 ```
 ### 13、开了访问控制但不能访问Rancher了，我该如何重置Rancher禁用访问控制？
 
@@ -241,9 +260,9 @@ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value of
 当主机IP地址不正确时，容器将无法访问管理网络。要使主机和所有容器进入管理网络，只需编辑添加自定义主机的命令行，将新的IP指定为环境变量“CATTLE_AGENT_IP”。 在主机上运行编辑后的命令。 不要停止或删除主机上的现有的Rancher Agent容器！
 
 ```bash
- sudo docker run -d -e CATTLE_AGENT_IP=<NEW_HOST_IP> --privileged \
- -v /var/run/docker.sock:/var/run/docker.sock \
- rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
+sudo docker run -d -e CATTLE_AGENT_IP=<NEW_HOST_IP> --privileged \
+-v /var/run/docker.sock:/var/run/docker.sock \
+rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
 ```
 
 ### 4、错误提示如下：INFO: Attempting to connect to: http://192.168.xx.xx:8080/v1    ERROR: http://192.168.xx.xx:8080/v1 is not accessible (Failed to connect to 192.168.xx.xx port 8080: No route to host)
@@ -262,11 +281,15 @@ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value of
 ## 三、Kubernetes
 
 ### 1、部署Kubernetes时候出现以下有关cgroup的问题
+
 ```
 Failed to get system container stats for "/system.slice/kubelet.service": failed to get cgroup stats for "/system.slice/kubelet.service": failed to get container info for "/system.slice/kubelet.service": unknown container "/system.slice/kubelet.service"
+
 ```
+
 ```
 Expected state running but got error: Error response from daemon: oci runtime error: container_linux.go:247: starting container process caused "process_linux.go:258: applying cgroup configuration for process caused \"mountpoint for devices not found\""
+
 ```
 以上问题为Kubernetes版本与docker 版本不兼容导致cgroup功能失效
 
@@ -279,6 +302,7 @@ Rancher-Kubernetes中，节点之间通信需要通道hostname，如果没有内
 
 ```
 curl -i <Host Registration URL you set in UI>/v1
+
 ```
 
 你应该得到一个json响应。 如果开启了认证，响应代码应为401。如果认证未打开，则响应代码应为200。
@@ -300,6 +324,7 @@ cat >> /etc/docker/daemon.json <<EOF
 EOF
 systemctl daemon-reload && systemctl restart docker
 ```
+
 `PS:0.0.0.0/0 表示信任所有非https地址的镜像仓库，对于内网测试，这样配置很方便。对于线上生产环境，为了安全请不要这样配置`
 
 ### 2、如何配置Docker后端存储驱动？
@@ -316,6 +341,7 @@ systemctl daemon-reload && systemctl restart docker
 ```
 
 ### 3、docker info 出现 WARNING
+
 ```
 WARNING: No swap limit support
 WARNING: No kernel memory limit support
@@ -330,11 +356,13 @@ SUSE
 
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
+
 ```
 Cetos
 
 ```
 Update grub
+
 ```
 Ubuntu
 
