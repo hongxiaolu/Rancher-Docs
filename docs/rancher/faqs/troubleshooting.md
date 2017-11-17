@@ -10,9 +10,12 @@ title: 常见的故障排查与修复方法
 ```
 PS：docker命令中，如果使用了 --network host参数，那后面再使用-p 8080:8080 就不会生效。
 ```
-```docker run -d -p 8080:8080 rancher/server:stable```
 
-此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过`-v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle`把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
+```
+docker run -d -p 8080:8080 rancher/server:stable
+```
+
+此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过```-v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle```把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
 
 ### 2、如何导出Rancher Server容器的内部数据库？
 
