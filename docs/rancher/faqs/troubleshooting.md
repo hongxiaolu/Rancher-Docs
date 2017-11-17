@@ -9,19 +9,16 @@ title: 常见的故障排查与修复方法
 
 ```
 PS：docker命令中，如果使用了 --network host参数，那后面再使用-p 8080:8080 就不会生效。
-
 ```
 
 ```
 docker run -d -p 8080:8080 rancher/server:stable
-
 ```
 
 此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过
 
 ```
 -v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle
-
 ```
 
 把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
@@ -31,8 +28,7 @@ docker run -d -p 8080:8080 rancher/server:stable
 你可以通过简单的Docker命令从Rancher Server容器导出数据库。
 
 ```
- docker exec <CONTAINER_ID_OF_SERVER> mysqldump cattle > dump.sql
-
+docker exec <CONTAINER_ID_OF_SERVER> mysqldump cattle > dump.sql
 ```
 
 ### 3、我正在运行的Rancher是什么版本的?
@@ -48,7 +44,6 @@ Rancher的版本位于UI的页脚的左侧。 如果你点击版本号，将可�
 
 ```
 PS：如果使用了标签调度，如果你有多台主机就有相同的调度标签，那么服务会调度到其他具有调度标签的节点上；如果选择了指定运行到某台主机上，那主机删除后你的应用将无法在其他主机上自动运行。
-
 ```
 
 ### 5、我如何在代理服务器后配置主机？
@@ -70,7 +65,6 @@ docker exec -it <container_id> bash
 跳转到 Cattle 日志所在的目录下
 cd /var/lib/cattle/logs/
 cat cattle-debug.log
-
 ```
 
 在这个目录里面会出现`cattle-debug.log`和`cattle-error.log`。 如果你长时间使用此Rancher Server，你会发现我们每天都会创建一个新的日志文件。
@@ -80,8 +74,7 @@ cat cattle-debug.log
 以下是将Rancher Server日志从容器复制到主机的命令。
 
 ```
- docker cp <container_id>:/var/lib/cattle/logs /local/path
- 
+docker cp <container_id>:/var/lib/cattle/logs /local/path
 ```
 
 ### 9、如果Rancher Server的IP改变了会怎么样？
@@ -101,8 +94,7 @@ cat cattle-debug.log
 你需要再次运行Rancher Server命令并且添加一个额外的选项`-e JAVA_OPTS="-Xmx4096m"`
 
 ```
- docker run -d -p 8080:8080 --restart=unless-stopped -e JAVA_OPTS="-Xmx4096m" rancher/server
- 
+docker run -d -p 8080:8080 --restart=unless-stopped -e JAVA_OPTS="-Xmx4096m" rancher/server
 ```
 
 根据MySQL数据库的设置方式的不同，你可能需要进行升级才能添加该选项。
@@ -127,7 +119,6 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 
 ```
 ....liquibase.exception.LockException: Could not acquire change log lock. Currently locked by <container_ID>
-
 ```
 #### 释放数据库锁
 
@@ -136,8 +127,7 @@ Rancher Server会自动清理几个数据库表，以防止数据库增长太快
 如果你已根据升级文档创建了Rancher Server的数据容器，你需要`exec`到`rancher-data`容器中升级`DATABASECHANGELOGLOCK`表并移除锁，如果你没有创建数据容器，你用`exec`到包含有你数据库的容器中。
 
 ```bash
- sudo docker exec -it <container_id> mysql
- 
+sudo docker exec -it <container_id> mysql 
 ```
 
 一旦进入到 Mysql 数据库, 你就要访问`cattle`数据库。
@@ -159,7 +149,6 @@ mysql> select * from DATABASECHANGELOGLOCK;
 |  1 |        | NULL        | NULL     |
 +----+--------+-------------+----------+
 1 row in set (0.00 sec)
-
 ```
 ### 13、开了访问控制但不能访问Rancher了，我该如何重置Rancher禁用访问控制？
 
@@ -243,7 +232,12 @@ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value of
 
 如果你使用了克隆其他Agent主机的虚拟机并尝试注册它，它将不能工作。在rancher-agent容器的日志中会产生`ERROR: Please re-register this agent.`字样的日志。Rancher主机的唯一ID保存在`/var/lib/rancher/state`，因为新添加和虚拟机和被克隆的主机有相同的唯一ID，所以导致无法注册成功。
 
-解决方法是在克隆的VM上运行以下命令： ```rm -rf /var/lib/rancher/state; docker rm -fv rancher-agent; docker rm -fv rancher-agent-state```, 完成后可重新注册。
+解决方法是在克隆的VM上运行以下命令： 
+
+```
+rm -rf /var/lib/rancher/state; docker rm -fv rancher-agent; docker rm -fv rancher-agent-state
+```
+完成后可重新注册。
 
 ### 2、我在哪里可以找到Rancher agent容器的详细日志?
 
@@ -284,12 +278,10 @@ rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
 
 ```
 Failed to get system container stats for "/system.slice/kubelet.service": failed to get cgroup stats for "/system.slice/kubelet.service": failed to get container info for "/system.slice/kubelet.service": unknown container "/system.slice/kubelet.service"
-
 ```
 
 ```
 Expected state running but got error: Error response from daemon: oci runtime error: container_linux.go:247: starting container process caused "process_linux.go:258: applying cgroup configuration for process caused \"mountpoint for devices not found\""
-
 ```
 以上问题为Kubernetes版本与docker 版本不兼容导致cgroup功能失效
 
@@ -302,7 +294,6 @@ Rancher-Kubernetes中，节点之间通信需要通道hostname，如果没有内
 
 ```
 curl -i <Host Registration URL you set in UI>/v1
-
 ```
 
 你应该得到一个json响应。 如果开启了认证，响应代码应为401。如果认证未打开，则响应代码应为200。
@@ -356,13 +347,11 @@ SUSE
 
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
-
 ```
 Cetos
 
 ```
 Update grub
-
 ```
 Ubuntu
 
@@ -491,6 +480,7 @@ Centos默认设置`/proc/sys/net/ipv4/ip_forward`为`0`，这从底层阻断了D
 
 解决办法：
 
+```
 vi /usr/lib/sysctl.d/00-system.conf
 
 添加如下代码：
@@ -512,6 +502,7 @@ systemctl restart network
 sysctl net.ipv4.ip_forward
 
 如果返回为“net.ipv4.ip_forward = 1”则表示成功了
+```
 
 ## 十、负载均衡
 
