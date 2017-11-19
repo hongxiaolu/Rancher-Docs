@@ -5,10 +5,3 @@ COPY  docs  /home/docs
 RUN cd /home/docs && jekyll build  --destination /home/site  \
     && rm -rf /home/docs  \
     && chown -R nginx:nginx /home/site  
-    
-WORKDIR /home/site  
-VOLUME /home/site 
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
