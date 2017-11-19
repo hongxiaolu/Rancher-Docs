@@ -24,11 +24,11 @@
     <div class="ctrl-right hidden-xs hidden-sm">
         <a href="javascript:void(0)" id="menu-toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
         {% if page.categories == "rancher" %}
-        {% include archive-list-rancher.html %} 
+            {% include rancher.html %} 
         {% elsif page.categories == "os" %} 
-        {% include archive-list-os.html %}
+            {% include rancheros.html %}
         {% elsif page.categories == "kubernetes" %} 
-        {% include archive-list-kubernetes.html %} 
+            {% include kubernetes.html %} 
         {% else %}
         {% endif %}
     </div>
