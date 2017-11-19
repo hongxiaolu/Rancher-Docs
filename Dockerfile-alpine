@@ -9,8 +9,6 @@ RUN apk  add  --no-cache nginx libc-dev openssl  openssl-dev  gcc make  libffi-d
 COPY  alpine/nginx.conf /etc/nginx/
 COPY  alpine/default.conf  /etc/nginx/conf.d/
 
-WORKDIR /home/site  
-VOLUME /home/site 
 
 EXPOSE 80
 
