@@ -23,6 +23,13 @@
     </div>
     <div class="ctrl-right hidden-xs hidden-sm">
         <a href="javascript:void(0)" id="menu-toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
-        {% include archive-list.html %}
+        {% if page.categories == "rancher" %}
+        {% include archive-list-rancher.html %} 
+        {% elsif page.categories == "os" %} 
+        {% include archive-list-os.html %}
+        {% elsif page.categories == "kubernetes" %} 
+        {% include archive-list-kubernetes.html %} 
+        {% else %}
+        {% endif %}
     </div>
 </div>

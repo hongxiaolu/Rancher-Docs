@@ -48,6 +48,51 @@ defaults:
       toc_min: 2
       toc_max: 4
       tree: true
+      categories: home
+  -
+    scope:
+      path: "os"
+      type: "pages"
+    values:
+      layout: docs
+      defaultassignee: johndmulhausen
+      toc_min: 2
+      toc_max: 4
+      tree: true
+      categories: os
+  -
+    scope:
+      path: "kubernetes"
+      type: "pages"
+    values:
+      layout: docs
+      defaultassignee: johndmulhausen
+      toc_min: 2
+      toc_max: 4
+      tree: true
+      categories: kubernetes
+  -
+    scope:
+      path: "blog"
+      type: "pages"
+    values:
+      layout: docs
+      defaultassignee: johndmulhausen
+      toc_min: 2
+      toc_max: 4
+      tree: true
+      categories: blog
+  -
+    scope:
+      path: "rancher"
+      type: "pages"
+    values:
+      layout: docs
+      defaultassignee: johndmulhausen
+      toc_min: 2
+      toc_max: 4
+      tree: true
+      categories: rancher
 
 
 

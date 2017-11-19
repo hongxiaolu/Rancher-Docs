@@ -1,0 +1,8 @@
+<div class="btn-group" style="visibility: visible">
+  <button type="button" class="btn btn-default dropdown-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {% for item in site.data.docsarchive.kubernetes %}{% if item.current == true %}Kubernetes {{ item.name }} (current) {% endif %} {% endfor %}<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    {% for item in site.data.docsarchive.kubernetes %}{% if item.current != true %}<li><a href="/kubernetes/{{ item.name }}/">Kubernetes {{ item.name }}</a></li>{% endif %}{% endfor %}
+  </ul>
+</div>
