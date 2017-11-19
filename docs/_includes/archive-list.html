@@ -3,6 +3,6 @@
     {% for item in site.data.docsarchive.archives %}{% if item.current == true %}Rancher {{ item.name }} (current) {% endif %} {% endfor %}<span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    {% for item in site.data.docsarchive.archives %}{% if item.current != true %}<li><a href="/rancher/{{ item.name }}/">Rancher {{ item.name }}</a></li>{% endif %}{% endfor %}
+    {% for item in site.data.docsarchive.archives %}{% if item.current != true %}<li><a href="/{{ item.name }}/">Rancher {{ item.name }}</a></li>{% endif %}{% endfor %}
   </ul>
 </div>

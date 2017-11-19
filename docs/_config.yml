@@ -13,7 +13,7 @@ lsi: false
 url: https://docs.xtplayer.cn
 keep_files: [ "v1.6"]
 # Component versions -- address like site.docker-ce_stable_version
-rancher_stable_version: "1.6.10"
+rancher_stable_version: "1.6"
 docker-ce_edge_version: "17.09"
 docker-ee_version: "17.06"
 compose_version: "1.16.1"
