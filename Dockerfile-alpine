@@ -1,12 +1,13 @@
 FROM alpine
 
 COPY  docs  /home/docs
-COPY  alpine/nginx.conf /etc/nginx/
-COPY  alpine/default.conf  /etc/nginx/conf.d/
 
 RUN apk  add  --no-cache nginx libc-dev openssl  openssl-dev  gcc make  libffi-dev ruby  ruby-json ruby-dev ruby-rdoc  ruby-bundler \
     && cd /home/docs   \
-    && bundle install 
+    && bundle install && rm -rf /etc/nginx/conf.d/*
+
+COPY  alpine/nginx.conf /etc/nginx/
+COPY  alpine/default.conf  /etc/nginx/conf.d/
 
 WORKDIR /home/site  
 VOLUME /home/site 
