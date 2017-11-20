@@ -33,4 +33,4 @@ Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP�
 
 下图展示了Rancher的主要组件和功能：
 
-<img src="{{site.baseurl}}/img/rancher/rancher_overview_2.png" width="800" alt="Rancher Overview">
+<img src="{{site.url}}/img/rancher/Rancher-2.0.png" width="800" alt="Rancher Overview">
