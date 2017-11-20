@@ -68,10 +68,10 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	{% seo %} 
 	{% if page.hide_from_sitemap %}<meta name="robots" content="noindex" />{% endif %}
 	<script language="javascript">
-		// Default to assuming this is an archive and hiding some stuff
-		// See js/archive.js and js/docs.js for logic relating to this
+	// Default to assuming this is an archive and hiding some stuff
+	// See js/archive.js and js/docs.js for logic relating to this
 	var isArchive = true;
-	var dockerVersion = 'v{{ site.docker_ce_stable_version }}';
+	var dockerVersion = 'v{{ site.rancher_stable_version }}';
 	</script>
 </head>
 <body ng-app="Docker" ng-controller="DockerController" class="colums">
@@ -216,12 +216,6 @@ else %}{% assign edit_url = "" %}{% endif %} {% break %} {% endif %} {% endfor %
 	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<!-- Always include the archive.js, but it doesn't do much unless we are an archive -->
-	<script language="javascript">
-	// Default to assuming this is an archive and hiding some stuff
-	// See js/archive.js and js/docs.js for logic relating to this
-	var isArchive = true;
-	var RancherVersion = 'v{{ site.rancher_stable_version }}';
-	</script>
 	<script src="/js/archive.js"></script>
 	<script src="/js/stickyfill.min.js"></script>
 	<script defer src="/js/docs.js"></script>
