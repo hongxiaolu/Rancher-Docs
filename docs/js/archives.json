@@ -1,4 +1,8 @@
 ---
 layout: null
 ---
+{{ site.data.docsarchive.rancher | jsonify }}
+{{ site.data.docsarchive.rancheros | jsonify }}
+{{ site.data.docsarchive.kubernetes | jsonify }}
 {{ site.data.docsarchive.archives | jsonify }}
+
