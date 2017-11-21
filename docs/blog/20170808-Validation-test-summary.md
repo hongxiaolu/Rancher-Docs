@@ -4,8 +4,8 @@ title: 20170808-Validation-test-summary
 ### 基础环境准备
 
 一、主机资源：
-```
 
+```
 需要四个节点，每个至少2C8G。其中一个节点是Rancher-server，其他三个节点为Rancher-agent。
 
 ```
@@ -65,10 +65,10 @@ git clone https://github.com/rancher/validation-tests.git
 2、修改两个参数（目前这两个参数需手动修改，后期会添加进测试文件）
 
 ```
-   1，Edit the tox.ini file in v2_validation directory tests/v2_validation/tox.ini to run the specific tests you need and make sure to add passenv=*, it should look something like that
+1，Edit the tox.ini file in v2_validation directory tests/v2_validation/tox.ini to run the specific tests you need and make sure to add passenv=*, it should look something like that
 (如果需要执行特定的测试文件就不要修改，如果要运行某个文件就修改路径)
    
-   2，Change the line in scripts/test to pushd ./tests/v2_validation instead of pushd ./tests/validation
+2，Change the line in scripts/test to pushd ./tests/v2_validation instead of pushd ./tests/validation
 
 参考链接：https://github.com/rancher/validation-tests 
 ```
@@ -76,15 +76,10 @@ git clone https://github.com/rancher/validation-tests.git
 五、环境变量设置
 
 ```
-
 export CATTLE_TEST_URL=http://xx.xx.xx.xx:8080  
-
 export CATTLE_RESTART_SLEEP_INTERVAL=10
-
 export ACCESS_KEY=xxxxxxxx
-
 export SECRET_KEY=xxxxxxx
-
 export PROJECT_ID=1a5
 
 参考链接：https://github.com/rancher/validation-tests 
@@ -99,9 +94,7 @@ PS：rancher安装的时候，如果是云服务器不要用内网地址作为�
 ###开始测试
 
 ```
-
 进入validation-tests目录，执行：./scripts/test
-
 python文件返回值：
 s--skip跳过
 F--failure失败

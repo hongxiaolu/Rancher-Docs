@@ -19,6 +19,10 @@ blog:
 - title: 博客
 - title: 青云上部署RANCHER
   path: /blog/qinyun-install-rancher/
+- title: Rancher-Validation-test
+  path: /blog/20170808-Validation-test-summary/
+- title: 留言
+  path: /liuyan/
 
 guides:
 - title: 首页
