@@ -2,7 +2,6 @@
 title: Kubernetes 常见问题
 ---
 
-
 ### 1、部署Kubernetes时候出现以下有关cgroup的问题
 
 ```

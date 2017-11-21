@@ -26,12 +26,10 @@ rm -rf /var/lib/rancher/state; docker rm -fv rancher-agent; docker rm -fv ranche
 
 ### 3、主机是如何自动探测IP的？我该怎么去修改主机IP？如果主机IP改变了（因为重启），我该怎么办？
 
-```
 当Agent连接Rancher Server时，它会自动检测Agent的IP。有时，自动探测的IP不是你想要使用的IP，或者选择了docker网桥的IP，如. `172.17.x.x`。
 或者，你有一个已经注册的主机，当主机重启后获得了一个新的IP, 这个IP将会和Rancher UI中的主机IP不匹配。
 你可以重新配置“CATTLE_AGENT_IP”设置，并将主机IP设置为你想要的。
 当主机IP地址不正确时，容器将无法访问管理网络。要使主机和所有容器进入管理网络，只需编辑添加自定义主机的命令行，将新的IP指定为环境变量“CATTLE_AGENT_IP”。 在主机上运行编辑后的命令。 不要停止或删除主机上的现有的Rancher Agent容器！
-```
 
 ```bash
 sudo docker run -d -e CATTLE_AGENT_IP=<NEW_HOST_IP> --privileged \
@@ -41,18 +39,16 @@ rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
 
 ### 4、错误提示如下：INFO: Attempting to connect to: http://192.168.xx.xx:8080/v1    ERROR: http://192.168.xx.xx:8080/v1 is not accessible (Failed to connect to 192.168.xx.xx port 8080: No route to host)
 
-```
+
 这个问题主要有以下几种情况：
 
 1.RANCHER SERVER服务器防火墙没有开通8080端口;
 2.云平台安全组没有放行8080端口;
 3.Agent 服务器没有开启IP转发规则 [为什么我的容器无法连接到网络?]:{site.baseurl}}/rancher/faqs/troubleshooting/1为什么我的容器无法连接到网络;
 4.主机hosts(`/etc/hosts`)文件没有配置;
-```
+
 
 ### 5、rancher下创建的服务容器，docker inspect 查看到Entrypoint和CMD后面有/.r/r字符，这个起什么作用？
 
-```
 ./r 是基于weave wait编译出来的。
 CNI网络下会添加/.r/r  这个参数，目的是：当容器启动时，其实网络设备还没设置好，这时候需要container 等待，不能启动真实业务，否则会失败。
-```
