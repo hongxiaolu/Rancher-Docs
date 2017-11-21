@@ -219,6 +219,10 @@ rancher:
     title: Server 问题
   - path: /rancher/faqs/agents/
     title: Agent 问题
+  - path: /rancher/faqs/Kubernetes/
+    title: Kubernetes 问题
+  - path: /rancher/faqs/docker/
+    title: Docker 问题
   - path: /rancher/faqs/troubleshooting/
     title: 故障排查与修复方法
 - title: 贡献
