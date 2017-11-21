@@ -12,7 +12,7 @@ Rancher在服务/容器和主机上使用标签来帮助管理Rancher的不同�
 标签用于帮助Rancher启动服务并利用Rancher的功能。下列的标签索引用于帮助用户使用Rancher Compose来创建服务。 这些标签在UI上有对应关系，不需要额外添加到服务上。
 
 Key | Value |描述
-----|-----|---
+---|---|---
 `io.rancher.sidekicks` |  `服务名称`  | 用来定义哪些服务属于[从容器]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/adding-services/#sidekick-服务)
 `io.rancher.loadbalancer.target.SERVICE_NAME` | `REQUEST_HOST:SOURCE_PORT/REQUEST_PATH=TARGET_PORT` |用于判定 [L7 Load Balancing]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/adding-load-balancers/#load-balancer-example-l7)
 `io.rancher.container.dns`| `true` | 服务能够使用基于Rancher DNS的服务发现来解析其他服务，并能被其他服务解析。 如果你需要此DNS服务，且网络设置为`主机`，则此标签是必需的.
