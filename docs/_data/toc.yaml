@@ -21,6 +21,10 @@ blog:
   path: /blog/qinyun-install-rancher/
 - title: Rancher-Validation-test
   path: /blog/20170808-Validation-test-summary/
+- title: 通过webhook实现服务升级
+  path: /blog/service-auto-update/
+- title: Rancher-CNI-Driver
+  path: /blog/Rancher-CNI-Driver/
 - title: 留言
   path: /liuyan/
 
