@@ -122,6 +122,10 @@ HAProxy的日志可以在负载均衡器容器内找到。 负载均衡器容器
 ```
 cat /var/log/haproxy
 ```
+### 4、如何自定义负载均衡的配置
+![自定义LB](img/custom_lb.png)
+如图，在自定义配置中，按照global、defaults、frontend、backend的格式配置，
+
 ## 五、健康检查
 ### 1、为什么健康检查服务一直显示黄色初始化状态？
 healthcheck不仅为其他服务提供健康检查，对系统组件(比如调度服务)也提供健康检查服务，healthcheck也对自己进行健康检查。多个healthcheck组件时，它们会相互交叉检查，只有健康检查通过后，容器状态才会变成绿色。
