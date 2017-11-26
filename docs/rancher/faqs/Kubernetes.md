@@ -3,7 +3,7 @@ title: Kubernetes 常见问题
 ---
 
 
-### 1、部署Kubernetes时候出现以下有关cgroup的问题
+## 1、部署Kubernetes时候出现以下有关cgroup的问题
 
 ```bash
 Failed to get system container stats for "/system.slice/kubelet.service": 
@@ -20,11 +20,11 @@ for process caused \"mountpoint for devices not found\""
 ```
 以上问题为Kubernetes版本与docker 版本不兼容导致cgroup功能失效
 
-### 2、Kubernetes  err: [nodes \"iZ2ze3tphuqvc7o5nj38t8Z\" not found]"
+## 2、Kubernetes  err: [nodes \"iZ2ze3tphuqvc7o5nj38t8Z\" not found]"
 
 Rancher-Kubernetes中，节点之间通信需要通道hostname，如果没有内部DNS服务器，那么需要为每台节点配置hosts文件。
 
-### 3、如何验证你的主机注册地址设置是否正确？
+## 3、如何验证你的主机注册地址设置是否正确？
 
 如果你正面临Rancher Agent和Rancher Server的连接问题，请检查主机设置。当你第一次尝试在UI中添加主机时，你需要设置主机注册的URL，该URL用于建立从主机到Rancher Server的连接。这个URL必须可以从你的主机访问到。为了验证它，你需要登录到主机并执行curl命令：
 
