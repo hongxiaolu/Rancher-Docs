@@ -2,15 +2,17 @@
 title: Kubernetes 常见问题
 ---
 
+
 ### 1、部署Kubernetes时候出现以下有关cgroup的问题
 
-```
+```bash
 Failed to get system container stats for "/system.slice/kubelet.service": 
 failed to get cgroup stats for "/system.slice/kubelet.service": failed to 
 get container info for "/system.slice/kubelet.service": unknown container 
 "/system.slice/kubelet.service"
 ```
-```
+
+```bash
 Expected state running but got error: Error response from daemon: 
 oci runtime error: container_linux.go:247: starting container 
 process caused "process_linux.go:258: applying cgroup configuration 
@@ -19,6 +21,7 @@ for process caused \"mountpoint for devices not found\""
 以上问题为Kubernetes版本与docker 版本不兼容导致cgroup功能失效
 
 ### 2、Kubernetes  err: [nodes \"iZ2ze3tphuqvc7o5nj38t8Z\" not found]"
+
 Rancher-Kubernetes中，节点之间通信需要通道hostname，如果没有内部DNS服务器，那么需要为每台节点配置hosts文件。
 
 ### 3、如何验证你的主机注册地址设置是否正确？
