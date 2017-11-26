@@ -30,5 +30,5 @@ curl -i <Host Registration URL you set in UI>/v1
 ```
 你应该得到一个json响应。 如果开启了认证，响应代码应为401。如果认证未打开，则响应代码应为200。
 
-> **注意：** 普通的HTTP请求和websocket连接（ws://）都将被使用。 如果此URL指向代理或负载平衡器，请确保它们可以支持Websocket连接。
->
+**注意：** 普通的HTTP请求和websocket连接（ws://）都将被使用。 如果此URL指向代理或负载平衡器，请确保它们可以支持Websocket连接。
+
