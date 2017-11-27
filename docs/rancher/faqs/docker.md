@@ -2,7 +2,7 @@
 title: Docker 常见问题
 ---
 
-### 1、镜像下载慢，如何提高下载速度？
+## 1、镜像下载慢，如何提高下载速度？
 
 ```bash
 touch /etc/docker/daemon.json
@@ -18,7 +18,7 @@ systemctl daemon-reload && systemctl restart docker
 PS:0.0.0.0/0 表示信任所有非https地址的镜像仓库，对于内网测试，这样配置很方便。对于线上生产环境，
 为了安全请不要这样配置
 ```
-### 2、如何配置Docker后端存储驱动？
+## 2、如何配置Docker后端存储驱动？
 以overlay为例
 
 ```bash
@@ -30,7 +30,7 @@ cat >> /etc/docker/daemon.json <<EOF
 EOF
 systemctl daemon-reload && systemctl restart docker
 ```
-### 3、docker info 出现 WARNING
+## 3、docker info 出现 WARNING
 
 ```bash
 WARNING: No swap limit support
@@ -57,7 +57,7 @@ Ubuntu
 ```
 update-grub
 ```
-### 4、我怎么通过rancher让docker里的程序代理上网呢？
+## 4、我怎么通过rancher让docker里的程序代理上网呢？
 
 启动容器的时候 加一下 
 ```
@@ -66,7 +66,7 @@ update-grub
 
 ![proxy](img/proxy.png)
 
-### 5、Docker Error: Unable to remove filesystem
+## 5、Docker Error: Unable to remove filesystem
 Some container-based utilities, such as Google cAdvisor, mount Docker system directories, such as /var/lib/docker/, into a container. For instance, the documentation for cadvisor instructs you to run the cadvisor container as follows:
 
 ````bash
