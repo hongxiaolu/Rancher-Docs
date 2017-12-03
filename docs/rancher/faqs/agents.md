@@ -2,13 +2,13 @@
 title: Rancher Agent 常见问题
 ---
 
-### 1、Rancher Agent无法启动的原因是什么？
+#### 1、Rancher Agent无法启动的原因是什么？
 
-#### 1.1、添加 `--name rancher-agent` （老版本）
+##### 1.1、添加 `--name rancher-agent` （老版本）
 
 如果你从UI中编辑`docker run .... rancher/agent...`命令并添加`--name rancher-agent`选项，那么Rancher Agent将启动失败。Rancher Agent在初始运行时会启动3个不同容器，一个是运行状态的，另外两个是停止状态的。Rancher Agent要成功连接到Rancher Server必须要有两个名字分别为`rancher-agent`和`rancher-agent-state`的容器，第三个容器是docker自动分配的名称，这个容器会被移除。
 
-#### 1.2、使用一个克隆的虚拟机
+##### 1.2、使用一个克隆的虚拟机
 
 如果你使用了克隆其他Agent主机的虚拟机并尝试注册它，它将不能工作。在rancher-agent容器的日志中会产生`ERROR: Please re-register this agent.`字样的日志。Rancher主机的唯一ID保存在`/var/lib/rancher/state`，因为新添加和虚拟机和被克隆的主机有相同的唯一ID，所以导致无法注册成功。
 
@@ -19,11 +19,11 @@ rm -rf /var/lib/rancher/state; docker rm -fv rancher-agent; docker rm -fv ranche
 ```
 完成后可重新注册。
 
-### 2、我在哪里可以找到Rancher agent容器的详细日志?
+#### 2、我在哪里可以找到Rancher agent容器的详细日志?
 
 从v1.6.0起，在rancher-agent容器上运行`docker logs`将提供agent相关的所有日志。
 
-### 3、主机是如何自动探测IP的？我该怎么去修改主机IP？如果主机IP改变了（因为重启），我该怎么办？
+#### 3、主机是如何自动探测IP的？我该怎么去修改主机IP？如果主机IP改变了（因为重启），我该怎么办？
 
 当Agent连接Rancher Server时，它会自动检测Agent的IP。有时，自动探测的IP不是你想要使用的IP，或者选择了docker网桥的IP，如. `172.17.x.x`。
 或者，你有一个已经注册的主机，当主机重启后获得了一个新的IP, 这个IP将会和Rancher UI中的主机IP不匹配。
@@ -36,18 +36,30 @@ sudo docker run -d -e CATTLE_AGENT_IP=<NEW_HOST_IP> --privileged \
 rancher/agent:v0.8.2 http://SERVER_IP:8080/v1/scripts/xxxx
 ```
 
-### 4、错误提示如下：INFO: Attempting to connect to: http://192.168.xx.xx:8080/v1    ERROR: http://192.168.xx.xx:8080/v1 is not accessible (Failed to connect to 192.168.xx.xx port 8080: No route to host)
+#### 4、错误提示如下：INFO: Attempting to connect to: http://192.168.xx.xx:8080/v1    ERROR: http://192.168.xx.xx:8080/v1 is not accessible (Failed to connect to 192.168.xx.xx port 8080: No route to host)
 
 
 这个问题主要有以下几种情况：
 
 1.RANCHER SERVER服务器防火墙没有开通8080端口;
+
 2.云平台安全组没有放行8080端口;
-3.Agent 服务器没有开启IP转发规则 [为什么我的容器无法连接到网络?]:{site.baseurl}}/rancher/faqs/troubleshooting/1为什么我的容器无法连接到网络;
+
+3.Agent 服务器没有开启IP转发规则 [为什么我的容器无法连接到网络?]:{site.baseurl}}/rancher/faqs/
+troubleshooting/1为什么我的容器无法连接到网络;
+
 4.主机hosts(`/etc/hosts`)文件没有配置;
 
 
-### 5、rancher下创建的服务容器，docker inspect 查看到Entrypoint和CMD后面有/.r/r字符，这个起什么作用？
+#### 5、rancher下创建的服务容器，docker inspect 查看到Entrypoint和CMD后面有/.r/r字符，这个起什么作用？
 
 ./r 是基于weave wait编译出来的。
 CNI网络下会添加/.r/r  这个参数，目的是：当容器启动时，其实网络设备还没设置好，这时候需要container 等待，不能启动真实业务，否则会失败。
+
+##### 6、 添加hosts后 server上没有列出，agent报Host not registered yet. Sleeping 1 second and trying again." Attempt=0 reportedUuid=752031dd-8c7e-4666-5f93-020d7f4da5d3
+
+检查主机名和hosts配置, hosts中需要配置：
+
+127.0.0.1 localhost
+
+hostip  hostname 
