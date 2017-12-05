@@ -30,6 +30,7 @@ Rancher-Kubernetes中，节点之间通信需要通过hostname，如果没有内
 cat /etc/hosts<<EOF
 127.0.0.1 localhost
 192.168.1.100 node1
+EOF
 ```
 
 ## 3、如何验证你的主机注册地址设置是否正确？
