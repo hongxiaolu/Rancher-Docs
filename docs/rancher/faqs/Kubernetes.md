@@ -22,7 +22,15 @@ for process caused \"mountpoint for devices not found\""
 
 ## 2、Kubernetes  err: [nodes \"iZ2ze3tphuqvc7o5nj38t8Z\" not found]"
 
-Rancher-Kubernetes中，节点之间通信需要通道hostname，如果没有内部DNS服务器，那么需要为每台节点配置hosts文件。
+Rancher-Kubernetes中，节点之间通信需要通过hostname，如果没有内部DNS服务器，那么需要为每台节点配置hosts文件。
+
+配置示例:假如某个节点主机名为node1,ip 地址为192.168.1.100
+
+```
+cat /etc/hosts<<EOF
+127.0.0.1 localhost
+192.168.1.100 node1
+```
 
 ## 3、如何验证你的主机注册地址设置是否正确？
 
