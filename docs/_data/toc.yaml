@@ -25,6 +25,10 @@ blog:
   path: /blog/service-auto-update/
 - title: Rancher-CNI-Driver
   path: /blog/Rancher-CNI-Driver/
+- title: API简单使用
+  path: /blog/api-use/
+- title: CentOS存储Docker存储驱动
+  path: /blog/CentOS-direct-lvm/
 - title: 留言
   path: /liuyan/
 
