@@ -12,7 +12,7 @@ title: 青云上部署RANCHER
 
 1.  通过访问[[https://console.qingcloud.com/]{.underline}](https://console.qingcloud.com/)登录控制台，根据需要选择区域：
 
-	![](/images/1/image1.png)
+	![](qinyun/image1.png)
 
 2.  网络基础配置
 
@@ -20,36 +20,36 @@ title: 青云上部署RANCHER
 
 	用于受管私有网络之间互联，并提供以下附加服务：DHCP服务、端口转发、隧道服务、VPN服务和过滤控制。如果您还希望	路由器能接入互联网，请捆绑一个公网 IP给该路由器即可。
 		
-	![](/images/1/image2.png)
+	![](qinyun/image2.png)
 
 	基本属性
 
-	![](/images/1/image3.png)
+	![](qinyun/image3.png)
 
 	2)  私有网络（Vxnet）
 
 	用于主机之间互联，它类似物理世界中使用交换机（L2Switch）组成的局域网。私有网络之间是100%隔离的。
 
-	![](/images/1/image4.png)
+	![](qinyun/image4.png)
 
 	3)  私有网络配置
 
 	点击网络ID
 
-	![](/images/1/image5.png)
+	![](qinyun/image5.png)
 
 	连接到已有路由器
 
-	![](/images/1/image6.png)
+	![](qinyun/image6.png)
 
 	DHCP 服务为您的私有网络提供 IP
 	地址分配。分配的地址都是固定地址，即一个主机在其生命周期内获得的地址是保持不变的。
 
-	![](/images/1/image7.png)
+	![](qinyun/image7.png)
 
 	提交后：
 
-	![](/images/1/image8.png)
+	![](qinyun/image8.png)
 
 	4)  公网IP（Elastic IP）
 
@@ -60,115 +60,115 @@ title: 青云上部署RANCHER
 	为了可以通过互联网访问RANCHER
 	SERVER以及其他节点可以通过互联网下载镜像，需要申请一个公网IP，点击申请：
 
-	![](/images/1/image9.png)
+	![](qinyun/image9.png)
 
 	点击ID
 
-	![](/images/1/image10.png)
+	![](qinyun/image10.png)
 
 	绑定到已有的路由器上
 
-	![](/images/1/image11.png)
+	![](qinyun/image11.png)
 
 	基本属性
 
-	![](/images/1/image12.png)
+	![](qinyun/image12.png)
 
 RANCHER 部署
 ------------
 
 1.  控制台左侧点击容器平台，接着点击Rancher
 
-	![](/images/1/image13.png)
+	![](qinyun/image13.png)
 
 2.  接着点击创建，点击后跳转到应用配置页面
 
-	![](/images/1/image14.png)
+	![](qinyun/image14.png)
 
 3.  基本设置，可以保持默认
 
-	![](/images/1/image15.png)
+	![](qinyun/image15.png)
 
 4.  Rancher server 节点设置
 
-	![](/images/1/image16.png)
+	![](qinyun/image16.png)
 
 5.  Rancher agent设置
 
-	![](/images/1/image17.png)
+	![](qinyun/image17.png)
 
 6.  网络设置
 
-	![](/images/1/image18.png)
+	![](qinyun/image18.png)
 
 7.  点击提交后，跳转到新页面
 
-	![](/images/1/image19.png)
+	![](qinyun/image19.png)
 
 8.  端口转发映射
 
 	1)  进入 网络与CDN \| 路由器，点击端口转发
 
-	![](/images/1/image20.png)
+	![](qinyun/image20.png)
 
 	2)  点击添加规则(IP地址在第九步查询)
 	
-	![](/images/1/image21.png)
+	![](qinyun/image21.png)
 
 	3)  最后点击提交并点击应用修改。
 
-	![](/images/1/image22.png)
+	![](qinyun/image22.png)
 	
 9. 防火墙配置
 
 	1)  进入 安全 | 防火墙，点击默认防火墙规则ID
 
-	![](/images/1/image23.png)
+	![](qinyun/image23.png)
 
 	2)  默认情况下，只开放了ping ICMP和ssh端口，点击添加规则：
 
-	![](/images/1/image24.png)
+	![](qinyun/image24.png)
 
 3)  最后点击应用修改
 
-![](/images/1/image25.png)
+![](qinyun/image25.png)
 
 访问RANCHER 
 ------------
 
 1.  通过Elastic IP:8080访问Rancher server
 
-	![](/images/1/image26.png)
-	![](/images/1/image27.png)
+	![](qinyun/image26.png)
+	![](qinyun/image27.png)
 
 2.  添加第一个应用
 
 	1)  创建空应用栈
 
-	![](/images/1/image28.png)
+	![](qinyun/image28.png)
 
 	2)  添加服务
 
-	![](/images/1/image29.png)
+	![](qinyun/image29.png)
 
 	3)  通过调度指定服务运行到某台主机上
 
-	![](/images/1/image30.png)
+	![](qinyun/image30.png)
 
 	4)  进入主机界面查看主机的IP地址
 
-	![](/images/1/image31.png)
+	![](qinyun/image31.png)
 
 	5)  返回青云控制台进入路由器，将主机内网端口映射到公网端口上，最后应用修改
 
-	![](/images/1/image32.png)
+	![](qinyun/image32.png)
 
 	6)  在安全\|防火墙中，放行8888端口,并应用修改
 
-	![](/images/1/image33.png)
+	![](qinyun/image33.png)
 
 	7)  通过映射的端口访问应用
 
-	![](/images/1/image34.png)
+	![](qinyun/image34.png)
 
 	PS:为了访问的便捷性，可以手动搭建一台Nginx或者Haproxy反向代理服务器。
