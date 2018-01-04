@@ -19,16 +19,22 @@ blog:
 - title: 博客
 - title: 青云上部署RANCHER
   path: /blog/qinyun-install-rancher/
+
 - title: Rancher-Validation-test
   path: /blog/20170808-Validation-test-summary/
+
 - title: 通过webhook实现服务升级
   path: /blog/service-auto-update/
+
 - title: Rancher-CNI-Driver
   path: /blog/Rancher-CNI-Driver/
+
 - title: API简单使用
   path: /blog/api-use/
-- title: CentOS存储Docker存储驱动
+
+- title: CentOS更改Docker存储驱动
   path: /blog/CentOS-direct-lvm/
+
 - title: 留言
   path: /liuyan/
 
