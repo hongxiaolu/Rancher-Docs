@@ -58,11 +58,10 @@ sudo pvcreate /dev/sdb
 ```bash
 sudo vgcreate dockervg /dev/sdb
 ```
-### 划分三个逻辑卷(LV)，分别用于：`docker_data，docker_metadata，docker_dir`
+### 划分三个逻辑卷(LV)，分别用于：`docker_data，docker_metadata`
 ```bash
 sudo lvcreate --wipesignatures y -n data dockervg -L 35G
 sudo lvcreate --wipesignatures y -n metadata dockervg -L 1G
-sudo lvcreate --wipesignatures y -n dockerdir dockervg -l+100%FREE
 ```
 ### 转换为thin pool
 ```bash
@@ -77,6 +76,11 @@ activation {
 }
 EOF
 ```
+### 划分一个逻辑卷(LV)，用于docker_dir
+```bash
+sudo lvcreate --wipesignatures y -n dockerdir dockervg -l+100%FREE
+```
+
 ### 应用以上配置
 ```bash
 lvchange --metadataprofile dockervg-data dockervg/data
@@ -88,7 +92,7 @@ lvs -o+seg_monitor
 ### 映射相应目录
 ```bash
 mkfs -t xfs /dev/dockervg/dockerdir
-mkdir /var/lib/docker 
+mkdir -p /var/lib/docker 
 mount /dev/dockervg/dockerdir /var/lib/docker
 cat>> /etc/fstab <<EOF
 /dev/dockervg/dockerdir /var/lib/docker xfs defaults 0 0
@@ -111,7 +115,7 @@ EOF
 ```
 
 ## 存储池扩容
-假定现在有一块100G的块设备  /dev/sdc
+### 场景一：假定现在有一块100G的块设备  /dev/sdc
 ### 通过pvdisplay查看卷组与物理卷/块设备的对应关系
 ```bash
 sudo pvdisplay |grep docker
@@ -126,7 +130,7 @@ info: Volume group "docker" successfully extended
 ```
 ### 给逻辑卷(LV)扩容
 ```bash
-sudo lvextend -l+100%FREE  -n docker/docker
+sudo lvextend -l+100%FREE  -n docker/thinpool
 resize2fs /dev/docker/docker
 -l+100%FREE: 表示使用全部空闲空间，改为-L 10G指定扩展大小；
 -n docker/thinpool: 指定逻辑卷名(卷组/逻辑卷名)
@@ -136,4 +140,6 @@ resize2fs /dev/docker/docker
 # LV扩容重启后，可能会出现“Non existing device" 的提示，需要对LV卷进行激活操作:
 sudo lvchange -ay docker/thinpool
 ```
+
+### 场景二：原有磁盘剩余空间扩容
 

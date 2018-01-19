@@ -6,7 +6,7 @@ title: Rancher Server 常见问题
 
 需要注意运行rancher server 容器时，不要使用host模式。程序中有些地方定义的是localhost或者127.0.0.1，如果容器网络设置为host，将会去访问宿主机资源，因为宿主机并没有相应资源，rancher server 容器启动就出错。
 
-```
+```bash
 PS：docker命令中，如果使用了 --network host参数，那后面再使用-p 8080:8080 就不会生效。
 ```
 ```
@@ -14,7 +14,7 @@ docker run -d -p 8080:8080 rancher/server:stable
 ```
 此命令仅适用于单机测试环境，如果要生产使用Rancher server，请使用外置数据库(mysql)或者通过
 
-```
+```bash
 -v /xxx/mysql/:/var/lib/mysql -v /xxx/log/:/var/log/mysql -v /xxx/cattle/:/var/lib/cattle
 ```
 把数据挂载到宿主机上。如果用外置数据库，需提前对数据库做性能优化，以保证Rancher 运行的最佳性能。
@@ -51,7 +51,7 @@ PS：如果使用了标签调度，如果你有多台主机就有相同的调度
 
 运行`docker logs`可以查看在Rancher Server容器的基本日志。要获取更详细的日志，你可以进入到Rancher Server容器内部并查看日志文件。
 
-```
+```bash
 进入 Rancher　Server　容器内部
 docker exec -it <container_id> bash
 
@@ -65,7 +65,7 @@ cat cattle-debug.log
 
 以下是将Rancher Server日志从容器复制到主机的命令。
 
-```
+```bash
 docker cp <container_id>:/var/lib/cattle/logs /local/path
 ```
 ### 9、如果Rancher Server的IP改变了会怎么样？
@@ -84,7 +84,7 @@ docker cp <container_id>:/var/lib/cattle/logs /local/path
 
 你需要再次运行Rancher Server命令并且添加一个额外的选项`-e JAVA_OPTS="-Xmx4096m"`
 
-```
+```bash
 docker run -d -p 8080:8080 --restart=unless-stopped -e JAVA_OPTS="-Xmx4096m" rancher/server
 ```
 
@@ -217,3 +217,45 @@ curl -i -u '<value of CATTLE_ACCESS_KEY>:<value of CATTLE_SECRET_KEY>' <value of
 ### 17、rancher catalog 多久同步一次
 
 http://X.X.X.X/v1/settings/catalog.refresh.interval.seconds 默认300秒 可以修改 点setting会立即更新
+
+### 18、Rancher server cattle-debug.log 文件占满磁盘的问题
+
+这个问题主要在Rancher server 1.6.11 之前（1.6.11 已经解决）
+
+目前是按天来创建日志文件， 如果日志文件太多会进行日志分段，每一段默认100M， 默认情况下，系统保留5个分段。
+通过打开http://rancher_url:8080/v2-beta/settings ，网页搜索 logback 可以看到以下内容，
+
+```bash
+{
+"id": "logback.max.file.size",
+"type": "activeSetting",
+"links": {
+"self": "…/v2-beta/settings/logback.max.file.size"
+},
+
+"actions": { },
+"baseType": "setting",
+"name": "logback.max.file.size",
+"activeValue": "100MB",
+"inDb": false,
+"source": "Code Packaged Defaults",
+"value": "100MB"
+},
+{
+"id": "logback.max.history",
+"type": "activeSetting",
+"links": {
+"self": "…/v2-beta/settings/logback.max.history"
+},
+"actions": { },
+"baseType": "setting",
+"name": "logback.max.history",
+"activeValue": "5",
+"inDb": false,
+"source": "Code Packaged Defaults",
+"value": "5"
+},
+```
+点击self 后的相应类型，比如"self": "…/v2-beta/settings/logback.max.history" 可以做相应参数调整。
+
+相应issue：https://github.com/rancher/rancher/issues/9887
