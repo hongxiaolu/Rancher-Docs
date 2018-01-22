@@ -47,9 +47,7 @@ URL: v2-beta/projects/${projects_id}/stacks/${stacks_id}/services
 点击右上角的 create, 示例：创建cattle调度环境模板并选择vxlan网络
 
 ![](API/hjmb2.png)
-
 ![](API/hjmb3.png)
-
 ![](API/hjmb4.png)
 
 点击 `Send Request ` 后，进入RANCHER UI ,通过环境管理查看新建的环境模板

@@ -259,3 +259,11 @@ http://X.X.X.X/v1/settings/catalog.refresh.interval.seconds 默认300秒 可以�
 点击self 后的相应类型，比如"self": "…/v2-beta/settings/logback.max.history" 可以做相应参数调整。
 
 相应issue：https://github.com/rancher/rancher/issues/9887
+
+### 19 Rancher server 如何免密更新Catalog
+在配置
+私有仓库地址的时候，添加用户名和密码
+
+```
+https://{username}:{password}@github.com/{repo}
+```
