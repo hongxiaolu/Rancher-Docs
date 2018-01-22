@@ -260,7 +260,7 @@ http://X.X.X.X/v1/settings/catalog.refresh.interval.seconds 默认300秒 可以�
 
 相应issue：https://github.com/rancher/rancher/issues/9887
 
-### 19 Rancher server 如何免密更新Catalog
+### 19、Rancher server 如何免密更新Catalog
 在配置
 私有仓库地址的时候，添加用户名和密码
 
