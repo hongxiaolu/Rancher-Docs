@@ -7,4 +7,5 @@ RUN cd /home/docs && jekyll build  --destination /home/web  \
     && chown -R nginx:nginx /home/web 
 
 VOLUME ["/home/web"]
+
 WORKDIR /home/web
