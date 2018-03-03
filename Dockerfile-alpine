@@ -1,11 +1,8 @@
 FROM registry.cn-shenzhen.aliyuncs.com/rancher_cn/rancher-docs:base
 
 COPY  docs  /home/docs
-
 RUN cd /home/docs && jekyll build  --destination /home/web  \
     && rm -rf /home/docs  \
     && chown -R nginx:nginx /home/web 
-
 VOLUME ["/home/web"]
-
 WORKDIR /home/web
