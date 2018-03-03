@@ -10,6 +10,7 @@ COPY  alpine/nginx.conf /etc/nginx/
 COPY  alpine/default.conf  /etc/nginx/conf.d/
 
 EXPOSE 80
+
 STOPSIGNAL SIGTERM
 
 CMD ["nginx", "-g", "daemon off;"]
