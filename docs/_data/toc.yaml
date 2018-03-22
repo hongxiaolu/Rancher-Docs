@@ -35,6 +35,12 @@ blog:
 - title: CentOS更改Docker存储驱动
   path: /blog/CentOS-direct-lvm/
 
+- title: machine-driver
+  path: /blog/machine-driver/
+
+- title: 应用商店catalog模板制作
+  path: /blog/catalog-template/
+
 - title: 留言
   path: /liuyan/
 
