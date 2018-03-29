@@ -267,3 +267,37 @@ http://X.X.X.X/v1/settings/catalog.refresh.interval.seconds 默认300秒 可以�
 ```
 https://{username}:{password}@github.com/{repo}
 ```
+### 20、修改server 日志等级
+
+默认情况下，server日志记录等级为INFO，可以按照以下方法修改：
+
+通过打开 http://rancher_url:8080/v2-beta/settings/auth.service.log.level ,
+
+![mage-20180329174623](server.assets/image-201803291746238.png)
+
+点击编辑 修改
+
+![mage-20180329174705](server.assets/image-201803291747058.png)
+
+![mage-20180329174723](server.assets/image-201803291747230.png)
+
+点击show Request，再点击send Request.
+
+![mage-20180329174815](server.assets/image-201803291748154.png)
+
+
+
+### 21、禁止新用户不创建default 环境
+
+默认情况下，新用户第一次登录会创建default环境，通过设置API可以禁止此设置：
+
+通过打开 http://rancher_url:8080/v2-beta/settings/project.create.default 
+
+![mage-20180329175124](server.assets/image-201803291751248.png)
+
+
+
+修改value值为false 
+
+![mage-20180329175151](server.assets/image-201803291751511.png)
+
