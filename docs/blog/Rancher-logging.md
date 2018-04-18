@@ -1,3 +1,8 @@
+---
+typora-copy-images-to: ./img
+typora-root-url: ./img
+---
+
 ## 引言
 
 文档参考<http://www.cnrancher.com/rancher-logging/> 。
