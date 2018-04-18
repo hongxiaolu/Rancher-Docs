@@ -44,6 +44,12 @@ blog:
 - title: 部署Rancher-NFS驱动
   path: /blog/Deploy-nfs-driver/
 
+- title: Rancher日志收集
+  path: /blog/Rancher-logging/
+  
+- title: Rancher-ceph驱动安装
+  path: /blog/rancher-install-ceph-drive/
+
 - title: 留言
   path: /liuyan/
 
