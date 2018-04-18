@@ -1,3 +1,8 @@
+---
+typora-copy-images-to: ./img
+typora-root-url: ./img
+---
+
 ## 操作步骤
 
 ## Ceph 服务端安装
