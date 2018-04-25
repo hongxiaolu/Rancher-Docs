@@ -2,7 +2,6 @@
 title: Rancher server安装
 ---
 
-
 ### 准备Linux主机
 1.  准备一个64位Ubuntu 16.04的Linux主机，至少4GB的内存。
 
