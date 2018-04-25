@@ -11,7 +11,7 @@ title: 部署NFS驱动
 1. NFS服务器安装
 
    apt-get install nfs-kernel-server -y
-   
+
    >	尽量在每台主机上都安装nfs-kernel-server，避免出现mount不上NFS server
 
 
@@ -21,7 +21,7 @@ title: 部署NFS驱动
 
    > 参数说明：
    >
-   > /home/nfs： nfs共享的目录;
+   > /home/nfs：	 nfs共享的目录;
    >
    >  *:                    表示所有IP。如果填写为192.168.1.100表示一个主机能访问，
    >
@@ -55,39 +55,40 @@ title: 部署NFS驱动
    >
    > no_subtree_check：          	如果NFS输出的是一个子目录，则无需检查其父目录的权限(可以提高效率);
 
-3. 配置NFS服务端开机启动，并重启host:   
+   3.	配置NFS服务端开机启动，并重启host:   
 
    ```systemctl enable nfs-blkmap.target && reboot```
 
-4. 本机测试NFS服务器连通性：
+   4. 本机测试NFS服务器连通性：
 
    ```mount -t nfs 远程IP:/远程路径  /local路径```
 
+
 ## 二、NFS驱动卷安装配置
 
-1. 在应用商店（catalog）中搜索NFS，接着点击VIEW Details 进入配置详情页。![img](https://www.xtplayer.cn/wp-content/uploads/2017/06/11111111111-1.png)
+1. 在应用商店（catalog）中搜索NFS，接着点击VIEW Details 进入配置详情页。![img](Deploy-nfs-driver.assets/11111111111-1.png)
 
 2. 配置参数
 
    ![image-20180424222751831](img/image-20180424222751831.png)
 
-> 参数说明：
->
-> NFS  Server ：          NFS服务器的IP地址，端口默认2049；
->
-> Mount Dirctory:       NFS配置的共享存储路径；
->
-> MoutOptions:          默认可以不用填，如果server端口有变动，可以在这里通过 port=2049 来指定新端口；
->
-> NFS Version:            默认4版本；
->
-> On Remove:            当移除Rancher NFS卷的时候，底层数据是否应该被保留或者清理。选项有`purge`和`retain`，默认值为`purge`。从Rancher 1.6.6开始支持。
+	> 参数说明：
+	>
+	> NFS  Server ：          NFS服务器的IP地址，端口默认2049；
+	>
+	> Mount Dirctory:       NFS配置的共享存储路径；
+	>
+	> MoutOptions:          默认可以不用填，如果server端口有变动，可以在这里通过 port=2049 来指定新端口；
+	>
+	> NFS Version:            默认4版本；
+	>
+	> On Remove:            当移除Rancher NFS卷的时候，底层数据是否应该被保留或者清理。选项有`purge`和	`retain`，默认值为`purge`。从Rancher 1.6.6开始支持。
 
 3. 最后点击launch，接着会自动跳转到应用栈（stack）页面。
 
    参考链接：http://rancher.com/setting-shared-volumes-convoy-nfs/
 
-![image-20180424223215278](img/image-20180424223215278.png)
+   ![image-20180424223215278](img/image-20180424223215278.png)
 
 ## 三、配置应用自动创建容器卷
 
@@ -95,11 +96,11 @@ title: 部署NFS驱动
 
    ![image-20180424223901468](img/image-20180424223901468.png)
 
-> 注意：
->
-> **卷**：卷书写格式为 :卷名(volumename):容器内路径；
->
-> **卷驱动**：填写卷驱动名：rancher-nfs，如果不填，会使用默认local驱动；
+	> 注意：
+	>
+	> **卷**：卷书写格式为 :卷名(volumename):容器内路径；
+	>
+	> **卷驱动**：填写卷驱动名：rancher-nfs，如果不填，会使用默认local驱动；
 
 2. 服务创建完成
 
