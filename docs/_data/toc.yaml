@@ -44,7 +44,7 @@ blog:
   path: /blog/rancher-install-ceph-drive/
 - title: 留言
   path: /liuyan/
-  
+
 guides:
 - title: 首页
 - sectiontitle: Docker 快速入门
@@ -269,6 +269,10 @@ rancher:
 
 rancher2.x:
 - title: Rancher2.x
+- sectiontitle: 安装与升级
+  section:
+  - path: /rancher2.x/server-install/
+    title: Rancher server安装
 
 os:
 - title: RancherOS
