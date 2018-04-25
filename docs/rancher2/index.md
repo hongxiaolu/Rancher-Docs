@@ -1,6 +1,5 @@
 ---
 title: 快速入门指南
-layout: rancher-default-v2.0
 version: v2.0
 ---
 
