@@ -6,8 +6,8 @@ horizontalnav:
   path: /rancher/
   node: rancher
 - title: Rancher2.x
-  path: /rancher2.x/
-  node: rancher2.x
+  path: /rancher2/
+  node: rancher2
 - title: RancherOS
   path: /os/
   node: os
@@ -267,13 +267,17 @@ rancher:
 - title: 留言
   path: /liuyan/
 
-rancher2.x:
+rancher2:
 - title: Rancher2.x
 - sectiontitle: 安装与升级
   section:
-  - path: /rancher2.x/server-install/
+  - path: /rancher2/server-install/
     title: Rancher server安装
-
+- title: 创建集群
+  path: /rancher2/create-cluster/
+- title: 配置
+  path: /rancher2/Configuration/
+  
 os:
 - title: RancherOS
 - sectiontitle: 安装与升级
