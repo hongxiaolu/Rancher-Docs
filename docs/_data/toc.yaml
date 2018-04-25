@@ -22,40 +22,29 @@ blog:
 - title: 博客
 - title: 青云上部署RANCHER
   path: /blog/qinyun-install-rancher/
-
 - title: Rancher-Validation-test
   path: /blog/20170808-Validation-test-summary/
-
 - title: 通过webhook实现服务升级
   path: /blog/service-auto-update/
-
 - title: Rancher-CNI-Driver
   path: /blog/Rancher-CNI-Driver/
-
 - title: API简单使用
   path: /blog/api-use/
-
 - title: CentOS更改Docker存储驱动
   path: /blog/CentOS-direct-lvm/
-
 - title: machine-driver
   path: /blog/machine-driver/
-
 - title: 应用商店catalog模板制作
   path: /blog/catalog-template/
-
 - title: 部署Rancher-NFS驱动
   path: /blog/Deploy-nfs-driver/
-
 - title: Rancher日志收集
   path: /blog/Rancher-logging/
-  
 - title: Rancher-ceph驱动安装
   path: /blog/rancher-install-ceph-drive/
-
 - title: 留言
   path: /liuyan/
-
+  
 guides:
 - title: 首页
 - sectiontitle: Docker 快速入门
