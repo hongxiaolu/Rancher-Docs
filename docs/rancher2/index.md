@@ -14,6 +14,35 @@ version: v2.0
 *	通过Rancher UI添加Pod
 *	使用Kubeconfig文件
 
+### 端口要求
+
+主机之间如果有防火墙，则需要放行以下端口以保证master节点和Worker节点可以进行通信。
+
+#### Master Nodes (etcd and controlplane nodes)
+
+协议  | 方向  | 端口范围  | 目标端  
+---|---|---|---
+TCP | Inbound | 22  |  SSH server
+TCP | Inbound | 80  | Canal
+TCP | Inbound | 443  | Canal
+TCP | Inbound | 6443  | Kubernetes API server
+TCP | Inbound | 2379-2380  | etcd server client API
+TCP | Inbound | 10250  | kubelet API
+TCP | Inbound | 10251  | scheduler
+TCP | Inbound | 10252  | controller
+TCP | Inbound | 10256  | kubeproxy
+
+#### Worker Nodes
+
+协议  | 方向  | 端口范围  | 目标端  
+---|---|---|---
+TCP | Inbound | 22  |  SSH Server
+TCP | Inbound | 80  | Canal
+TCP | Inbound | 443  | Canal
+TCP | Inbound | 10250  |  kubelet API
+TCP | Inbound | 10256  |  kubeproxy
+TCP | Inbound | 30000-32767  |  NodePort Services
+
 ### 准备Linux主机
 1.	准备一个64位Ubuntu 16.04的Linux主机，至少4GB的内存。
 2.	在主机上安装支持的Docker，支持的Docker版本目前有：1.12.6，1.13.1或17.03.2。
