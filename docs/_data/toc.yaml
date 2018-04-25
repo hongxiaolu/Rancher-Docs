@@ -5,6 +5,9 @@ horizontalnav:
 - title: Rancher
   path: /rancher/
   node: rancher
+- title: Rancher2.x
+  path: /rancher2.x/
+  node: rancher2.x
 - title: RancherOS
   path: /os/
   node: os
@@ -274,7 +277,10 @@ rancher:
     title: 1.6.10
 - title: 留言
   path: /liuyan/
-  
+
+rancher2.x:
+- title: Rancher2.x
+
 os:
 - title: RancherOS
 - sectiontitle: 安装与升级
