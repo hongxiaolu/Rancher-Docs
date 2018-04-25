@@ -11,6 +11,8 @@ title: 部署NFS驱动
 1. NFS服务器安装
 
    apt-get install nfs-kernel-server -y
+   
+   >	尽量在每台主机上都安装nfs-kernel-server，避免出现mount不上NFS server
 
 
 2. 在/etc/exports最后一行添加NFS共享路径，例如：
@@ -35,16 +37,23 @@ title: 部署NFS驱动
    >
    > ​			多文件的写入，但有数据丢失的风险，比如突然断电等情况；
    >
-   > root_squash(默认)：   将来访的root用户映射为匿名用户或用户组；
+   > root_squash(默认)：   		将来访的root用户映射为匿名用户或用户组；
    >
-   > no_root_squash：            来访的root用户保持root帐号权限（可能会不安全）；
-   > no_all_squash(默认)：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；
-   > all_squash：                      将来访的所有用户映射为匿名用户或用户组；
-   > secure(默认)：              限制客户端只能从小于1024的tcp/ip端口连接服务器；
-   > insecure：                          允许客户端从大于1024的tcp/ip端口连接服务器；
-   > anonuid：                           匿名用户的UID值，通常是nobody或nfsnobody，可以在此处自行设定；
-   > anongid：                           匿名用户的GID值；
-   > no_subtree_check：          如果NFS输出的是一个子目录，则无需检查其父目录的权限(可以提高效率);
+   > no_root_squash：            	来访的root用户保持root帐号权限（可能会不安全）；
+   >
+   > no_all_squash(默认)：		访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；
+   >
+   > all_squash：                      	将来访的所有用户映射为匿名用户或用户组；
+   >
+   > secure(默认)：              	限制客户端只能从小于1024的tcp/ip端口连接服务器；
+   >
+   > insecure：                          	允许客户端从大于1024的tcp/ip端口连接服务器；
+   >
+   > anonuid：                           	匿名用户的UID值，通常是nobody或nfsnobody，可以在此处自行设定；
+   >
+   > anongid：                           	匿名用户的GID值；
+   >
+   > no_subtree_check：          	如果NFS输出的是一个子目录，则无需检查其父目录的权限(可以提高效率);
 
 3. 配置NFS服务端开机启动，并重启host:   
 
