@@ -2,7 +2,7 @@
 title: 基础配置
 ---
 
-在第一次登录Rancher UI后，需要对系统做一些基础的配置。
+> 在第一次登录Rancher UI后，需要对系统做一些基础的配置。
 
 ##  主机驱动
 
@@ -38,4 +38,18 @@ helm-incubator：https://kubernetes-charts-incubator.storage.googleapis.com/
 如果搭建了私有的Helm仓库，可以通过添加应用商店的方式加入Rancher。
 ![mage-20180323150242](Configuration.assets/image-201803231502428.png)
 
-### 
+## 用户管理
+
+
+
+## 设置
+
+## 安全
+
+### 角色
+
+### POD安全策略
+
+### 认证
+
+### API & Keys
