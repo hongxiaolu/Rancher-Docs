@@ -1,5 +1,5 @@
 ---
-title: Rancher server安装
+title: 集群server安装
 ---
 
 ### 准备Linux主机

@@ -323,7 +323,7 @@ rancher2:
   section:
   - path: /rancher2/clusters/cluster-dashboard/
     title: 集群仪表盘
-  - path: /rancher2/clusters/node/
+  - path: /rancher2/clusters/nodes/
     title: 集群节点
   - sectiontitle: 集群存储
     section:
@@ -367,9 +367,9 @@ rancher2:
     - path: /rancher2/project/resources/alerts/
       title: 项目告警
     - path: /rancher2/project/resources/certificates/
-      title: 证书
+      title: 项目证书
     - path: /rancher2/project/resources/config-maps/
-      title: 配置地图
+      title: ConfigMap
     - path: /rancher2/project/resources/logging/
       title: 项目日志收集
     - path: /rancher2/project/resources/registries/
