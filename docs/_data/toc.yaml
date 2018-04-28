@@ -274,14 +274,23 @@ rancher:
 
 rancher2:
 - title: Rancher2.x
-- sectiontitle: Rancher-server安装
+- sectiontitle: Server安装
   section:
   - path: /rancher2/install/requirement/
     title: 安装需求
   - path: /rancher2/install/single-install/
-    title: 单节点安装
-  - path: /rancher2/install/HA-install/
-    title: HA 安装
+    title: 单点server安装
+  - path: /rancher2/install/cluster-install/
+    title: 集群server安装
+
+- sectiontitle: server升级
+  section:
+  - path: /rancher2/update/note/
+    title: 升级注意事项
+  - path: /rancher2/update/single-update/
+    title: 单点server升级
+  - path: /rancher2/update/cluster-update/
+    title: 集群server升级
 
 - sectiontitle: 全局配置
   section:
