@@ -319,18 +319,25 @@ rancher2:
   - path: /rancher2/global/preferences/
     title: 参数设置
 
-
-
-
 - sectiontitle: 集群配置
   section:
-  - path: /rancher2/clusters/cluster/
-    title: 集群管理
+  - path: /rancher2/clusters/cluster-dashboard/
+    title: 集群仪表盘
+  - path: /rancher2/clusters/node/
+    title: 集群节点
+  - sectiontitle: 集群存储
+    section:
+    - path: /rancher/clusters/storage/persistent-volumes/
+      title: 持久卷
+    - path: /rancher/clusters/storage/classes/
+      title: 存储类型
+  - path: /rancher2/clusters/projects-namespaces/
+    title: 命项目和名空间
 
 - sectiontitle: 项目配置
   section:
   - path: /rancher2/project/cluster/
-    title: 集群管理
+    title: 
 
   
 os:
