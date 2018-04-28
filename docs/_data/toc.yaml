@@ -306,11 +306,11 @@ rancher2:
     title: 系统设置
   - sectiontitle: 安全设置
     section:
-    - path: /rancher/global/security/roles/
+    - path: /rancher2/global/security/roles/
       title: 用户角色
-    - path: /rancher/global/security/policies/
+    - path: /rancher2/global/security/policies/
       title: Pod安全策略
-    - path: /rancher/global/security/authentication/
+    - path: /rancher2/global/security/authentication/
       title: 登录认证
   - path: /rancher2/global/apikeys/
     title: API & Keys
@@ -327,9 +327,9 @@ rancher2:
     title: 集群节点
   - sectiontitle: 集群存储
     section:
-    - path: /rancher/clusters/storage/persistent-volumes/
+    - path: /rancher2/clusters/storage/persistent-volumes/
       title: 持久卷
-    - path: /rancher/clusters/storage/classes/
+    - path: /rancher2/clusters/storage/classes/
       title: 存储类型
   - path: /rancher2/clusters/projects-namespaces/
     title: 命项目和名空间
@@ -337,44 +337,44 @@ rancher2:
     title: 集群成员
   - sectiontitle: 工具
     section:
-    - path: /rancher/clusters/tools/alerts/
+    - path: /rancher2/clusters/tools/alerts/
       title: 集群告警
-    - path: /rancher/clusters/tools/logging/
+    - path: /rancher2/clusters/tools/logging/
       title: 集群日志收集
-    - path: /rancher/clusters/tools/notifiers/
+    - path: /rancher2/clusters/tools/notifiers/
       title: 集群告警通知
-    - path: /rancher/clusters/tools/pipeline/
+    - path: /rancher2/clusters/tools/pipeline/
       title: CI/CD
     
 - sectiontitle: 项目配置
   section:
   - sectiontitle: 工作负载
     section:
-    - path: /rancher/project/workloads/workloads/
+    - path: /rancher2/project/workloads/workloads/
       title: 工作负载
-    - path: /rancher/project/workloads/load-balancing/
+    - path: /rancher2/project/workloads/load-balancing/
       title: 负载均衡
-    - path: /rancher/project/workloads/service-discovery/
+    - path: /rancher2/project/workloads/service-discovery/
       title: 服务发现
-    - path: /rancher/project/workloads/volumes/
+    - path: /rancher2/project/workloads/volumes/
       title: 容器卷
-    - path: /rancher/project/workloads/pipelines/
+    - path: /rancher2/project/workloads/pipelines/
       title: CI/CD
   - path: /rancher2/project/catalog/
     title: 应用商店
   - sectiontitle: 项目资源
     section:
-    - path: /rancher/project/resources/alerts/
+    - path: /rancher2/project/resources/alerts/
       title: 项目告警
-    - path: /rancher/project/resources/certificates/
+    - path: /rancher2/project/resources/certificates/
       title: 证书
-    - path: /rancher/project/resources/config-maps/
+    - path: /rancher2/project/resources/config-maps/
       title: 配置地图
-    - path: /rancher/project/resources/logging/
+    - path: /rancher2/project/resources/logging/
       title: 项目日志收集
-    - path: /rancher/project/resources/registries/
+    - path: /rancher2/project/resources/registries/
       title: 项目镜像仓库
-    - path: /rancher/project/resources/secrets/
+    - path: /rancher2/project/resources/secrets/
       title: 项目密文
   - path: /rancher2/project/members/
     title: 命名空间列表
