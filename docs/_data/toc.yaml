@@ -2,18 +2,23 @@ horizontalnav:
 - title: 首页
   path: /
   node: guides
+
 - title: Rancher
   path: /rancher/
   node: rancher
+
 - title: Rancher2.x
   path: /rancher2/
   node: rancher2
+
 - title: RancherOS
   path: /os/
   node: os
+
 - title: Kubernetes
   path: /kubernetes/
   node: kubernetes
+
 - title: Blog
   path: /blog/
   node: blog
@@ -273,10 +278,20 @@ rancher2:
   section:
   - path: /rancher2/server-install/
     title: Rancher server安装
-- title: 创建集群
-  path: /rancher2/create-cluster/
-- title: 配置
-  path: /rancher2/Configuration/
+- sectiontitle: 全局配置
+  section:
+  - path: /rancher2/global/cluster/
+    title: 集群管理
+  - path: /rancher2/global/node-drivers/
+    title: 主机驱动
+  - path: /rancher2/global/catalog/
+    title: 应用商店
+  - path: /rancher2/global/users/
+    title: 用户
+  - path: /rancher2/global/settings/
+    title: 设置
+
+
   
 os:
 - title: RancherOS
