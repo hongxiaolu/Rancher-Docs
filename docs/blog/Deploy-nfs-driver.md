@@ -64,7 +64,7 @@ title: 部署Rancher-NFS驱动
    ```mount -t nfs 远程IP:/远程路径  /local路径```
 
 
-## 二、Rancher-NFS驱动卷安装与配置
+## 二、Rancher-NFS驱动安装与配置
 
 1. 在应用商店（catalog）中搜索NFS，接着点击VIEW Details 进入配置详情页。![img](Deploy-nfs-driver.assets/11111111111-1.png)
 
@@ -112,8 +112,6 @@ title: 部署Rancher-NFS驱动
 
    ![image-20180424233925374](img/image-20180424233925374.png)
 
-   ​
-
    PS:因为填写的是rancher-nfs驱动，所以会自动进行归类。
 
 4. 卷状态说明
@@ -136,8 +134,6 @@ title: 部署Rancher-NFS驱动
 
    ![image-20180424232059217](img/image-20180424232059217.png)
 
-   ​
-
 ## 四、UI手动创建卷
 
 1. 在存储界面点击 添加卷；
@@ -159,8 +155,6 @@ title: 部署Rancher-NFS驱动
    ![image-20180424234242329](img/image-20180424234242329.png)![image-20180424234253198](img/image-20180424234253198.png)
 
    ![image-20180424234324633](img/image-20180424234324633.png)
-
-   ​
 
    ## 五、驱动卷的高级用法
 
