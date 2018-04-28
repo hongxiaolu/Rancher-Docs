@@ -346,9 +346,8 @@ rancher2:
     - path: /rancher/clusters/tools/pipeline/
       title: CI/CD
     
-
-
 - sectiontitle: 项目配置
+  section:
   - sectiontitle: 工作负载
     section:
     - path: /rancher/project/workloads/workloads/
