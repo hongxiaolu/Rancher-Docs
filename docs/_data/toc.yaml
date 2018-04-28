@@ -360,9 +360,25 @@ rancher2:
       title: 容器卷
     - path: /rancher/project/workloads/pipelines/
       title: CI/CD
+  - path: /rancher2/project/catalog/
+    title: 应用商店
+  - sectiontitle: 项目资源
+    section:
+    - path: /rancher/project/resources/alerts/
+      title: 项目告警
+    - path: /rancher/project/resources/certificates/
+      title: 证书
+    - path: /rancher/project/resources/config-maps/
+      title: 配置地图
+    - path: /rancher/project/resources/logging/
+      title: 项目日志收集
+    - path: /rancher/project/resources/registries/
+      title: 项目镜像仓库
+    - path: /rancher/project/resources/secrets/
+      title: 项目密文
+  - path: /rancher2/project/members/
+    title: 命名空间列表
     
-    
-  
 os:
 - title: RancherOS
 - sectiontitle: 安装与升级
