@@ -278,6 +278,7 @@ rancher2:
   section:
   - path: /rancher2/server-install/
     title: Rancher server安装
+
 - sectiontitle: 全局配置
   section:
   - path: /rancher2/global/cluster/
@@ -290,7 +291,25 @@ rancher2:
     title: 用户
   - path: /rancher2/global/settings/
     title: 设置
+  - sectiontitle: 安全设置
+    section:
+    - path: /rancher/global/security/roles/
+      title: 用户角色
+    - path: /rancher/global/security/policies/
+      title: Pod安全策略
+    - path: /rancher/global/security/authentication/
+      title: 登录认证
 
+
+- sectiontitle: 集群配置
+  section:
+  - path: /rancher2/clusters/cluster/
+    title: 集群管理
+
+- sectiontitle: 项目配置
+  section:
+  - path: /rancher2/project/cluster/
+    title: 集群管理
 
   
 os:
