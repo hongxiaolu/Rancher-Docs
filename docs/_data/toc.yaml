@@ -301,9 +301,9 @@ rancher2:
   - path: /rancher2/global/catalog/
     title: 应用商店
   - path: /rancher2/global/users/
-    title: 用户
+    title: 全局用户
   - path: /rancher2/global/settings/
-    title: 设置
+    title: 系统设置
   - sectiontitle: 安全设置
     section:
     - path: /rancher/global/security/roles/
@@ -333,12 +333,36 @@ rancher2:
       title: 存储类型
   - path: /rancher2/clusters/projects-namespaces/
     title: 命项目和名空间
+  - path: /rancher2/clusters/members/
+    title: 集群成员
+  - sectiontitle: 工具
+    section:
+    - path: /rancher/clusters/tools/alerts/
+      title: 集群告警
+    - path: /rancher/clusters/tools/logging/
+      title: 集群日志收集
+    - path: /rancher/clusters/tools/notifiers/
+      title: 集群告警通知
+    - path: /rancher/clusters/tools/pipeline/
+      title: CI/CD
+    
+
 
 - sectiontitle: 项目配置
-  section:
-  - path: /rancher2/project/cluster/
-    title: 
-
+  - sectiontitle: 工作负载
+    section:
+    - path: /rancher/project/workloads/workloads/
+      title: 工作负载
+    - path: /rancher/project/workloads/load-balancing/
+      title: 负载均衡
+    - path: /rancher/project/workloads/service-discovery/
+      title: 服务发现
+    - path: /rancher/project/workloads/volumes/
+      title: 容器卷
+    - path: /rancher/project/workloads/pipelines/
+      title: CI/CD
+    
+    
   
 os:
 - title: RancherOS
