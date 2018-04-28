@@ -274,6 +274,7 @@ rancher:
 
 rancher2:
 - title: Rancher2.x
+  path: /rancher2/
 - sectiontitle: Server安装
   section:
   - path: /rancher2/install/requirement/
