@@ -1,5 +1,5 @@
 ---
-title: 部署NFS驱动
+title: 部署Rancher-NFS驱动
 ---
 
 ## 一、NFS服务端配置
@@ -12,7 +12,7 @@ title: 部署NFS驱动
 
    apt-get install nfs-kernel-server -y
 
-   >	尽量在每台主机上都安装nfs-kernel-server，避免出现mount不上NFS server
+   >	尽量在每台主机上都安装nfs-kernel-server，避免出现mount不上NFS server的问题
 
 
 2. 在/etc/exports最后一行添加NFS共享路径，例如：
@@ -64,7 +64,7 @@ title: 部署NFS驱动
    ```mount -t nfs 远程IP:/远程路径  /local路径```
 
 
-## 二、NFS驱动卷安装配置
+## 二、Rancher-NFS驱动卷安装与配置
 
 1. 在应用商店（catalog）中搜索NFS，接着点击VIEW Details 进入配置详情页。![img](Deploy-nfs-driver.assets/11111111111-1.png)
 
