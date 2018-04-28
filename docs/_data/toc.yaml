@@ -312,6 +312,14 @@ rancher2:
       title: Pod安全策略
     - path: /rancher/global/security/authentication/
       title: 登录认证
+  - path: /rancher2/global/apikeys/
+    title: API & Keys
+  - path: /rancher2/global/node-templates/
+    title: 主机模板
+  - path: /rancher2/global/preferences/
+    title: 参数设置
+
+
 
 
 - sectiontitle: 集群配置
