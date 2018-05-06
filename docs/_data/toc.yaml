@@ -15,7 +15,7 @@ horizontalnav:
   path: /os/
   node: os
 
-- title: Kubernetes
+- title: Rancher-k8s
   path: /kubernetes/
   node: kubernetes
 
