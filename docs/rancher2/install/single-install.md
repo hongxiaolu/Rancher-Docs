@@ -11,7 +11,7 @@ title: 单点server安装
 
 ### 启动Rancher server
 
-只需要一条命令，不到一分钟即可安装并启动Rancher服务器。安装完成后，您可以打开Web浏览器访问Rancher UI。
+只需要一条命令，不到一分钟即可安装并启动Rancher server。安装完成后，您可以打开Web浏览器访问Rancher UI。
 
 1. 在你的主机上运行以下Docker命令：
 
