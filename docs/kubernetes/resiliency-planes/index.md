@@ -35,7 +35,7 @@ title: Kubernetes - 弹性平面
 
 #### 分隔平面（SEPARATED PLANES）
 
-这种部署方式允许用户分割开不通类型的平面，使每一种平面运行在特定、专用的主机上。它可以提供数据平面的恢复能力，保证计算平面的性能。你需要在增加主机之前 [配置 Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#设置kubernetes)。在配置 Kubernetes 的时候，在 **Plane Isolation** 选项中选择 `required`。
+这种部署方式允许用户分割开不同类型的平面，使每一种平面运行在特定、专用的主机上。它可以提供数据平面的恢复能力，保证计算平面的性能。你需要在增加主机之前 [配置 Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/#设置kubernetes)。在配置 Kubernetes 的时候，在 **Plane Isolation** 选项中选择 `required`。
 
 > **注意：** 如果你想要从重叠平面升级Kubernetes到分隔平面，请 [阅读如何升级Kubernetes]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/kubernetes/upgrading/)以正确地处理改变。
 
