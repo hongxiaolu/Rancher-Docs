@@ -164,7 +164,7 @@ catalog:
       description: |
       type: certificate
 ```
-### 示例：制作oracle DB模板
+### 例如: 制作oracle DB模板
 
 *  新建oracle-databases文件夹
 *  新建“0”文件夹（0表示第一个版本），在同级目录下再新建config.yml和catalogIcon-oracledb.svg

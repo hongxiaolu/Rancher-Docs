@@ -22,7 +22,7 @@ Key | Value |描述
 `io.rancher.container.requested_ip` | IP于`10.42.0.0/16`的地址空间 | 允许你选择容器的特定IP。从v1.6.6版本开始，服务内的容器将会使用配置的多个IP地址中的可用地址，直到这些地址全被占用。这些地址要用逗号隔开，例如`10.42.100.100, 10.42.100.101`。 在v1.6.6之前，只有服务中的一个容器可以使用这个特定IP。**注意：如果IP在主机上不可用，则容器将以随机IP开始.**
 `io.rancher.container.dns.priority` | `service_last` | 在服务域之前使用主机的DNS搜索路径。 保证主机将从`/etc/resolv.conf`搜索后再对`*.rancher.internal`搜索。
 `io.rancher.service.selector.container` |  [_Selector Label_ Values]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/labels/#选择器标签) | 用于服务，以支持选择独立的容器来加入DNS服务。 注意：作为独立容器，任何服务操作都不会影响独立容器（即停用/删除/编辑服务，健康检查等）。
-`io.rancher.service.selector.link` | [_Selector Label_ Values]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/labels/#选择器标签) | 用于服务以允许服务基于服务标签链接到服务。 示例：Service1具有标签`io.rancher.service.selector.link：foo = bar`。 任何添加到Rancher的具有`foo=bar`标签的服务将自动链接到Service1。
+`io.rancher.service.selector.link` | [_Selector Label_ Values]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/labels/#选择器标签) | 用于服务以允许服务基于服务标签链接到服务。 例如: Service1具有标签`io.rancher.service.selector.link：foo = bar`。 任何添加到Rancher的具有`foo=bar`标签的服务将自动链接到Service1。
 `io.rancher.scheduler.global` | `true` | 用于设置[全局服务]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/scheduling/#全局服务)
 `io.rancher.scheduler.affinity:host_label` | 主机标签的Key Value配对| 用于根据[主机标签]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/scheduling/#使用主机标签查找主机)在主机上编排容器
 `io.rancher.scheduler.affinity:container_label` | 容器标签的Key Value配对 | 用于根据[容器标签或服务名称]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/cattle/scheduling/#用容器标签查找主机)在主机上编排容器
@@ -51,7 +51,7 @@ foo5 notin (bar3, bar4)
 ```
 <br>
 
-> **注意：** 如果标签有中包含逗号的标签，则选择器将无法与标签匹配，因为 _选择器标签_ 可以匹配任何没有关联值的键。 示例：`io.rancher.service.selector.link: foo=bar1,bar2`的标签将转换为任何服务必须具有一个标签为`foo`的键值，并且值等于`bar1` **和**另一个带有等于`bar2`的标签。 它不会选择一个键等于`foo`，并且值等于`bar1，bar2`的标签的服务。
+> **注意：** 如果标签有中包含逗号的标签，则选择器将无法与标签匹配，因为 _选择器标签_ 可以匹配任何没有关联值的键。 例如: `io.rancher.service.selector.link: foo=bar1,bar2`的标签将转换为任何服务必须具有一个标签为`foo`的键值，并且值等于`bar1` **和**另一个带有等于`bar2`的标签。 它不会选择一个键等于`foo`，并且值等于`bar1，bar2`的标签的服务。
 
 #### 逗号分隔列表的示例
 

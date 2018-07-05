@@ -35,7 +35,7 @@ ingress controller 功能:
 
 这里添加单个的nginx服务到Kubernetes中。
 
-示例：`nginx-service.yml`:
+例如: `nginx-service.yml`:
 
 ```yaml
 apiVersion: v1
@@ -86,7 +86,7 @@ replicationcontroller "nginx-service" created
 
 你可以为单个服务设置单一的ingress资源。
 
-示例：`simple-ingress.yml`
+例如: `simple-ingress.yml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -121,7 +121,7 @@ ingress中的address将是负载均衡器服务启动的公共接入地址。如
 
 让我们添加多个服务到 Kubernetes中.
 
-示例：`multiple-nginx-services.yml`:
+例如: `multiple-nginx-services.yml`:
 
 ```yaml
 apiVersion: v1
@@ -207,7 +207,7 @@ replicationcontroller "nginx-service-2" created
 
 #### 基于主机路由配置 Ingress 资源
 
-示例：`host-based-ingress.yml`
+例如: `host-based-ingress.yml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -259,7 +259,7 @@ ingress中的地址将是负载均衡器服务启动的公共接入地址。.如
 
 如果有多个想要做负载均衡的服务，那么可以向ingress添加基于路径的路由。
 
-示例：`path-based-ingress.yml`
+例如: `path-based-ingress.yml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -325,7 +325,7 @@ ingress中的address将是负载均衡器服务启动的公共接入地址。如
 
 这里向Kubernetes添加一个单个的nginx服务。
 
-示例：`nginx-service.yml`:
+例如: `nginx-service.yml`:
 
 ```yaml
 apiVersion: v1
@@ -371,11 +371,11 @@ $ kubectl create -f nginx-service.yml
 service "nginx-service" created
 replicationcontroller "nginx-service" created
 ```
-#### *示例：两个负载均衡器使用交替的端口*
+#### *例如: 两个负载均衡器使用交替的端口*
 
 你可以在两个不同的主机上运行2个负载均衡器启动一个ingress，它使用一个99端口代替默认的80端口。为了让这个ingress正常工作，你的kubernetes环境至少需要两台拥有99端口的主机。
 
-示例：`scaled-ingress.yml`
+例如: `scaled-ingress.yml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -406,13 +406,13 @@ NAME       RULE      BACKEND            ADDRESS             AGE
 simplelb   -         nginx-service:90   1.2.3.4,5.6.7.8     41s
 ```
 
-#### 示例：使用TLS
+#### 例如: 使用TLS
 
 ***如果你想要在Kubernetes中使用TLS，那么你需要将证书添加到Rancher中。在Rancher中添加的证书可以用于为TLS终端提供一个安全的ingress。***
 
 *假设我们添加了一个名为foo的证书*
 
-示例：`tls-ingress.yml` 使用这个 `foo` 证书。
+例如: `tls-ingress.yml` 使用这个 `foo` 证书。
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -437,7 +437,7 @@ spec:
 
 ***默认情况下，即使使用了TLS，端口80也是可以访问的。为了阻止80端口，你可以添加额外的参数（annotation） (allow.http: "false")做为ingress模板的一部分。***
 
-示例：`tls-ingress.yml` and 禁用80 端口
+例如: `tls-ingress.yml` and 禁用80 端口
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -455,11 +455,11 @@ spec:
     serviceName: nginx-service
     servicePort: 90
 ```
-#### 示例：用户定制
+#### 例如: 用户定制
 
 在Rancher中，我们的负载均衡器运行的是HAProxy软件。如果你想要定制负载均衡器配置文件的`global` 和`defaults` 部分，可以通过ingress注释(annotations)来配置它们。
 
-示例：`custom-ingress.yml`
+例如: `custom-ingress.yml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -481,7 +481,7 @@ spec:
 
 在当前环境中，可以让负载均衡器在所有主机上运行。这些全局负载均衡器可以使用注释（annotations）进行调度，i.e. `io.Rancher.scheduler.global: "true"`.
 
-示例：`global-ingress.yml`
+例如: `global-ingress.yml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -497,7 +497,7 @@ spec:
     servicePort: 80
 ```
 
-#### 示例：在特定主机上运行负载均衡器
+#### 例如: 在特定主机上运行负载均衡器
 
 在当前环境中，你可以将负载均衡器安排到某个特定主机上。为了将负载均衡器安排到特定的主机上，你需要向主机添加标签。主机上的标签是一个键值对，比如你可以给主机设置标签为foo=bar。主机添加标签之后，你需要使用参数annotation，（如Rancher.scheduler.affinity.host_label: "foo=bar"`）以使负载均衡器容器安排到标记的主机上。
 
@@ -533,7 +533,7 @@ spec:
     servicePort: 80
 ```
 
-#### 示例：在同一主机上对容器的流量进行优先级排序
+#### 例如: 在同一主机上对容器的流量进行优先级排序
 
 对于一个多实例服务，你可以配置负载均衡器，使流量优先分配到与负载均衡器容器相同主机的服务容器中。如果主机上没有目标服务的容器，则负载均衡器将流量引导到目标服务所在的其他主机上。为了配置负载均衡器，你将使用一个annotation， i.e. `io.Rancher.lb_service.target: "prefer-local"`.
 
@@ -551,7 +551,7 @@ spec:
     servicePort: 80
 ```
 
-#### 示例：粘滞会话
+#### 例如: 粘滞会话
 
 可以为Rancher负载均衡器中运行的HAProxy软件的配置粘性策略。
 

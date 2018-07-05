@@ -29,7 +29,7 @@ ECR 证书更新器是一个容器服务，它会间歇性自动测验 AWS ECR A
 
 在 Rancher 中指定镜像名时，使用 AWS 提供完整的限定地址。 比如 `aws-account-number.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest`。
 
-### IAM 策略示例：
+### IAM 策略例如: 
 下面是一个你可能在服务的准生产遇到的泛例。这个示例中，Rancher 能够在各自的 AWS 账号中拉取镜像。
 
 ```

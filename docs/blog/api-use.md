@@ -44,7 +44,7 @@ URL: v2-beta/projects/${projects_id}/stacks/${stacks_id}/services
 
 ![](API/hjmb1.png)
 
-点击右上角的 create, 示例：创建cattle调度环境模板并选择vxlan网络
+点击右上角的 create, 例如: 创建cattle调度环境模板并选择vxlan网络
 
 ![](API/hjmb2.png)
 ![](API/hjmb3.png)
