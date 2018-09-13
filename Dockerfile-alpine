@@ -1,4 +1,4 @@
-FROM registry.cn-shenzhen.aliyuncs.com/rancher_cn/rancher-docs:base
+FROM registry.cn-shanghai.aliyuncs.com/rancher_cn/rancher16-docs:base
 
 COPY  docs  /home/docs
 RUN cd /home/docs && jekyll build  --destination /home/web  \
