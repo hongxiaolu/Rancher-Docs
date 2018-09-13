@@ -1,4 +1,4 @@
-source "https://gems.ruby-china.org/"
+#source "https://gems.ruby-china.org/"
 
 # Update me once in a while: https://github.com/github/pages-gem/releases
 # Please ensure, before upgrading, that this version exists as a tag in starefossen/github-pages here:
