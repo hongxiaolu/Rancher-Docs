@@ -4,6 +4,7 @@ COPY  docs  /home/docs
 
 RUN apk  add  --no-cache nginx libc-dev openssl  openssl-dev  gcc make  libffi-dev ruby  ruby-json ruby-dev ruby-rdoc  ruby-bundler \
     && cd /home/docs   \
+    && gem install bigdecimal \
     && bundle install && rm -rf /etc/nginx/conf.d/*
 
 COPY  alpine/nginx.conf /etc/nginx/
